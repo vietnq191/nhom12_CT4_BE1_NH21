@@ -26,13 +26,24 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function search($keyword){
-        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
-        $keyword = "%$keyword%";
-        $sql->bind_param("s", $keyword);
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
+    public function search($keyword, $type)
+    {
+        if ($type != 0) {
+            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ? AND `type_id`= ?");
+            $keyword = "%$keyword%";
+            $sql->bind_param("ss", $keyword, $type);
+            $sql->execute(); //return an object
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items; //return an array
+        } else {
+            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
+            $keyword = "%$keyword%";
+            $sql->bind_param("s", $keyword);
+            $sql->execute(); //return an object
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items; //return an array
+        }
     }
 }

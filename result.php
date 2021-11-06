@@ -237,10 +237,11 @@
 
 						<!-- store products -->
 						<div class="row">
-                            <?php 
+						<?php 
                                 if(isset($_GET['keyword'])):
                                     $keyword = $_GET['keyword'];
-                                    $search = $product->search($keyword);
+									$type = $_GET['type'];
+                                    $search = $product->search($keyword,$type);
                                     echo "Result: " .count($search);
                                     foreach ($search as $value):
                             ?>

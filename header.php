@@ -84,11 +84,14 @@ $getNewProducts = $product->getNewProducts();
 					<!-- SEARCH BAR -->
 					<div class="col-md-6">
 						<div class="header-search">
-							<form method="get" action="result.php">
-								<select class="input-select">
+						<form method="get" action="result.php">
+								<select class="input-select" name="type">
 									<option value="0">All Categories</option>
-									<option value="1">Category 01</option>
-									<option value="1">Category 02</option>
+									<option value="1">Cell phones</option>
+									<option value="2">Laptops</option>
+									<option value="3">Headphones</option>
+									<option value="4">Portable Audio</option>
+									<option value="5">Smart watches</option>
 								</select>
 								<input class="input" placeholder="Search here" name="keyword">
 								<button type="submit" class="search-btn">Search</button>
