@@ -20,7 +20,7 @@ class Product extends Db
     }
     //Lấy 10 sản phẩm mới nhất
     public function getNewProducts(){
-        $sql = self::$connection->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 0,10");
+        $sql = self::$connection->prepare("SELECT * FROM products ORDER BY created_at DESC LIMIT 0,10");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
