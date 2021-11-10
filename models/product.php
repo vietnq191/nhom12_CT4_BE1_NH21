@@ -19,12 +19,50 @@ class Product extends Db
         return $items; //return an array
     }
     //Lấy 10 sản phẩm mới nhất
-    public function getNewProducts(){
+    public function getNewProducts()
+    {
         $sql = self::$connection->prepare("SELECT * FROM products ORDER BY created_at DESC LIMIT 0,10");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
+    }
+    public function login(){
+        $sql = self::$connection->prepare("SELECT * FROM user ");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    
+    public function checkUseralready()
+    {
+        $sql = self::$connection->prepare("SELECT `username` FROM user ");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function get3ProductsByManu($manu_id, $page, $perPage)
+    {
+        // Tính số thứ tự trang bắt đầu
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM products
+        WHERE manu_id = ?  LIMIT ?,?");
+        $sql->bind_param("iii", $manu_id, $firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function paginate($url, $total, $perPage)
+    {
+        $totalLink = ceil($total, $perPage);
+        $link = "";
+        for ($i = 1; $i <= $totalLink; $i++) {
+            $link = $link . "<li><a href='$url&page=$i'> $i</a></li>";
+        }
+        return $link;
     }
     public function search($keyword, $type)
     {

@@ -83,7 +83,7 @@
 							<!-- tab -->
 							<div id="tab1" class="tab-pane active">
 								<div class="products-slick" data-nav="#slick-nav-1">
-									<?php foreach ($getNewProducts as $value) : ?>
+									<?php foreach ($getnewProducts as $value) : ?>
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">

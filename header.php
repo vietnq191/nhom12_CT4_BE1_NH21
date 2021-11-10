@@ -1,15 +1,14 @@
 <?php
 session_start();
-
-require("config.php");
-require("models/db.php");
-require("models/product.php");
-require("models/manufacture.php");
-
+require "config.php";
+require "models/db.php";
+require "models/product.php";
+require "models/manufacture.php";
 $product = new Product;
 $getAllProducts = $product->getAllProducts();
 $getnewProducts = $product->getnewProducts();
-
+$manu = new Manufacture;
+$getAllManu = $manu->getAllManu();
 ?>
 <!DOCTYPE html>
 <html lang="en">
