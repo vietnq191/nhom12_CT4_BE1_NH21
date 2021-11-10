@@ -4,11 +4,14 @@ require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
+require "models/protype.php";
 $product = new Product;
+$manu = new Manufacture;
+$protype = new Protype;
 $getAllProducts = $product->getAllProducts();
 $getnewProducts = $product->getnewProducts();
-$manu = new Manufacture;
 $getAllManu = $manu->getAllManu();
+$getAllProtype = $protype->getAllProtype();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,10 +126,10 @@ $getAllManu = $manu->getAllManu();
 					<div class="col-md-6">
 						<div class="header-search">
 							<form method="get" action="result.php">
-								<select class="input-select">
+								<select class="input-select" name="type">
 									<option value="0">All Categories</option>
 									<option value="1">Category 01</option>
-									<option value="1">Category 02</option>
+									<option value="2">Category 02</option>
 								</select>
 								<input class="input" placeholder="Search here" name="keyword">
 								<button type="submit" class="search-btn">Search</button>

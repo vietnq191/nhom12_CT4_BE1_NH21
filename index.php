@@ -66,10 +66,16 @@
 						<h3 class="title">New Products</h3>
 						<div class="section-nav">
 							<ul class="section-tab-nav tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-								<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-								<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-								<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+								<?php 
+									$getAllProtype = $protype->getAllProtype();
+									foreach($getAllProtype as $value):								
+								?>
+								<?php if($value['type_id'] == 1):?>
+								<li class="active"><a data-toggle="tab" href="#tab1"><?php echo $value['type_name'] ?></a></li>
+								<?php else:?>
+								<li><a data-toggle="tab" href="#tab1"><?php echo $value['type_name'] ?></a></li>
+								<?php endif ?>
+								<?php endforeach ?>
 							</ul>
 						</div>
 					</div>

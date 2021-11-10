@@ -1,7 +1,8 @@
 <?php include "header.php" ?>
 <?php if (isset($_GET['keyword'])) {
 	$keyword = $_GET['keyword'];
-	$search = $product->search($keyword);	
+	$type = $_GET['type'];
+	$search = $product->search($keyword, $type);	
 }
 ?>
 <body>
