@@ -70,7 +70,7 @@
 									<a class="review-link" href="#">10 Review(s) | Add your review</a>
 								</div>
 								<div>
-									<h3 class="product-price"><?php echo $value['price'] ?> VND</h3>
+									<h3 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h3>
 									<span class="product-available">In Stock</span>
 								</div>
 								<p><?php echo $value['description'] ?></p>
