@@ -9,8 +9,8 @@ $product = new Product;
 $manu = new Manufacture;
 $protype = new Protype;
 $getAllProducts = $product->getAllProducts();
-$getnewProducts = $product->getnewProducts();
-$getAllManu = $manu->getAllManu();
+$getNewProducts = $product->getNewProducts();
+$getAllManu = $manu->getAllManufactures();
 $getAllProtype = $protype->getAllProtype();
 if (isset($_GET['type'])){
 	$type = $_GET['type'];

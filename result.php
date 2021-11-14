@@ -3,7 +3,7 @@ if (isset($_GET['keyword'])) {
 	include "header.php";
 	$keyword = $_GET['keyword'];
 	$type = $_GET['type'];
-	$search = $product->search($keyword, $type);
+	$search = $product->search($type, $keyword);
 } else {
 	header("location: index.php");
 }

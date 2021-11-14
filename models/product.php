@@ -75,14 +75,14 @@ class Product extends Db
         $firstLink = ($page - 1) * $perPage;
         $keyword = "'%$keyword%'";
         if ($type != 0) {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword AND `type_id`= ? LIMIT ?,?");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? LIMIT ?,?");
             $sql->bind_param("iii", $type, $firstLink, $perPage);
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items; //return an array
         } else {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword LIMIT ?,?");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword LIMIT ?,?");
             $sql->bind_param("ii", $firstLink, $perPage);
             $sql->execute(); //return an object
             $items = array();
@@ -96,28 +96,19 @@ class Product extends Db
         // Tính số thứ tự trang bắt đầu
         $keyword = "'%$keyword%'";
         if ($type != 0) {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword AND `type_id`= ? ");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? ");
             $sql->bind_param("i", $type);
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items; //return an array
         } else {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword");
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items; //return an array
         }
-    }
-    public function paginate($url, $total, $perPage)
-    {
-        $totalLink = ceil($total / $perPage);
-        $link = "";
-        for ($i = 1; $i <= $totalLink; $i++) {
-            $link = $link . "<li><a href='$url&page=$i'> $i</a></li>";
-        }
-        return $link;
     }
 
     public function getTopSellingProducts()
@@ -129,18 +120,18 @@ class Product extends Db
         return $items; //return an array
 
     }
-    public function search($keyword)
+    public function search($type, $keyword)
     {
         $keyword = "'%$keyword%'";
         if ($type != 0) {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword AND `type_id`= ?");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ?");
             $sql->bind_param("s", $type);
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items; //return an array
         } else {
-            $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE $keyword");
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword");
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
