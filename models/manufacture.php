@@ -1,6 +1,6 @@
 <?php 
 class Manufacture extends Db{
-    public function getAllManu()
+    public function getAllManufactures()
     {
         $sql = self::$connection->prepare("SELECT * FROM manufactures");
         $sql->execute(); //return an object
@@ -9,4 +9,3 @@ class Manufacture extends Db{
         return $items; //return an array
     }
 }
-?>
