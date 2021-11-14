@@ -221,7 +221,7 @@ if (isset($_GET['keyword'])) {
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>"><?php echo $value['name'] ?></a></h3>
+										<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
 										<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
