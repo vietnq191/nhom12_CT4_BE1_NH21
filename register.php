@@ -37,5 +37,5 @@
 <!-- /REGISTER -->
 
 <!-- FOOTER -->
-<?php include "footer.php" ?>
+<?php include "footer.html" ?>
 <!-- /FOOTER -->

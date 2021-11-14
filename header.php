@@ -12,6 +12,12 @@ $getAllProducts = $product->getAllProducts();
 $getnewProducts = $product->getnewProducts();
 $getAllManu = $manu->getAllManu();
 $getAllProtype = $protype->getAllProtype();
+if (isset($_GET['type'])){
+	$type = $_GET['type'];
+}
+else{
+	$type = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,8 +135,9 @@ $getAllProtype = $protype->getAllProtype();
 							<form method="get" action="result.php">
 								<select class="input-select" name="type">
 									<option value="0">All Categories</option>
-									<option value="1">Category 01</option>
-									<option value="2">Category 02</option>
+									<?php foreach($getAllProtype as $value):?>
+									<option value=<?php echo $value["type_id"]?> <?php if ($type == $value["type_id"]) echo "selected"?>><?php echo $value["type_name"] ?></option>
+									<?php endforeach ?>
 								</select>
 								<input class="input" placeholder="Search here" name="keyword">
 								<button type="submit" class="search-btn">Search</button>
