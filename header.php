@@ -212,7 +212,6 @@ else{
 
 							</div>
 							<!-- /Cart -->
-
 							<!-- Menu Toogle -->
 							<div class="menu-toggle">
 								<a href="#">
@@ -223,6 +222,7 @@ else{
 							<!-- /Menu Toogle -->
 						</div>
 					</div>
+					<?php endif ?>
 					<!-- /ACCOUNT -->
 				</div>
 				<!-- row -->
