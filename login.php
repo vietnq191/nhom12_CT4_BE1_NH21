@@ -1,5 +1,11 @@
 <?php
-include "header.php";
+require "config.php";
+require "models/db.php";
+require "models/product.php";
+
+include "checklogin.php";
+
+$product = new Product;
 
 if (isset($_GET["btn_submit"])) {
     $username = $_GET["username"];
@@ -16,13 +22,22 @@ if (isset($_GET["btn_submit"])) {
     
     foreach($login as $value){
         if($value["username"] == $username || $value["password"] == $password){
-           $_SESSION["username"] = $username;
+            $_SESSION["username"] = $username;
+            if(isset($_SESSION["check_login"])){
+                unset($_SESSION["check_login"]);
+            }
             header("location: index.php");
+            break;
         }
-    } 
-
-    header("location: index.php"); 
+        else{
+            $_SESSION["check_login"] = false;
+            header("location: checklogin.php");
+        }
+    }
+    
 }
+
+
 
 
 

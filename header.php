@@ -72,43 +72,23 @@ else{
 				</ul>
 
 				<!-- LOGIN -->
-					<!-- Nếu chưa login sẽ hiện My account để người dùng đăng nhập -->
-					<ul class="header-links pull-right">
+                <ul class="header-links pull-right">
+                    <?php if (isset($_SESSION["username"])) { ?>
 
-						<?php if (!isset($_SESSION["username"])) { ?>
-							<li><a href="?login"><i class="fa fa-user-o"> My Account</i></a></li>
+                        <li><a href=""><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
 
-							<?php if (isset($_GET["login"])) : ?>
-								<form action="login.php" method="get">
-									<div>
-										<input type="text" name="username" placeholder="Username">
-									</div>
-									<div>
-										<input type="password" name="password" placeholder="Password">
-									</div>
-									<div>
-										<button type="submit" name="btn_submit"><a>Login</a></button>
-										<button><a href="register.php">Register</a></button>
-									</div>
-								</form>
-							<?php endif ?>
-					</ul>
-					<!-- /Nếu chưa login sẽ hiện My account để người dùng đăng nhập -->
+                        <!-- chức năng kiểm tra và hiển thị số dư tài khoản -->
+                        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+                        <!-- /chức năng kiểm tra và hiển thị số dư tài khoản -->
 
-					<!-- Đã đăng nhập -->
-					<?php } else { ?>
-						<ul class="header-links pull-right">
-							<li><a><i class="fa fa-user-o"> <?php echo $_SESSION["username"] ?></i></a></li>
+                        <li><a href="logout.php">Log out</a></li>
 
-							<!-- chức năng kiểm tra và hiển thị số dư tài khoản -->
-							<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-							<!-- /chức năng kiểm tra và hiển thị số dư tài khoản -->
+                    <?php } else { ?>
+                        <li><a href="checklogin.php"><i class="fa fa-user-o"> My Account</i></a></li>
 
-							<li><a href="logout.php">Log out</a></li>
-						</ul>
-					<?php } ?>
-					<!--/ Đã đăng nhập -->
-				<!-- /LOGIN -->
+                    <?php } ?>
+                </ul>
+                <!-- /LOGIN -->
 			</div>
 		</div>
 		<!-- /TOP HEADER -->
@@ -146,70 +126,90 @@ else{
 						</div>
 					</div>
 					<!-- /SEARCH BAR -->
+					<?php if (isset($_SESSION["username"])) : ?>
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								<?php if (isset($_SESSION["username"])) { ?>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>Your Wishlist</span>
+                                        <div class="qty">2</div>
+                                    </a>
+                                </div>
+                            <?php } else { ?>
+                                <div>
+                                    <a href="warning.php">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>Your Wishlist</span>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                            <!-- /Wishlist -->
 
-					<!-- ACCOUNT -->
-					<div class="col-md-3 clearfix">
-						<div class="header-ctn">
-							<!-- Wishlist -->
-							<div>
-								<a href="#">
-									<i class="fa fa-heart-o"></i>
-									<span>Your Wishlist</span>
-									<div class="qty">2</div>
-								</a>
-							</div>
-							<!-- /Wishlist -->
+                            <!-- Cart -->
+                            <?php if (isset($_SESSION["username"])) { ?>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Your Cart</span>
+                                        <div class="qty">3</div>
+                                    </a>
+                                    <div class="cart-dropdown">
+                                        <div class="cart-list">
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="./img/product01.png" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+                                                </div>
+                                                <button class="delete"><i class="fa fa-close"></i></button>
+                                            </div>
 
-							<!-- Cart -->
-							<div class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-									<i class="fa fa-shopping-cart"></i>
-									<span>Your Cart</span>
-									<div class="qty"><?php
-														//neu ton tai bien mang $_SESSION['cart'] thi dung vong lap forech de lay du lieu
-														if (isset($_SESSION['cart'])) {
-															$tong = 0;
-															foreach ($_SESSION['cart'] as $value) {
-																$tong += $value['quantity'];
-															}
-															echo $tong;
-														}
-														?> </div>
-								</a>
-								<div class="cart-dropdown">
-									<div class="cart-list">
-										<?php $total = 0;
-										if (isset($_SESSION['cart'])): ?>
-											<?php foreach ($_SESSION['cart'] as $key => $qty) : ?>
-												<?php foreach ($getAllProducts as $value) : ?>
-													<?php if ($key == $value['id']) : ?>
-														<div class="product-widget">
-															<div class="product-img">
-																<img src="./img/<?php echo $value['image'] ?>" alt="">
-															</div>
-															<div class="product-body">
-																<h3 class="product-name"><a href="viewcart.php"><?php echo $value['name'] ?></a></h3>
-																<h4 class="product-price"><span class="qty"><?php echo $qty['quantity'] . "x"; ?></span><?php echo number_format($value['price']) ?> VND</h4>
-																<?php $total = $total + (int)$value['price'] * (int)$qty['quantity']; ?>
-															</div>
-														</div>
-										<?php endif;
-												endforeach;
-											endforeach;
-										endif; ?>
-									</div>
-									<div class="cart-summary">
-										<small><?php if (isset($tong)) {
-													echo $tong;
-												} ?> Item(s) selected</small>
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="./img/product02.png" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                                </div>
+                                                <button class="delete"><i class="fa fa-close"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="cart-summary">
+                                            <small>3 Item(s) selected</small>
+                                            <h5>SUBTOTAL: $2940.00</h5>
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="#">View Cart</a>
+                                            <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else { ?>
+                                <div class="dropdown">
+                                    <a href="warning.php">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Your Cart</span>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                            <!-- /Cart -->
 
-										<h5>SUBTOTAL: <?php echo number_format($total); ?> VND</h5>
-									</div>
-									<div class="cart-btns">
-										<a href="viewcart.php">View Cart</a>
-										<a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-									</div>
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
 								</div>
+								<!-- /Menu Toogle -->
+
 							</div>
 							<!-- /Cart -->
 

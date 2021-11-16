@@ -1,41 +1,29 @@
 <!-- HEADER -->
 <?php include "header.php" ?>
+
+
 <!-- /HEADER -->
+    <div id="wrapper">
+        <form action="#" method="GET" >
+            <div>
+                <h1 class="form-heading">Form Register</h1>
+            </div>
+            <div class="form-group">
+                <input type="text" name="username" class="form-input" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-input" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="password" name="re-password" class="form-input" placeholder="Re-Password">
+            </div>
+            <div>
+                <a href=""><input type="submit" name="btn_submit" value="Comfirm" class="form-submit"></a>
+            </div>
+        </form>
+    </div>
 
-<!-- REGISTER -->
-
-<?php if (isset($_SESSION["user"])){ ?>
-    <div>
-        <a href=""><?php echo $_SESSION["user"] ?></a>
-    </div>
-    <div> 
-        <a href=""><?php echo $_SESSION["pass"] ?></a>
-    </div>
-    <div>
-        <a href=""><?php echo $_SESSION["repass"] ?></a>
-    </div>
-    <div>
-        <a href=""><?php echo $_SESSION["check"] ?></a>
-    </div>
-    <div>
-        <a href="logout.php">Log out</a>
-    </div>
-<?php }else{ ?>
-    <form action="checkregister.php" method="post">
-    <div>
-        <input class="input" type="text" name="username" placeholder="Username">
-    </div>
-    <div>
-        <input class="input" type="password" name="password" placeholder="Password">
-    </div>
-    <div>
-        <input class="input" type="password" name="re_password" placeholder="Nhập lại Password">
-    </div>
-    <button type="submit" name="btn_submit"><a>Register</a></button>
-</form>
-<?php } ?>
-<!-- /REGISTER -->
-
-<!-- FOOTER -->
+<!-- /FOOTER -->
 <?php include "footer.html" ?>
 <!-- /FOOTER -->
+
