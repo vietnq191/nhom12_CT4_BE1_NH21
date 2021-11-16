@@ -1,9 +1,14 @@
-<?php include "header.php" ?>
-<?php if (isset($_GET['keyword'])) {
+<?php
+if (isset($_GET['keyword'])) {
+	include "header.php";
 	$keyword = $_GET['keyword'];
-	$search = $product->search($keyword);	
+	$type = $_GET['type'];
+	$search = $product->search($type, $keyword);
+} else {
+	header("location: index.php");
 }
 ?>
+
 <body>
 	<!-- BREADCRUMB -->
 
@@ -13,8 +18,8 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
-					<ul class="breadcrumb-tree">					
-						<li class="active">Products: <?php echo count($search)." (result)"; ?></li>
+					<ul class="breadcrumb-tree">
+						<li class="active">Products: <?php echo count($search) . " (result)"; ?></li>
 					</ul>
 				</div>
 			</div>
@@ -36,60 +41,16 @@
 					<div class="aside">
 						<h3 class="aside-title">Categories</h3>
 						<div class="checkbox-filter">
-
+							<?php foreach($getAllProtype as $value): ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-1">
-								<label for="category-1">
+								<input type="checkbox" id="category-<?php echo $value["type_id"]?>" <?php if ($type == 0) echo "checked"; elseif ($type == $value["type_id"]) echo "checked" ?>>
+								<label for="category-<?php echo $value["type_id"]?>">
 									<span></span>
-									Laptops
-									<small>(120)</small>
+									<?php echo $value["type_name"] ?>
+									<small><?php echo count($typeid = $product->getProductByTypeIDAndName($value["type_id"],$keyword))?></small>
 								</label>
 							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-2">
-								<label for="category-2">
-									<span></span>
-									Smartphones
-									<small>(740)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-3">
-								<label for="category-3">
-									<span></span>
-									Cameras
-									<small>(1450)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-4">
-								<label for="category-4">
-									<span></span>
-									Accessories
-									<small>(578)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-5">
-								<label for="category-5">
-									<span></span>
-									Laptops
-									<small>(120)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-6">
-								<label for="category-6">
-									<span></span>
-									Smartphones
-									<small>(740)</small>
-								</label>
-							</div>
+							<?php endforeach; ?>
 						</div>
 					</div>
 					<!-- /aside Widget -->
@@ -241,7 +202,12 @@
 					<!-- store products -->
 					<div class="row">
 						<?php
-						foreach ($search as $value) :
+						$perPage = 6;
+						$page = isset($_GET['page']) ? $_GET['page'] : 1;
+						$total = count($search);
+						$url = $_SERVER['PHP_SELF'] . "?type=" . $type . "&keyword=" . $keyword;
+						$get6ProductsSearch = $product->get6ProductsSearch($type, $keyword, $page, $perPage);
+						foreach ($get6ProductsSearch as $value) :
 						?>
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
@@ -255,7 +221,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>"><?php echo $value['name'] ?></a></h3>
+										<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
 										<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
@@ -271,8 +237,8 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										
-										<button class="add-to-cart-btn"><a href="addcart.php?id=<?php echo $value['id'] ?>"><i class="fa fa-shopping-cart">add to cart</i> </a> </button> 
+
+										<button class="add-to-cart-btn"><a href="addcart.php?id=<?php echo $value['id'] ?>"><i class="fa fa-shopping-cart">add to cart</i> </a> </button>
 									</div>
 								</div>
 							</div>
@@ -285,11 +251,7 @@
 					<div class="store-filter clearfix">
 						<span class="store-qty">Showing 20-100 products</span>
 						<ul class="store-pagination">
-							<li class="active">1</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							<?php echo $product->paginate($url, $total, $perPage) ?>
 						</ul>
 					</div>
 					<!-- /store bottom filter -->

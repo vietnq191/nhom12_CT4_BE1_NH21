@@ -23,7 +23,7 @@
         </form>
     </div>
 
-
-<!-- FOOTER -->
-<?php include "footer.php" ?>
 <!-- /FOOTER -->
+<?php include "footer.html" ?>
+<!-- /FOOTER -->
+

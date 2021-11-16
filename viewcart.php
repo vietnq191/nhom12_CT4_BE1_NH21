@@ -8,8 +8,8 @@
 			<div class="col-md-12">
 				<h3 class="breadcrumb-header">My cart</h3>
 				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li class="active">Blank</li>
+					<li><a href="index.php">Home</a></li>
+					<li class="active">viewcart</li>
 				</ul>
 			</div>
 		</div>
@@ -19,70 +19,65 @@
 </div>
 <!-- /BREADCRUMB -->
 
-<!-- SECTION -->
-<div class="section">
-	<!-- container -->
-
-	<div class="container-fluid ">
-		<div class="row px5">
-			
-			<?php foreach ($_SESSION['cart'] as $key => $qty) : ?>
-				<?php foreach ($getAllProducts as $value) : ?>
-					<?php if ($key == $value['id']) : ?>
-
-						<div class="col-md-7">
-							<div class="shopping-cart">
-								<hr>
-								<div class="border rounded">
-									<div class="row bg-white">
-										<div class="col-md-3 pl-0">
-											<img src="./img/<?php echo $value['image'] ?>" alt="" class="img-thumbnail">
+<!-- Cart item detail -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-xs-6">
+			<div class="cart-page">
+				<table>
+					<tr>
+						<th>Product</th>
+						<th>Quantity</th>
+						<th>Subtotal</th>
+					</tr>
+					<?php if(isset($_SESSION['cart'])):
+					foreach ($_SESSION['cart'] as $key => $qty) : 
+					?>
+						<?php foreach ($getAllProducts as $value) : ?>
+							<?php if ($key == $value['id']) : ?>
+								<tr>
+									<td>
+										<div class="cart-info">
+											<img src="./img/<?php echo $value['image'] ?>" alt="">
+											<div>
+												<p><?php echo $value['name'] ?></p>
+												<small>Price: <?php echo number_format($value['price']) ?>VND</small>
+												<br>
+												<br>
+												<a href="del.php?id=<?php echo $key ?>"><button class="btn btn-danger mx-2">Remove</button></a>
+											</div>
 										</div>
-										<div class="col-md-9">
-											<h4 class="pt-2"><?php echo $value['name'] ?></h4>
-											<small class="text-secondary">
-												<p>
-												<h5>Description:</h5> <?php echo $value['description'] ?></p>
-											</small>
-											<h5 class="pt-2">Price: <?php echo $value['price'] ?> VND</h5>
-											<h5 class="pt-2">Quantity: <?php echo $qty['quantity'] ?></h5>
-											<a href="del.php?id=<?php echo $key ?>"><button class="btn btn-danger mx-2">Remove</button></a>
-										
-										</div>
+									</td>
+									<td><input type="number" value="<?php echo $qty['quantity'] ?>"></td>
+									<td><?php echo number_format($value['price']) ?> VND</td>
+								</tr>
+					<?php endif;
+						endforeach;
+					endforeach ;endif?>
+				</table>
 
-									</div>
-								</div>
-							</div>
-						</div>
-			<?php endif;
-				endforeach;
-			endforeach ?>
-			<div class="col-md-5 offset-md-1 border rounded mt-5 bg-white h-25">
-				<div class="pt-4">
-					<hr>
-					<div class="row">
-						<div class="col-md-12">
-							<?php
-							if (isset($_SESSION['cart'])) {
-								$count = count($_SESSION['cart']);
-								echo "<h6> Price ($count items) </h6> <hr>";
-							} else {
-								echo "<h6> Price (0 items) </h6> <hr>";
-							}
-							echo "<h6>Amount payable: </h6>" .  $total . " VND";
-							?>
-						</div>
 
-					</div>
-				</div>
+
 			</div>
-		</div>
+			<div class="total-price">
+				<table>
+					<?php 
+					$formatTotal = number_format($total);
+					if (isset($_SESSION['cart'])) {
+						$count = count($_SESSION['cart']);
+						echo "<tr><td>Price ($count items)</td><td></td></tr>";
+					} else {
+						echo "<tr><td>Price (0 items)</td><td></td></tr>";
+					}
 
+					echo "<tr><td>Amount payable:</td><td> $formatTotal VND </td></tr>";
+					?>
+				</table>
+			</div>
+
+		</div>
 	</div>
 
+	<!-- /Cart item detail -->
 
-	<!-- /container -->
-</div>
-<!-- /SECTION -->
-
-<?php include "footer.html"; ?>
+	<?php include "footer.html"; ?>

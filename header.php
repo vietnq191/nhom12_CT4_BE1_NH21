@@ -1,15 +1,23 @@
 <?php
 session_start();
-
-require("config.php");
-require("models/db.php");
-require("models/product.php");
-require("models/manufacture.php");
-
+require "config.php";
+require "models/db.php";
+require "models/product.php";
+require "models/manufacture.php";
+require "models/protype.php";
 $product = new Product;
+$manu = new Manufacture;
+$protype = new Protype;
 $getAllProducts = $product->getAllProducts();
-$getnewProducts = $product->getnewProducts();
-
+$getNewProducts = $product->getNewProducts();
+$getAllManu = $manu->getAllManufactures();
+$getAllProtype = $protype->getAllProtype();
+if (isset($_GET['type'])){
+	$type = $_GET['type'];
+}
+else{
+	$type = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +48,7 @@ $getnewProducts = $product->getnewProducts();
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style_viewCart.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,10 +113,11 @@ $getnewProducts = $product->getnewProducts();
 					<div class="col-md-6">
 						<div class="header-search">
 							<form method="get" action="result.php">
-								<select class="input-select">
+								<select class="input-select" name="type">
 									<option value="0">All Categories</option>
-									<option value="1">Category 01</option>
-									<option value="1">Category 02</option>
+									<?php foreach($getAllProtype as $value):?>
+									<option value=<?php echo $value["type_id"]?> <?php if ($type == $value["type_id"]) echo "selected"?>><?php echo $value["type_name"] ?></option>
+									<?php endforeach ?>
 								</select>
 								<input class="input" placeholder="Search here" name="keyword">
 								<button type="submit" class="search-btn">Search</button>
@@ -116,7 +126,6 @@ $getnewProducts = $product->getnewProducts();
 						</div>
 					</div>
 					<!-- /SEARCH BAR -->
-
 					<?php if (isset($_SESSION["username"])) : ?>
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
@@ -200,10 +209,21 @@ $getnewProducts = $product->getnewProducts();
 									</a>
 								</div>
 								<!-- /Menu Toogle -->
+
 							</div>
+							<!-- /Cart -->
+
+							<!-- Menu Toogle -->
+							<div class="menu-toggle">
+								<a href="#">
+									<i class="fa fa-bars"></i>
+									<span>Menu</span>
+								</a>
+							</div>
+							<!-- /Menu Toogle -->
 						</div>
-						<!-- /ACCOUNT -->
-					<?php endif ?>
+					</div>
+					<!-- /ACCOUNT -->
 				</div>
 				<!-- row -->
 			</div>
@@ -222,13 +242,13 @@ $getnewProducts = $product->getnewProducts();
 				<!-- NAV -->
 				<ul class="main-nav nav navbar-nav">
 					<li class="active"><a href="index.php">Home</a></li>
-					<?php 
-						$getAllManu = $manu->getAllManu();
-						foreach($getAllManu as $value):
+					<?php
+					$getAllManu = $manu->getAllManufactures();
+					foreach ($getAllManu as $value) :
 					?>
-					<li><a href="products.php?manu_id=<?php echo $value["manu_id"] ?>"><?php echo $value["manu_name"] ?></a></li>
-					
-					<?php endforeach ?>
+						<li><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+
+					<?php endforeach; ?>
 				</ul>
 				<!-- /NAV -->
 			</div>

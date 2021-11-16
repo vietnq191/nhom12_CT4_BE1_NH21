@@ -18,7 +18,7 @@ if (isset($_GET["btn_submit"])) {
     $password = strip_tags($password); 
     $password = addslashes($password);
 
-    $login = $product->login();
+    $login = $product->login($username, $password);
     
     foreach($login as $value){
         if($value["username"] == $username || $value["password"] == $password){
