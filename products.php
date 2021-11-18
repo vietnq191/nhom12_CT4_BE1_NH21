@@ -54,14 +54,14 @@
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/<?php echo $value['image'] ?>" alt="">
+								<img src="./img/<?php echo $value['image'] ?>" width="250" height="200" alt="">
 								<div class="product-label">
 									<span class="sale">-30%</span>
 								</div>
 							</div>
 							<div class="product-body">
 								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
+								<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
 								<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
 								<div class="product-rating">
 								</div>
@@ -72,7 +72,14 @@
 								</div>
 							</div>
 							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><a href="addcart.php?id=<?php echo $value['id'] ?>"><i class="fa fa-shopping-cart">add to cart</i> </a> </button>
+								<form class="form-submit" action="action.php" method="">
+									<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+									<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+									<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+									<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+									<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+									<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -80,7 +87,7 @@
 			<?php endforeach;
 			endif; ?>
 			<!-- /product -->
-			
+
 		</div>
 		<!-- /row -->
 

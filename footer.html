@@ -141,6 +141,75 @@
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
 
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			//add to cart
+			 $(".addItemBtn").click(function(e){
+				e.defaultPrevented();
+
+				var pid =  $(".pid").val();
+				var pname =  $(".pname").val();
+				var pprice =  $(".pprice").val();
+				var pimg =  $(".pimg").val();
+				var pcode =  $(".pcode").val();
+
+				$.ajax({
+					type:'GET',
+					url: 'action.php',
+					data: {pid:pid,pname:pname,pprice:pprice,pimg:pimg,pcode:pcode},
+					success: function(response){
+						$("#messenger").html(response);
+					}
+				});
+			});
+
+			//change quantity
+			$(".itemQty").on('change',function(){
+				var $el = $(this).closest('tr');
+
+				var pid = $el.find(".pid").val();
+				var pprice = $el.find(".pprice").val();
+				var qty = $el.find(".itemQty").val();
+				location.reload(true);
+				$.ajax({
+					url: 'action.php',
+					method: 'post',
+					cache: false,
+					data: {qty:qty,pid:pid,pprice:pprice},
+					success: function(response){
+						console.log(response);
+					}
+				});
+			});
+
+			$("#placeOrder").submit(function(e){
+				e.preventDefault();
+				$.ajax({
+					url: "action.php",
+					method: 'post',
+					data: $('form').serialize()+"&action=order",
+					success: function(response){
+						$("#order").html(response);
+					}
+				});
+			});
+
+			load_cart_item_number();
+			//load count item
+			function load_cart_item_number(){
+				$.ajax({
+					url: 'action.php',
+					method: 'get',
+					data: {cartItem:"cart_item"},
+					success: function(response){
+						$("#cart-item").html(response);
+					}
+				})
+			}
+		});
+	</script>
 </body>
 
 </html>
