@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require "config.php";
 require "models/db.php";
 require "models/product.php";
@@ -84,15 +83,10 @@ else{
                     <?php if (isset($_SESSION["username"])) { ?>
 
                         <li><a href=""><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
-
-                        <!-- chức năng kiểm tra và hiển thị số dư tài khoản -->
-                        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                        <!-- /chức năng kiểm tra và hiển thị số dư tài khoản -->
-
                         <li><a href="logout.php">Log out</a></li>
 
                     <?php } else { ?>
-                        <li><a href="checklogin.php"><i class="fa fa-user-o"> My Account</i></a></li>
+                        <li><a href="checklogin.php"><i class="fa fa-user-o"> Login</i></a></li>
 
                     <?php } ?>
                 </ul>
@@ -135,103 +129,9 @@ else{
 					</div>
 					<!-- /SEARCH BAR -->
 
-					<?php if (isset($_SESSION["username"])) : ?>
-						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
-							<div class="header-ctn">
-								<!-- Wishlist -->
-								<?php if (isset($_SESSION["username"])) { ?>
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-heart-o"></i>
-                                        <span>Your Wishlist</span>
-                                        <div class="qty">2</div>
-                                    </a>
-                                </div>
-                            <?php } else { ?>
-                                <div>
-                                    <a href="warning.php">
-                                        <i class="fa fa-heart-o"></i>
-                                        <span>Your Wishlist</span>
-                                    </a>
-                                </div>
-                            <?php } ?>
-                            <!-- /Wishlist -->
-
-                            <!-- Cart -->
-                            <?php if (isset($_SESSION["username"])) { ?>
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>Your Cart</span>
-                                        <div class="qty">3</div>
-                                    </a>
-                                    <div class="cart-dropdown">
-                                        <div class="cart-list">
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product01.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product02.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="cart-summary">
-                                            <small>3 Item(s) selected</small>
-                                            <h5>SUBTOTAL: $2940.00</h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a href="#">View Cart</a>
-                                            <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } else { ?>
-                                <div class="dropdown">
-                                    <a href="warning.php">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>Your Cart</span>
-                                    </a>
-                                </div>
-                            <?php } ?>
-                            <!-- /Cart -->
-
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
-
 					<!-- ACCOUNT -->
 					<div class="col-md-3 clearfix">
 						<div class="header-ctn">
-							<!-- Wishlist -->
-							<div>
-								<a href="#">
-									<i class="fa fa-heart-o"></i>
-									<span>Your Wishlist</span>
-									<div class="qty">2</div>
-								</a>
-							</div>
-							<!-- /Wishlist -->
-
 							<!-- Cart -->
 							<div class="dropdown">
 								<a  href="viewcart.php">

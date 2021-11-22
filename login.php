@@ -21,7 +21,7 @@ if (isset($_GET["btn_submit"])) {
     $login = $product->login($username, $password);
     
     foreach($login as $value){
-        if($value["username"] == $username || $value["password"] == $password){
+        if($value["username"] == $username && $value["password"] == $password){
             $_SESSION["username"] = $username;
             if(isset($_SESSION["check_login"])){
                 unset($_SESSION["check_login"]);

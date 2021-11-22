@@ -195,4 +195,4 @@ if (isset($_GET['keyword'])) {
 		</div>
 		<!-- /SECTION -->
 
-		<?php include "footer.php" ?>
+		<?php include "footer.html" ?>
