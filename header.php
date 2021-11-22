@@ -120,12 +120,13 @@ else{
 									<?php endforeach ?>
 								</select>
 								<input class="input" placeholder="Search here" name="keyword">
+								<input type="hidden" value="default" name="sort">
 								<button type="submit" class="search-btn">Search</button>
-
 							</form>
 						</div>
 					</div>
 					<!-- /SEARCH BAR -->
+
 					<?php if (isset($_SESSION["username"])) : ?>
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">

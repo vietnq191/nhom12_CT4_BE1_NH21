@@ -410,4 +410,4 @@ if (isset($_GET['id'])) {
 </div>
 <!-- /Section -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
