@@ -1,17 +1,22 @@
 <?php
 session_start();
+
 require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
 require "models/protype.php";
+require "models/cart.php";
+
 $product = new Product;
 $manu = new Manufacture;
 $protype = new Protype;
+$cart = new Cart;
 $getAllProducts = $product->getAllProducts();
 $getNewProducts = $product->getNewProducts();
 $getAllManu = $manu->getAllManufactures();
 $getAllProtype = $protype->getAllProtype();
+
 if (isset($_GET['type'])){
 	$type = $_GET['type'];
 }
@@ -29,6 +34,9 @@ else{
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>Electro Shop</title>
+
+	<!-- Google CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -211,8 +219,29 @@ else{
 								</div>
 								<!-- /Menu Toogle -->
 
+					<!-- ACCOUNT -->
+					<div class="col-md-3 clearfix">
+						<div class="header-ctn">
+							<!-- Wishlist -->
+							<div>
+								<a href="#">
+									<i class="fa fa-heart-o"></i>
+									<span>Your Wishlist</span>
+									<div class="qty">2</div>
+								</a>
+							</div>
+							<!-- /Wishlist -->
+
+							<!-- Cart -->
+							<div class="dropdown">
+								<a  href="viewcart.php">
+									<i class="fa fa-shopping-cart"></i>
+									<span>Your Cart</span>
+									<div class="qty" id="cart-item"></div>
+								</a>
 							</div>
 							<!-- /Cart -->
+
 							<!-- Menu Toogle -->
 							<div class="menu-toggle">
 								<a href="#">
@@ -223,7 +252,6 @@ else{
 							<!-- /Menu Toogle -->
 						</div>
 					</div>
-					<?php endif ?>
 					<!-- /ACCOUNT -->
 				</div>
 				<!-- row -->

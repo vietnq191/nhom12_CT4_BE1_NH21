@@ -100,7 +100,14 @@ if (isset($_GET['id'])) {
 								<p><?php echo $value['description'] ?>
 								
 								<div class="add-to-cart">
-									<a href="addcart.php?id=<?php echo $value['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+								<form class="form-submit" action="action.php" method="">
+												<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+												<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+												<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+												<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+												<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+												<button class="add-to-cart-btn addItemBtn" type="submit"name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+											</form>
 								</div>
 
 								<ul class="product-btns">
