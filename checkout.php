@@ -68,11 +68,11 @@ $allItems = implode(", ", $items);
 							<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
 						</div>
 						<div class="form-group">
-							<textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..."></textarea>
+							<textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..." require></textarea>
 						</div>
 						<h6 class="text-center lead">Select Payment Mode</h6>
 						<div class="form-group">
-							<select name="pmode" class="form-control">
+							<select name="pmode" class="form-control" require>
 								<option value="" selected disabled>-Select Payment Mode-</option>
 								<option value="cod">Cash On Delivery</option>
 								<option value="netbanking">Net Banking</option>
