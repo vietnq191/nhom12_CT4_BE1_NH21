@@ -39,8 +39,8 @@
 			<?php if (isset($_GET['manu_id'])) :
 				$manu_id = $_GET['manu_id'];
 				$getProductByManu = $product->getProductByManu($manu_id);
-				// hiển thị 3 sản phẩm trên 1 trang
-				$perPage = 3;
+				// hiển thị 8 sản phẩm trên 1 trang
+				$perPage = 8;
 				// Lấy số trang trên thanh địa chỉ
 				$page = isset($_GET['page']) ? $_GET['page'] : 1;
 				// Tính tổng số dòng
@@ -49,7 +49,6 @@
 				$url = $_SERVER['PHP_SELF'];
 				$get3ProductByManu = $product->get3ProductByManu($manu_id, $page, $perPage);
 				foreach ($get3ProductByManu as $value) :
-
 			?>
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
@@ -90,10 +89,17 @@
 
 		</div>
 		<!-- /row -->
-
+			<!-- store bottom filter -->
+			<div class="store-filter clearfix">
+						<ul class="store-pagination">
+							<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
+							<?php echo $product->paginateForManufactures($manu_id, $currentPage, $url, $total, $perPage) ?>
+						</ul>
+					</div>
+			<!-- /store bottom filter -->
 	</div>
 	<!-- /container -->
 </div>
 <!-- /Section -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>

@@ -50,12 +50,32 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    function paginate($url, $total, $perPage)
+    function paginate($currentPage, $url, $total, $perPage)
     {
         $totalLinks = ceil($total / $perPage);
         $link = "";
         for ($j = 1; $j <= $totalLinks; $j++) {
-            $link = $link . "<li><a href='$url&page=$j'> $j </a></li>";
+            if ($j == $currentPage){
+                $link = $link . "<li class='active'><a href='$url&page=$j'> $j </a></li>";
+            }
+            else{
+                $link = $link . "<li><a href='$url&page=$j'> $j </a></li>";
+            }
+        }
+        return $link;
+    }
+
+    function paginateForManufactures($manu_id, $currentPage, $url, $total, $perPage)
+    {
+        $totalLinks = ceil($total / $perPage);
+        $link = "";
+        for ($j = 1; $j <= $totalLinks; $j++) {
+            if ($j == $currentPage){
+                $link = $link . "<li class='active'><a href='$url?manu_id=$manu_id&page=$j'> $j </a></li>";
+            }
+            else{
+                $link = $link . "<li><a href='$url?manu_id=$manu_id&page=$j'> $j </a></li>";
+            }
         }
         return $link;
     }
@@ -69,21 +89,34 @@ class Product extends Db
         return $items; //return an array
     }
 
-    public function get6ProductsSearch($type, $keyword, $page, $perPage)
+    public function get6ProductsSearch($type, $keyword, $page, $perPage, $sort)
     {
         // Tính số thứ tự trang bắt đầu
         $firstLink = ($page - 1) * $perPage;
         $keyword = "'%$keyword%'";
+        $sortby = "";
+        $arrSort = array(
+            "ascending_name" => "`name` ASC",
+            "descending_name" => "`name` DESC",
+            "low_price" => "`price` ASC",
+            "high_price" => "`price` DESC",
+        );
+        foreach($arrSort as $x => $x_value) {
+            if ($x == $sort){
+                $sortby = $x_value;
+            }
+        }
+        $sortby = "DESC";
         if ($type != 0) {
-            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? LIMIT ?,?");
-            $sql->bind_param("iii", $type, $firstLink, $perPage);
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? ORDER BY ? LIMIT ?,?");
+            $sql->bind_param("isii", $type, $sortby,$firstLink, $perPage);
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items; //return an array
         } else {
-            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword LIMIT ?,?");
-            $sql->bind_param("ii", $firstLink, $perPage);
+            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword ORDER BY ? LIMIT ?,?");
+            $sql->bind_param("sii", $sortby, $firstLink, $perPage);
             $sql->execute(); //return an object
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
