@@ -31,7 +31,7 @@ $allItems = implode(", ", $items);
 			<div class="col-md-12">
 				<h3 class="breadcrumb-header">Checkout</h3>
 				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li class="active">Checkout</li>
 				</ul>
 			</div>
@@ -51,6 +51,7 @@ $allItems = implode(", ", $items);
 
 			<div class="col-md-7" id="order">
 				<!-- Billing Details -->
+				<?php if(isset($_SESSION['username'])): ?>
 				<div class="billing-details">
 					<div class="section-title">
 						<h3 class="title">complete your order!</h3>
@@ -84,6 +85,8 @@ $allItems = implode(", ", $items);
 						</div>
 					</form>
 				</div>
+				<?php else: echo '<h2> None-account </h2> <hr> <h3> <a href= "register.php" > You can create account here !!! </a> </h3>';
+				endif; ?>
 				<!-- /Billing Details -->
 			</div>
 

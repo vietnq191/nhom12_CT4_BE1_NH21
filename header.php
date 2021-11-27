@@ -6,11 +6,14 @@ require "models/product.php";
 require "models/manufacture.php";
 require "models/protype.php";
 require "models/cart.php";
+require "models/user.php";
 
 $product = new Product;
 $manu = new Manufacture;
 $protype = new Protype;
 $cart = new Cart;
+$user = new User;
+
 $getAllProducts = $product->getAllProducts();
 $getNewProducts = $product->getNewProducts();
 $getAllManu = $manu->getAllManufactures();
@@ -82,7 +85,7 @@ else{
                 <ul class="header-links pull-right">
                     <?php if (isset($_SESSION["username"])) { ?>
 
-                        <li><a href=""><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
+                        <li><a href="viewaccount.php"><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
                         <li><a href="logout.php">Log out</a></li>
 
                     <?php } else { ?>

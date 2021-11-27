@@ -9,17 +9,21 @@ if (isset($_GET['id'])) {
 	<!-- container -->
 	<div class="container">
 		<!-- row -->
+		<?php  if (isset($_GET['id'])) :
+				foreach ($getAllProducts as $value) :
+					foreach($getAllProtype as $item) :
+					if ($_GET['id'] == $value['id'] && $value['type_id'] == $item['type_id']) : 
+			?>
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
+					<li><a href="index.php">Home</a></li>
+					<li><?php echo $item['type_name'] ?></li>
+					<li class="active"><?php echo $value['name'] ?></li>
 				</ul>
 			</div>
 		</div>
+		<?php endif;endforeach; endforeach;endif; ?>
 		<!-- /row -->
 	</div>
 	<!-- /container -->
@@ -32,7 +36,7 @@ if (isset($_GET['id'])) {
 	<div class="container">
 		<!-- row -->
 		<div class="row">
-			<?php if (isset($_GET['id'])):  ?>
+			<?php if (isset($_GET['id'])) :  ?>
 				<?php foreach ($getAllProducts as $value) : ?>
 					<?php if ($_GET['id'] == $value['id']) : ?>
 						<!-- Product main img -->
@@ -94,20 +98,21 @@ if (isset($_GET['id'])) {
 									<a class="review-link" href="#">10 Review(s) | Add your review</a>
 								</div>
 								<div>
-									<h3 class="product-price"><?php echo number_format($value['price'])?> VND</h3>
+									<h3 class="product-price"><?php echo number_format($value['price']) ?> VND</h3>
 									<span class="product-available">In Stock</span>
 								</div>
 								<p><?php echo $value['description'] ?>
-								
+
 								<div class="add-to-cart">
-								<form class="form-submit" action="action.php" method="">
-												<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
-												<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
-												<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-												<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
-												<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
-												<button class="add-to-cart-btn addItemBtn" type="submit"name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
-											</form>
+									<form class="form-submit" action="action.php" method="">
+										<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['SCRIPT_NAME']."?id=".$value['id']."&type_id=".$value['type_id'] ?>">
+										<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+										<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+										<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+										<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+										<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+										<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+									</form>
 								</div>
 
 								<ul class="product-btns">
@@ -160,7 +165,7 @@ if (isset($_GET['id'])) {
 									<div id="tab2" class="tab-pane fade in">
 										<div class="row">
 											<div class="col-md-12">
-											<p> <b>Dimensions:</b> <?php echo $value['dimensions'] ?></p>
+												<p> <b>Dimensions:</b> <?php echo $value['dimensions'] ?></p>
 												<p> <b>Display size:</b> <?php echo $value['display_size'] ?></p>
 											</div>
 										</div>
@@ -349,9 +354,9 @@ if (isset($_GET['id'])) {
 						</div>
 
 						<!-- /product tab -->
-				
+
 		</div>
-		<?php endif;
+<?php endif;
 				endforeach;
 			else :
 				header("location: index.php");
@@ -377,35 +382,43 @@ if (isset($_GET['id'])) {
 			<?php if (isset($_GET['type_id'])) :
 				$type_id = $_GET['type_id'];
 				$getProductByTypeId = $product->getProductByTypeId($type_id);
-				foreach ($getProductByTypeId as $value) :			
+				foreach ($getProductByTypeId as $value) :
 			?>
-			<!-- product -->
-			<div class="col-md-3 col-xs-6">
-				<div class="product">
-					<div class="product-img">
-						<img src="./img/<?php echo $value['image'] ?>" alt="">
-						<div class="product-label">
-							<span class="sale">-30%</span>
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="./img/<?php echo $value['image'] ?>" alt="">
+								<div class="product-label">
+									<span class="sale">-30%</span>
+								</div>
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
+								<h4 class="product-price"><?php echo number_format($value['price']) ?>VND</h4>
+								<div class="product-rating">
+								</div>
+								<div class="product-btns">
+									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							<div class="add-to-cart">
+									<form class="form-submit" action="action.php" method="">
+										<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['SCRIPT_NAME']."?id=".$value['id']."&type_id=".$value['type_id'] ?>">
+										<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+										<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+										<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+										<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+										<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+										<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+									</form>
+								</div>
 						</div>
 					</div>
-					<div class="product-body">
-						<p class="product-category">Category</p>
-						<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
-						<h4 class="product-price"><?php echo number_format($value['price']) ?></h4>
-						<div class="product-rating">
-						</div>
-						<div class="product-btns">
-							<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-							<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-							<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-						</div>
-					</div>
-					<div class="add-to-cart">
-						<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- /product -->
+					<!-- /product -->
 
 			<?php endforeach;
 			endif; ?>
@@ -417,4 +430,4 @@ if (isset($_GET['id'])) {
 </div>
 <!-- /Section -->
 
-<?php include "footer.php"; ?>
+<?php include "footer.html"; ?>

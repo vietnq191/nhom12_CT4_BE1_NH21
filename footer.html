@@ -57,13 +57,13 @@
 
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
-							<h3 class="footer-title">Categories</h3>
+							<h3 class="footer-title">Manufactures</h3>
 							<ul class="footer-links">
-								<li><a href="#">Hot deals</a></li>
-								<li><a href="#">Laptops</a></li>
-								<li><a href="#">Smartphones</a></li>
-								<li><a href="#">Cameras</a></li>
-								<li><a href="#">Accessories</a></li>
+								<li><a href="products.php?manu_id=1">Apple</a></li>
+								<li><a href="products.php?manu_id=2">SamSung</a></li>
+								<li><a href="products.php?manu_id=3">Dell</a></li>
+								<li><a href="products.php?manu_id=4">Sony</a></li>
+								<li><a href="products.php?manu_id=5">Xiaomi</a></li>
 							</ul>
 						</div>
 					</div>
@@ -74,11 +74,9 @@
 						<div class="footer">
 							<h3 class="footer-title">Information</h3>
 							<ul class="footer-links">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Orders and Returns</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="aboutUs.php">About Us</a></li>
+								<li><a href="register.php">Register</a></li>
+								<li><a href="checkout.php">Orders and Returns</a></li>
 							</ul>
 						</div>
 					</div>
@@ -87,10 +85,9 @@
 						<div class="footer">
 							<h3 class="footer-title">Service</h3>
 							<ul class="footer-links">
-								<li><a href="#">My Account</a></li>
-								<li><a href="#">View Cart</a></li>
-								<li><a href="#">Wishlist</a></li>
-								<li><a href="#">Track My Order</a></li>
+								<li><a href="viewaccount.php">My Account</a></li>
+								<li><a href="viewcart.php">View Cart</a></li>
+								<li><a href="checkout.php">Track My Order</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
 						</div>
@@ -153,7 +150,7 @@
 				var pprice =  $(".pprice").val();
 				var pimg =  $(".pimg").val();
 				var pcode =  $(".pcode").val();
-
+				var url = $(".url").val();
 				$.ajax({
 					type:'GET',
 					url: 'action.php',
@@ -183,6 +180,7 @@
 				});
 			});
 
+			//order
 			$("#placeOrder").submit(function(e){
 				e.preventDefault();
 				$.ajax({
@@ -191,6 +189,32 @@
 					data: $('form').serialize()+"&action=order",
 					success: function(response){
 						$("#order").html(response);
+					}
+				});
+			});
+
+			//setting profile
+			$("#setProfile").submit(function(e){
+				e.preventDefault();
+				$.ajax({
+					url: "action.php",
+					method: 'post',
+					data: $('form').serialize()+"&actionSetting=setting",
+					success: function(response){
+						$("#setting").html(response);
+					}
+				});
+			});
+
+			//change password
+			$("#cpw").submit(function(e){
+				e.preventDefault();
+				$.ajax({
+					url: "action.php",
+					method: 'post',
+					data: $('form').serialize()+"&actionChangepass=change_pass",
+					success: function(response){
+						$("#change-pass").html(response);
 					}
 				});
 			});

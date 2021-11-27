@@ -167,9 +167,16 @@ if (isset($_GET['keyword'])) {
 												</div>
 											</div>
 											<div class="add-to-cart">
-
-												<button class="add-to-cart-btn"><a href="addcart.php?id=<?php echo $value['id'] ?>"><i class="fa fa-shopping-cart">add to cart</i> </a> </button>
-											</div>
+											<form class="form-submit" action="action.php" method="">
+												<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['PHP_SELF']."?type=" . $type . "&keyword=" . $keyword . "&sort=" . $sort; ?>">
+												<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+												<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+												<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+												<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+												<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+												<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+											</form>
+										</div>
 										</div>
 									</div>
 									<!-- /product -->
