@@ -72,12 +72,18 @@ if (isset($_GET['remove'])) {
 if (isset($_GET['clear'])) {
   $stmt = $conn->prepare("DELETE FROM cart");
   $stmt->execute();
-  header('location:cart.php');
 
   $_SESSION['showAlert'] = 'block';
   $_SESSION['message'] = 'All Item removed from the cart!';
-  header('location:viewcart.php');
+
+  if(isset($_GET['logout'])){
+    header("location: index.php");
+  }else{
+    header('location:viewcart.php');
+  }
+ 
 }
+
 
 if (isset($_POST['qty'])) {
   $qty = $_POST['qty'];

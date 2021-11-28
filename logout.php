@@ -7,6 +7,5 @@
     unset($_SESSION["pass"]);
     unset($_SESSION["check"]);
     //checkregister
-
-    header("location:index.php");
+    header("location:action.php?clear=all&logout=index");
 ?>
