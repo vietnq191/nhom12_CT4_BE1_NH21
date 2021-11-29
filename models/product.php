@@ -56,7 +56,7 @@ class Product extends Db
         $link = "";
         for ($j = 1; $j <= $totalLinks; $j++) {
             if ($j == $currentPage){
-                $link = $link . "<li class='active'><a href='$url&page=$j'> $j </a></li>";
+                $link = $link . "<li class='active'>$j</li>";
             }
             else{
                 $link = $link . "<li><a href='$url&page=$j'> $j </a></li>";
@@ -71,7 +71,7 @@ class Product extends Db
         $link = "";
         for ($j = 1; $j <= $totalLinks; $j++) {
             if ($j == $currentPage){
-                $link = $link . "<li class='active'><a href='$url?manu_id=$manu_id&page=$j'> $j </a></li>";
+                $link = $link . "<li class='active'>$j</li>";
             }
             else{
                 $link = $link . "<li><a href='$url?manu_id=$manu_id&page=$j'> $j </a></li>";
@@ -83,6 +83,15 @@ class Product extends Db
     public function getNewProducts()
     {
         $sql = self::$connection->prepare("SELECT * FROM listproducts ORDER BY created_at DESC LIMIT 0,10");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getNameType($typeID)
+    {
+        $sql = self::$connection->prepare("SELECT `type_name` FROM protypes WHERE `type_id` = ?");
+        $sql->bind_param("i", $typeID);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -106,21 +115,39 @@ class Product extends Db
                 $sortby = $x_value;
             }
         }
-        $sortby = "DESC";
-        if ($type != 0) {
-            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? ORDER BY ? LIMIT ?,?");
-            $sql->bind_param("isii", $type, $sortby,$firstLink, $perPage);
-            $sql->execute(); //return an object
-            $items = array();
-            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items; //return an array
-        } else {
-            $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword ORDER BY ? LIMIT ?,?");
-            $sql->bind_param("sii", $sortby, $firstLink, $perPage);
-            $sql->execute(); //return an object
-            $items = array();
-            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items; //return an array
+        if ($sort != "default"){
+            if ($type != 0) {
+                $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? ORDER BY $sortby LIMIT ?,?");
+                $sql->bind_param("iii", $type, $firstLink, $perPage);
+                $sql->execute(); //return an object
+                $items = array();
+                $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                return $items; //return an array
+            } else {
+                $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword ORDER BY $sortby LIMIT ?,?");
+                $sql->bind_param("ii", $firstLink, $perPage);
+                $sql->execute(); //return an object
+                $items = array();
+                $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                return $items; //return an array
+            }    
+        }
+        else {
+            if ($type != 0) {
+                $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword AND `type_id`= ? LIMIT ?,?");
+                $sql->bind_param("iii", $type, $firstLink, $perPage);
+                $sql->execute(); //return an object
+                $items = array();
+                $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                return $items; //return an array
+            } else {
+                $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `name` LIKE $keyword LIMIT ?,?");
+                $sql->bind_param("ii", $firstLink, $perPage);
+                $sql->execute(); //return an object
+                $items = array();
+                $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                return $items; //return an array
+            }
         }
     }
   

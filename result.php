@@ -106,11 +106,21 @@ if (isset($_GET['keyword'])) {
 						<div class="col-md-12">
 							<div class="section-title">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab2">Popular</a></li>
-									<li><a data-toggle="tab" href="#tab2">Ascending name</a></li>
-									<li><a data-toggle="tab" href="#tab2">Descending name</a></li>
-									<li><a data-toggle="tab" href="#tab2">Low price</a></li>
-									<li><a data-toggle="tab" href="#tab2">High price</a></li>
+									<?php   
+									$arr = array(
+										"default" => "Popular",
+										"ascending_name" => "Ascending name",
+										"descending_name" => "Descending name",
+										"low_price" => "Low price",
+										"high_price" => "High price",
+									);
+									$getURL = $_SERVER['REQUEST_URI'];
+									$pos = strpos($getURL, "&sort="); 
+									$subURL = substr($getURL, 0, $pos);
+									foreach($arr as $x => $x_value):
+									?>
+									<li class="<?php if($_GET['sort']==$x) echo "active"?>"><a href="<?php echo $subURL . "&sort=" .$x ?>"><?php echo $x_value ?></a></li>
+									<?php endforeach; ?>
 								</ul>
 							</div>
 						</div>
@@ -150,7 +160,7 @@ if (isset($_GET['keyword'])) {
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category">Category</p>
+												<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
 												<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
 												<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 												<div class="product-rating">
@@ -159,11 +169,6 @@ if (isset($_GET['keyword'])) {
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 												</div>
 											</div>
 											<div class="add-to-cart">

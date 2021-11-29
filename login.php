@@ -11,13 +11,6 @@ if (isset($_GET["btn_submit"])) {
     $username = $_GET["username"];
     $password = $_GET["password"];
 
-    //loại bỏ các kí tự và tag người dùng cố tình thêm vào
-    //để tấn công database
-    $username = strip_tags($username);
-    $username = addslashes($username);
-    $password = strip_tags($password); 
-    $password = addslashes($password);
-
     $login = $product->login($username, $password);
     
     foreach($login as $value){
