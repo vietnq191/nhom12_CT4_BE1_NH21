@@ -36,7 +36,7 @@
 						unset($_SESSION['showAlert']); ?></strong>
 			</div>
 			<div class="cart-page">
-				<table>
+				<table class="table-striped">
 					<tr>
 						<th>ID</th>
 						<th>Image</th>
@@ -93,7 +93,20 @@
 
 					<tr>
 						<td><a href="index.php" class="btn btn-success" ><i class="fa fa-shopping-cart"></i> Continue Shopping </a></td>
-						<td><a class="btn btn-danger mx-2" <?php echo ($grand_total > 1) ? 'href="checkout.php"' : "disabled"; ?>>Check out</a></td>
+						<td><a class="btn btn-danger mx-2"  
+						<?php
+						//nếu có username thì checkout ngược lại register 
+						if($grand_total>1){
+							if(isset($_SESSION['username'])){
+								echo 'href="checkout.php"';
+							}else{
+								echo 'href="login.php"';
+							}
+						}else{
+							echo "disabled";
+						}
+						?>
+						>Check out</a></td>
 					</tr>
 				</table>
 			</div>

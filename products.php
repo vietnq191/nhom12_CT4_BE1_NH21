@@ -1,27 +1,4 @@
 <?php include "header.php"; ?>
-
-<!-- BREADCRUMB -->
-<div id="breadcrumb" class="section">
-	<!-- container -->
-	<div class="container">
-		<!-- row -->
-		<div class="row">
-			<div class="col-md-12">
-				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
-				</ul>
-			</div>
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</div>
-<!-- /BREADCRUMB -->
-
 <!-- Section -->
 <div class="section">
 	<!-- container -->
@@ -67,6 +44,7 @@
 							</div>
 							<div class="add-to-cart">
 								<form class="form-submit" action="action.php" method="">
+									<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['SCRIPT_NAME']."?manu_id=".$value['manu_id'] ?>">
 									<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 									<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 									<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
@@ -84,14 +62,14 @@
 
 		</div>
 		<!-- /row -->
-			<!-- store bottom filter -->
-			<div class="store-filter clearfix">
-						<ul class="store-pagination">
-							<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
-							<?php echo $product->paginateForManufactures($manu_id, $currentPage, $url, $total, $perPage) ?>
-						</ul>
-					</div>
-			<!-- /store bottom filter -->
+		<!-- store bottom filter -->
+		<div class="store-filter clearfix">
+			<ul class="store-pagination">
+				<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
+				<?php echo $product->paginateForManufactures($manu_id, $currentPage, $url, $total, $perPage) ?>
+			</ul>
+		</div>
+		<!-- /store bottom filter -->
 	</div>
 	<!-- /container -->
 </div>
