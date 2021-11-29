@@ -32,7 +32,7 @@
 					</div>
 					<div class="content">
 						<h3>Electron is an e-commerce platform in Southeast Asia and Taiwan.</h3>
-						<p>Launched in 2015, the Electron commerce platform was built to provide users with an easy, secure and fast experience when shopping online through a strong payment support and operating system.
+						<p>Launched in 2015, the Electron commerce platform was built to provide users with an easy, secure and fast experience when shopping online through strong payment support and operating system.
 							We strongly believe that the online shopping experience should be simple, easy and emotionally pleasurable. This belief inspires and drives us every day at Electron.</p>
 
 						<hr>
@@ -82,7 +82,6 @@
 		</div>
 		</div>
 	</div>
-
 
 </div>
 <!-- /container -->
