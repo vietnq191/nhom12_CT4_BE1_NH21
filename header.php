@@ -170,12 +170,18 @@ else{
 			<div id="responsive-nav">
 				<!-- NAV -->
 				<ul class="main-nav nav navbar-nav">
-					<li class="active"><a href="index.php">Home</a></li>
 					<?php
 					$getAllManu = $manu->getAllManufactures();
+					$getID = 0;
+					if (isset($_GET['manu_id'])){
+						$getID = $_GET['manu_id'];
+					}
+					?>
+					<li class="<?php if($getID==0) echo "active"?>"><a href="index.php">Home</a></li>
+					<?php
 					foreach ($getAllManu as $value) :
 					?>
-						<li><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+						<li class="<?php if($getID==$value['manu_id']) echo "active" ?>"><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
 
 					<?php endforeach; ?>
 				</ul>

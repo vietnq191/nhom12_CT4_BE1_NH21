@@ -100,7 +100,7 @@
 
 		</div>
 	</div>
-
+</div>
 	<!-- /Cart item detail -->
 
-	<?php include "footer.html"; ?>
+<?php include "footer.html"; ?>
