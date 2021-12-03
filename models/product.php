@@ -28,6 +28,18 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function get8ProductByID($typeId, $page, $perPage)
+    {
+        //tinh so thu tu trang bat dau
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE `type_id` = ? LiMIT ?,?");
+        $sql->bind_param("iii", $typeId, $firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+
     public function getProductByManu($manu_id)
     {
         $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE manu_id = ?");
@@ -75,6 +87,20 @@ class Product extends Db
             }
             else{
                 $link = $link . "<li><a href='$url?manu_id=$manu_id&page=$j'> $j </a></li>";
+            }
+        }
+        return $link;
+    }
+    function paginateForProtypeID($id, $type_id, $currentPage, $url, $total, $perPage)
+    {
+        $totalLinks = ceil($total / $perPage);
+        $link = "";
+        for ($j = 1; $j <= $totalLinks; $j++) {
+            if ($j == $currentPage){
+                $link = $link . "<li class='active'>$j</li>";
+            }
+            else{
+                $link = $link . "<li><a href='$url?id=$id&type_id=$type_id&page=$j'> $j </a></li>";
             }
         }
         return $link;

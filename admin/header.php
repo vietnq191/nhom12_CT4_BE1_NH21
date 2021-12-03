@@ -54,7 +54,7 @@ $protype = new Protype();
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="index.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -239,21 +239,39 @@ $protype = new Protype();
               </a>
             </li>
             <!-- Products-->
-            <li class="nav-item menu-open">
-              <a href="products.php" class="nav-link <?php if($nameURL == "products.php") echo "active"?>" >
-                <i class="nav-icon fas fa-shopping-bag"></i>
-                <p>
-                  Products
-                  <i class="right"></i>
-                </p>
-              </a>
-            </li>
+            <?php 
+            $checkProducts = false;
+            if ($nameURL == "products.php" || $nameURL == "addproduct.php") {$checkProducts = true; }?>
+            <li class="nav-item <?php if($checkProducts==true) echo "menu-open" ?>">
+            <a href="#" class="nav-link <?php if($checkProducts==true) echo "active" ?>">
+              <i class="nav-icon fas fa-shopping-bag"></i>
+              <p>
+              Products
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="products.php" class="nav-link <?php if($nameURL == "products.php") echo "active"?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="addproduct.php" class="nav-link <?php if($nameURL == "addproduct.php") echo "active"?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+            </ul>
+          </li>
             <!-- Menufactures -->
             <li class="nav-item menu-open">
               <a href="manufactures.php" class="nav-link <?php if($nameURL == "manufactures.php") echo "active"?>">
                 <i class="nav-icon fas fa-city"></i>
                 <p>
-                  Menufactures
+                  Manufactures
                   <i class="right"></i>
                 </p>
               </a>
