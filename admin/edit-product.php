@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Add Product</h1>
+          <h1>Update Product</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Add Product</li>
+            <li class="breadcrumb-item active">Update Product</li>
           </ol>
         </div>
       </div>
@@ -73,41 +73,9 @@
               <textarea name="desc" id="inputDescription" class="form-control" rows="4"></textarea>
             </div>
             <div class="form-group">
-              <label for="inputImage1">Image 1</label>
-              <input type="file" name="image1" id="inputImage1" class="form-control">
+              <label for="inputImage">Image</label>
+              <input type="file" name="image" id="inputImage" class="form-control">
             </div>
-            <div class="form-group">
-              <label for="inputImage2">Image 2</label>
-              <input type="file" name="image2" id="inputImage2" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="inputImage3">Image 3</label>
-              <input type="file" name="image3" id="inputImage3" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="inputImage4">Image 4</label>
-              <input type="file" name="image4" id="inputImage4" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="inputFeature">Feature</label>
-              <select name="feature" id="inputFeature" class="form-control custom-select">
-                <option selected disabled>Select one</option>
-                <option value=1>Yes</option>
-                <option value=0>No</option>
-              </select>
-          </div>
-          <div class="form-group">
-              <label for="inputCreatedAt">Created at</label>
-              <input type="date" id="inputCreatedAt" name="createdAt" value="<?php echo date('Y-m-d'); ?>" min="2000-01-01" max="<?php echo date('Y-m-d'); ?>">
-          </div>
-          <div class="form-group">
-              <label for="inputDimensions">Dimensions</label>
-              <input type="text" id="inputDimensions" name="dimensions" class="form-control">
-          </div>
-          <div class="form-group">
-              <label for="inputDisplay_Size">Display size</label>
-              <input type="text" id="inputDisplay_Size" name="displaySize" class="form-control">
-          </div>
           </div>
           <!-- /.card-body -->
         </div>
@@ -116,8 +84,8 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <a href="#" class="btn btn-secondary">Cancel</a>
-        <input name="submit" type="submit" value="Add new Product" class="btn btn-success float-right">
+        <a href="products.php" class="btn btn-secondary">Cancel</a>
+        <input name="submit" type="submit" value="Update Product" class="btn btn-success float-right">
       </div>
     </div>
     </form>

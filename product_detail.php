@@ -122,8 +122,7 @@ if (isset($_GET['id'])) {
 
 								<ul class="product-links">
 									<li>Category:</li>
-									<li><a href="#">Headphones</a></li>
-									<li><a href="#">Accessories</a></li>
+									<li><a href="#"><?php echo $product->getNameType($value['type_id'])[0]['type_name']?></a></li>
 								</ul>
 
 								<ul class="product-links">
@@ -381,28 +380,32 @@ if (isset($_GET['id'])) {
 			</div>
 			<?php if (isset($_GET['type_id'])) :
 				$type_id = $_GET['type_id'];
+				$id = $_GET['id'];
 				$getProductByTypeId = $product->getProductByTypeId($type_id);
-				foreach ($getProductByTypeId as $value) :
+				$perPage = 8;
+				// Lấy số trang trên thanh địa chỉ
+				$page = isset($_GET['page']) ? $_GET['page'] : 1;
+				// Tính tổng số dòng
+				$total = count($getProductByTypeId);
+				// lấy đường dẫn đến file hiện hành
+				$url = $_SERVER['PHP_SELF'];
+				$get8ProductByID = $product->get8ProductByID($type_id, $page, $perPage);
+				foreach ($get8ProductByID as $value) :
 			?>
 					<!-- product -->
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/<?php echo $value['image'] ?>" alt="">
+								<img src="./img/<?php echo $value['image'] ?>" height="250" width="300" alt="">
 								<div class="product-label">
 									<span class="sale">-30%</span>
 								</div>
 							</div>
 							<div class="product-body">
-								<p class="product-category">Category</p>
+								<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name']?></p>
 								<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
 								<h4 class="product-price"><?php echo number_format($value['price']) ?>VND</h4>
 								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 								</div>
 							</div>
 							<div class="add-to-cart">
@@ -425,6 +428,15 @@ if (isset($_GET['id'])) {
 
 		</div>
 		<!-- /row -->
+				<!-- store bottom filter -->
+				<div class="store-filter clearfix">
+			<ul class="store-pagination">
+			<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
+			<?php echo $product->paginateForProtypeID($id,$type_id,$currentPage,$url,$total,$perPage) ?>
+			</ul>
+		</div>
+		<!-- /store bottom filter -->
+
 	</div>
 	<!-- /container -->
 </div>
