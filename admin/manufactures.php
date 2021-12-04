@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Menufactures</h1>
+            <h1>Manufactures</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Menufactures</li>
+              <li class="breadcrumb-item active">Manufactures</li>
             </ol>
           </div>
         </div>
@@ -63,7 +63,7 @@
                         <?php echo $value['manu_name'] ?>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" href="edit-manufacture.php?manu_id=<?php echo $value['manu_id'] ?>">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit

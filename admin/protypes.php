@@ -52,7 +52,7 @@
               </thead>
               <tbody>
                   <?php 
-                  $getAllProtypes = $protype->getAllProtype();
+                  $getAllProtypes = $protype->getAllProtypes();
                   foreach($getAllProtypes as $value):
                   ?>
                   <tr>

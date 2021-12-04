@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Protype Edit</h1>
+          <h1>Manufacture Edit</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Project Add</li>
+            <li class="breadcrumb-item active">Manufacture Edit</li>
           </ol>
         </div>
       </div>
@@ -21,10 +21,10 @@
 
   <!-- Main content -->
   <?php
-   if(isset($_GET['type_id'])):
-    $getAllProtype = $protype->getAllProtypes();
-    foreach($getAllProtype as $value):
-      if($value['type_id'] == $_GET['type_id']):
+   if(isset($_GET['manu_id'])):
+    $getAllManufactures = $manufacture->getAllManufactures();
+    foreach($getAllManufactures as $value):
+      if($value['manu_id'] == $_GET['manu_id']):
     ?>
   <section class="content">
     <form action="action.php" method="post" enctype="multipart/form-data">
@@ -41,10 +41,10 @@
               </div>
             </div>
             <div class="card-body">
-              <input type="hidden" name="type_id" value="<?php echo $value['type_id'] ?>">
+              <input type="hidden" name="manu_id" value="<?php echo $value['manu_id'] ?>">
               <div class="form-group">
-                <label for="inputName">Protype Name</label>
-                <input type="text" id="inputFullName" class="form-control" name="typename" placeholder="Enter Protype Name" value="<?php echo $value['type_name'] ?>" required>
+                <label for="inputName">Manufacture Name</label>
+                <input type="text" id="inputName" class="form-control" name="typename" placeholder="Enter Manufacture Name" value="<?php echo $value['manu_name'] ?>" required>
               </div>
             </div>
             <!-- /.card-body -->
@@ -55,13 +55,13 @@
       <div class="row">
         <div class="col-12">
           <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" name="updateProtype" value="Update Protype Name" class="btn btn-success float-right">
+          <input type="submit" name="updateProtype" value="Update Manufacture Name" class="btn btn-success float-right">
         </div>
       </div>
     </form>
   </section>
   <?php endif; endforeach; else:
-    echo "<script>window.location='protypes.php'</script>";
+    echo "<script>window.location='manufactures.php'</script>";
   endif;?>
   <!-- /.content -->
 </div>
