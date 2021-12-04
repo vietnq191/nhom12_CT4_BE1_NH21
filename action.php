@@ -113,4 +113,62 @@
         </div>';
         echo $data;
     }
+
+    //setting profile
+if (isset($_POST['actionSetting']) && isset($_POST['actionSetting']) == 'setting') {
+  $userid = $_POST['user_id'];
+  $name = $_POST['name'];
+  $username = $_POST['username'];
+  $pass = $_POST['password'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $data = '';
+
+
+  $stmt = $conn->prepare("UPDATE `user` SET `name`=?,`email`=?,`phone`=? WHERE `user_id`=?");
+  $stmt->bind_param("sssi", $name, $email, $phone, $userid);
+  $stmt->execute();
+
+  $data .= '<div class="text-center"> 
+      <h2 class="display-4 mt-2 text-success"> Your Setting Profile Successfully! </h2>
+      <hr>
+      <h4 class="text-success"> <a href="viewaccount.php">Check profile here !!! </a> </h4>           
+      </div>';
+  echo $data;
+}
+
+//change password
+if (isset($_POST['actionChangepass']) && isset($_POST['actionChangepass']) == 'change_pass') {
+  $username = $_POST['username'];
+  $oldpass = $_POST['old_pass'];
+  $newpass = $_POST['new_pass'];
+  $cnpass = $_POST['confirm_pass'];
+
+  $stmt = $conn->prepare("SELECT * FROM `user` WHERE `username`= ? ");
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $r = $res->fetch_assoc();
+  $data_pwd  = $r['password'];
+
+  if ($data_pwd == $oldpass) {
+    if ($newpass == $cnpass) {
+      $update_pwd = $conn->prepare("UPDATE `user` SET `password`=? ");
+      $update_pwd->bind_param("s", $newpass);
+      $update_pwd->execute();
+
+      echo "<script> alert('Update Successfully'); window.location='index.php'</script>";
+    } else {
+      echo '<div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Your new and confirm new Password is not match</strong>
+          </div>';
+    }
+  } else {
+    echo '<div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Your old password is wrong!</strong>
+          </div>';
+  }
+}
 ?>

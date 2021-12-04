@@ -60,7 +60,9 @@
       </div>
     </form>
   </section>
-  <?php endif; endforeach; endif; ?>
+  <?php endif; endforeach; else:
+    echo "<script>window.location='protypes.php'</script>";
+  endif;?>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

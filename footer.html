@@ -232,6 +232,23 @@
 				})
 			}
 		});
+
+		const password = document.querySelector('.password');
+        const rePassword = document.querySelector('.repassword');
+
+        password.onblur = () => {
+            rePassword.setAttribute('pattern', password.value);
+        }
+        const form = document.querySelector('.form-register');
+        form.onsubmit = (e) => {
+          if (form.checkValidity() === false) {
+        	//Ngăn ko cho form được gửi đi
+               e.preventDefault();
+               e.stopPropagation()
+           }
+           form.classList.add('was-validated');
+         };
+
 	</script>
 </body>
 
