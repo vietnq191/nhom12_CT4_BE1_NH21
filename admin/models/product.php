@@ -35,5 +35,12 @@ class Product extends Db
         $sql->bind_param("siiissi", $name,$manu_id,$type_id,$price,$image,$desc,$id);
         return $sql->execute(); //return an object
     }
-
+    public function statisticProducts()
+    {
+        $sql = self::$connection->prepare("SELECT protypes.type_id,protypes.type_name,COUNT(*) AS 'Số Lượng', MAX(listproducts.price) AS 'Giá cao',MIN(listproducts.price) AS 'Giá thấp',AVG(listproducts.price) AS 'Giá Trung bình'FROM `protypes` JOIN listproducts ON protypes.type_id = listproducts.type_id GROUP BY protypes.type_id,protypes.type_name");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
 }
