@@ -25,11 +25,6 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Statistic Product</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
       </div>
       <div class="container">
         <div class="row">
@@ -68,7 +63,7 @@
           var options = {
             title: 'Biểu đồ thống kê sản phẩm',
             width: 800,
-            height : 600
+            height : 500,
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('myChart'));

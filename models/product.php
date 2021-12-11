@@ -111,7 +111,7 @@ class Product extends Db
         $link = "";
         for ($j = 1; $j <= $totalLinks; $j++) {
             if ($j == $currentPage){
-                $link = $link . "<li class='active'><a href='$url?type_id=$type_id&page=$j'> $j </a></li>";
+                $link = $link . "<li class='active'>$j</li>";
             }
             else{
                 $link = $link . "<li><a href='$url?type_id=$type_id&page=$j'> $j </a></li>";

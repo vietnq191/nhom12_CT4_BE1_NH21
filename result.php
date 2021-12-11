@@ -25,8 +25,8 @@ if (isset($_GET['keyword'])) {
 						<div class="checkbox-filter">
 							<?php foreach ($getAllProtype as $value) : ?>
 								<div class="input-checkbox">
-									<input type="checkbox" value="<?php echo $value["type_id"]?>" id="category-<?php echo $value["type_id"] ?>" <?php if ($type == 0) echo "checked";
-																											elseif ($type == $value["type_id"]) echo "checked" ?>>
+									<input type="checkbox" value="<?php echo $value["type_id"] ?>" id="category-<?php echo $value["type_id"] ?>" <?php if ($type == 0) echo "checked";
+																																					elseif ($type == $value["type_id"]) echo "checked" ?>>
 									<label for="category-<?php echo $value["type_id"] ?>">
 										<span></span>
 										<?php echo $value["type_name"] ?>
@@ -60,40 +60,63 @@ if (isset($_GET['keyword'])) {
 
 					<!-- aside Widget -->
 					<div class="aside">
-						<h3 class="aside-title">Top selling</h3>
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+						<div class="section-title">
+							<h4 class="title">Top selling</h4>
+							<div class="section-nav">
+								<div id="slick-nav-5" class="products-slick-nav"></div>
 							</div>
 						</div>
 
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
+						<div class="products-widget-slick" data-nav="#slick-nav-5">
+							<div>
+								<?php
+								$get3NewProducts = $product->get3NewProducts(12, 3);
+								foreach ($get3NewProducts as $value) : ?>
+									<!-- product widget -->
+									<div class="product-widget">
+										<div class="product-img">
+											<img src="./img/<?php echo $value['image'] ?>" alt="">
+										</div>
+										<div class="product-body">
+											<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+											<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																											echo substr($value['name'], 0, 20) . '...';
+																																										} else {
+																																											echo $value['name'];
+																																										} ?></a></h3>
+											<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+										</div>
+									</div>
+									<!-- /product widget -->
+								<?php endforeach; ?>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
 
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							<div>
+								<?php
+								$get3NewProducts = $product->get3NewProducts(15, 3);
+								foreach ($get3NewProducts as $value) : ?>
+									<!-- product widget -->
+									<div class="product-widget">
+										<div class="product-img">
+											<img src="./img/<?php echo $value['image'] ?>" alt="">
+										</div>
+										<div class="product-body">
+											<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+											<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																											echo substr($value['name'], 0, 20) . '...';
+																																										} else {
+																																											echo $value['name'];
+																																										} ?></a></h3>
+											<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+										</div>
+									</div>
+									<!-- /product widget -->
+								<?php endforeach; ?>
 							</div>
 						</div>
 					</div>
+
+
 					<!-- /aside Widget -->
 				</div>
 				<!-- /ASIDE -->
@@ -106,7 +129,7 @@ if (isset($_GET['keyword'])) {
 						<div class="col-md-12">
 							<div class="section-title">
 								<ul class="section-tab-nav tab-nav">
-									<?php   
+									<?php
 									$arr = array(
 										"default" => "Popular",
 										"ascending_name" => "Ascending name",
@@ -115,11 +138,11 @@ if (isset($_GET['keyword'])) {
 										"high_price" => "High price",
 									);
 									$getURL = $_SERVER['REQUEST_URI'];
-									$pos = strpos($getURL, "&sort="); 
+									$pos = strpos($getURL, "&sort=");
 									$subURL = substr($getURL, 0, $pos);
-									foreach($arr as $x => $x_value):
+									foreach ($arr as $x => $x_value) :
 									?>
-									<li class="<?php if($_GET['sort']==$x) echo "active"?>"><a href="<?php echo $subURL . "&sort=" .$x ?>"><?php echo $x_value ?></a></li>
+										<li class="<?php if ($_GET['sort'] == $x) echo "active" ?>"><a href="<?php echo $subURL . "&sort=" . $x ?>"><?php echo $x_value ?></a></li>
 									<?php endforeach; ?>
 								</ul>
 							</div>
@@ -160,7 +183,11 @@ if (isset($_GET['keyword'])) {
 											</div>
 											<div class="product-body">
 												<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
-												<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if(strlen($value['name'])>10){ echo substr($value['name'], 0, 20).'...'; }else{ echo $value['name']; }?></a></h3>
+												<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																												echo substr($value['name'], 0, 20) . '...';
+																																											} else {
+																																												echo $value['name'];
+																																											} ?></a></h3>
 												<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -171,16 +198,16 @@ if (isset($_GET['keyword'])) {
 												</div>
 											</div>
 											<div class="add-to-cart">
-											<form class="form-submit" action="action.php" method="">
-												<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['PHP_SELF']."?type=" . $type . "&keyword=" . $keyword . "&sort=" . $sort; ?>">
-												<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
-												<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
-												<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-												<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
-												<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
-												<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
-											</form>
-										</div>
+												<form class="form-submit" action="action.php" method="">
+													<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['PHP_SELF'] . "?type=" . $type . "&keyword=" . $keyword . "&sort=" . $sort; ?>">
+													<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
+													<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
+													<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
+													<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+													<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
+													<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
+												</form>
+											</div>
 										</div>
 									</div>
 									<!-- /product -->
@@ -205,5 +232,5 @@ if (isset($_GET['keyword'])) {
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		
-<?php include "footer.html" ?>
+
+		<?php include "footer.html" ?>

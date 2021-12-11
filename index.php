@@ -65,20 +65,6 @@
 			<div class="col-md-12">
 				<div class="section-title">
 					<h3 class="title">New Products</h3>
-					<div class="section-nav">
-						<ul class="section-tab-nav tab-nav">
-							<?php
-							$getAllProtype = $protype->getAllProtype();
-							foreach ($getAllProtype as $value) :
-							?>
-								<?php if ($value['type_id'] == 1) : ?>
-									<li class="active"><a data-toggle="tab" href="#tab1"><?php echo $value['type_name'] ?></a></li>
-								<?php else : ?>
-									<li><a data-toggle="tab" href="#tab1"><?php echo $value['type_name'] ?></a></li>
-								<?php endif ?>
-							<?php endforeach ?>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<!-- /section title -->
@@ -101,7 +87,7 @@
 											</div>
 											<div class="product-body">
 												<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
-												<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id']?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
+												<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
 												<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -223,7 +209,7 @@
 										</div>
 										<div class="product-body">
 											<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
-											<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'],0,20) ?>...</a></h3>
+											<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php echo substr($value['name'], 0, 20) ?>...</a></h3>
 											<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
 											<div class="product-rating">
 												<i class="fa fa-star"></i>
