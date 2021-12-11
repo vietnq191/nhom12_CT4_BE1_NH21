@@ -97,9 +97,8 @@
       $address = $_POST['address'];
       $pmode = $_POST['pmode'];
       $data = '';
-
-      $stmt = $conn->prepare("INSERT INTO orders (fullname,email,address_customer,phone,payment_mode,products,amount_paid) VALUES(?,?,?,?,?,?,?)");
-      $stmt->bind_param("sssssss",$name,$email,$address,$phone,$pmode,$products,$grand_total);
+      $stmt = $conn->prepare("INSERT INTO orders (fullname,email,address_customer,phone,payment_mode,username,amount_paid) VALUES(?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssss",$name,$email,$address,$phone,$pmode,$_SESSION["username"],$grand_total);
       $stmt->execute();
       $data .= '<div class="text-center"> 
         <h1 class="display-4 mt-2 text-danger"> Thank You! </h1>

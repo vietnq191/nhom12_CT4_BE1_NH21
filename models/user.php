@@ -10,13 +10,20 @@ class User extends Db{
         return $items;
     }
 
-    public function login()
-    {
-        $sql = self::$connection->prepare("SELECT * FROM user");
+    public function checkLogin($username,$password){
+        $sql = self::$connection->prepare("SELECT * FROM user 
+        WHERE `username` = ? AND `password` = ?");
+        $password = md5($password);
+        $sql->bind_param("ss", $username, $password);
         $sql->execute(); //return an object
         $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
+        $items = $sql->get_result()->num_rows;
+        if($items == 1){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public function getId($username){
@@ -32,6 +39,7 @@ class User extends Db{
     {
         $sql = self::$connection->prepare("INSERT INTO `user`(`name`,`username`,`password`,`email`,`phone`)
         VALUES(?,?,?,?,?)");
+        $password = md5($password);
         $sql->bind_param("sssss", $fullName,$username,$password,$email,$phone);
         return $sql->execute(); //return an array
     }

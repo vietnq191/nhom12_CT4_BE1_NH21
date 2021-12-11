@@ -5,7 +5,6 @@ require "models/product.php";
 require "models/manufacture.php";
 require "models/user.php";
 require "models/protype.php";
-
 $protype = new Protype();
 $user = new User();
 $product = new Product();
@@ -203,7 +202,12 @@ $manufacture = new Manufacture();
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <?php if(isset($_SESSION["name"])):?>
+            <a href="#" class="d-block"> <?php echo $_SESSION["name"] ?></a>
+            <?php endif ?>
+            <?php if (isset($_SESSION["username"])) { ?>
+              <li><a href="logout.php">Log out</a></li>
+            <?php } ?>
           </div>
         </div>
 
