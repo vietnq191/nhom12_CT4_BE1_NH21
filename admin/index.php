@@ -80,16 +80,17 @@ else {
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
+            <?php $getAllProduct = $product->getAllProducts(); ?>
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?php echo count($getAllProduct); ?></h3>
 
-                <p>Unique Visitors</p>
+                <p>Products</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="statistic_products.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

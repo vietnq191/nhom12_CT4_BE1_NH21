@@ -105,10 +105,33 @@ class Product extends Db
         }
         return $link;
     }
+    function paginateForTypeid($type_id, $currentPage, $url, $total, $perPage)
+    {
+        $totalLinks = ceil($total / $perPage);
+        $link = "";
+        for ($j = 1; $j <= $totalLinks; $j++) {
+            if ($j == $currentPage){
+                $link = $link . "<li class='active'><a href='$url?type_id=$type_id&page=$j'> $j </a></li>";
+            }
+            else{
+                $link = $link . "<li><a href='$url?type_id=$type_id&page=$j'> $j </a></li>";
+            }
+        }
+        return $link;
+    }
     //Lấy 10 sản phẩm mới nhất
     public function getNewProducts()
     {
         $sql = self::$connection->prepare("SELECT * FROM listproducts ORDER BY created_at DESC LIMIT 0,10");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function get3NewProducts($min,$max)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM listproducts ORDER BY created_at DESC LIMIT ?,?");
+        $sql->bind_param("ii", $min,$max);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

@@ -15,7 +15,7 @@
 					</div>
 					<div class="shop-body">
 						<h3>Laptop<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="products_typeid.php?type_id=1" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 					</div>
 					<div class="shop-body">
 						<h3>Accessories<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="products_typeid.php?type_id=4" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 					</div>
 					<div class="shop-body">
 						<h3>Cameras<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="products_typeid.php?type_id=3" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -278,85 +278,49 @@
 
 				<div class="products-widget-slick" data-nav="#slick-nav-3">
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product07.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(0, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(3, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -371,85 +335,49 @@
 
 				<div class="products-widget-slick" data-nav="#slick-nav-4">
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product04.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(6, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product07.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(9, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -466,85 +394,49 @@
 
 				<div class="products-widget-slick" data-nav="#slick-nav-5">
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(12, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 
 					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product04.png" alt="">
+						<?php
+						$get3NewProducts = $product->get3NewProducts(15, 3);
+						foreach ($get3NewProducts as $value) : ?>
+							<!-- product widget -->
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/<?php echo $value['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
+									<h3 class="product-name"><a href="product_detail.php?id=<?php echo $value['id'] ?>&type_id=<?php echo $value['type_id'] ?>"><?php if (strlen($value['name']) > 10) {
+																																									echo substr($value['name'], 0, 20) . '...';
+																																								} else {
+																																									echo $value['name'];
+																																								} ?></a></h3>
+									<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+							<!-- /product widget -->
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>

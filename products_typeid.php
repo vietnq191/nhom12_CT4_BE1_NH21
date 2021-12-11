@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['manu_id'])) {
+if (isset($_GET['type_id'])) {
 	include "header.php";
 } else {
 	header("location: index.php");
@@ -11,12 +11,13 @@ if (isset($_GET['manu_id'])) {
 	<div class="container">
 		<!-- row -->
 		<div class="row">
-			<?php
-			foreach ($getAllManu as $value) {
-				if ($value['manu_id'] == $_GET['manu_id']) {?>
+
+		<?php
+			foreach ($getAllProtype as $value) {
+				if ($value['type_id'] == $_GET['type_id']) {?>
 					<div class="col-md-12">
 						<div class="section-title text-center">
-							<h3 class="title">Products of <?php echo $value['manu_name'] ?></h3>
+							<h3 class="title">Products of <?php echo $value['type_name'] ?></h3>
 						</div>
 					</div>
 			<?php
@@ -25,19 +26,19 @@ if (isset($_GET['manu_id'])) {
 			?>
 
 			<!-- product -->
-			<?php if (isset($_GET['manu_id'])) :
-				$manu_id = $_GET['manu_id'];
-				$getProductByManu = $product->getProductByManu($manu_id);
+			<?php if (isset($_GET['type_id'])) :
+				$type_id = $_GET['type_id'];
+				$getProductByTypeId= $product->getProductByTypeId($type_id);
 				// hiển thị 8 sản phẩm trên 1 trang
 				$perPage = 8;
 				// Lấy số trang trên thanh địa chỉ
 				$page = isset($_GET['page']) ? $_GET['page'] : 1;
 				// Tính tổng số dòng
-				$total = count($getProductByManu);
+				$total = count($getProductByTypeId);
 				// lấy đường dẫn đến file hiện hành
 				$url = $_SERVER['PHP_SELF'];
-				$get3ProductByManu = $product->get3ProductByManu($manu_id, $page, $perPage);
-				foreach ($get3ProductByManu as $value) :
+				$get8ProductBytypeID = $product->get8ProductByID($type_id, $page, $perPage);
+				foreach ($get8ProductBytypeID as $value) :
 			?>
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
@@ -56,7 +57,7 @@ if (isset($_GET['manu_id'])) {
 							</div>
 							<div class="add-to-cart">
 								<form class="form-submit" action="action.php" method="">
-									<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['SCRIPT_NAME'] . "?manu_id=" . $value['manu_id'] ?>">
+									<input type="hidden" class="url" name="url" value="<?php echo $_SERVER['SCRIPT_NAME']."?type_id=".$value['type_id'] ?>">
 									<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 									<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 									<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
@@ -78,7 +79,7 @@ if (isset($_GET['manu_id'])) {
 		<div class="store-filter clearfix">
 			<ul class="store-pagination">
 				<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
-				<?php echo $product->paginateForManufactures($manu_id, $currentPage, $url, $total, $perPage) ?>
+				<?php echo $product->paginateForTypeid($type_id, $currentPage, $url, $total, $perPage) ?>
 			</ul>
 		</div>
 		<!-- /store bottom filter -->

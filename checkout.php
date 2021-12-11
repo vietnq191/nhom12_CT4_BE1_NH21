@@ -51,7 +51,12 @@ $allItems = implode(", ", $items);
 
 			<div class="col-md-7" id="order">
 				<!-- Billing Details -->
-				<?php if(isset($_SESSION['username'])): ?>
+				<?php
+				if (isset($_SESSION['username'])) :
+					$getid = $user->getId($_SESSION['username']);
+					foreach ($getid as $row) :
+						$getUserid = $user->getUsersData($row['user_id']);
+						foreach ($getUserid as $value) : ?>
 				<div class="billing-details">
 					<div class="section-title">
 						<h3 class="title">complete your order!</h3>
@@ -59,14 +64,17 @@ $allItems = implode(", ", $items);
 					<form action="" method="post" id="placeOrder">
 						<input type="hidden" name="products" value="<?php echo $allItems; ?>">
 						<input type="hidden" name="grand_total" value="<?php echo $grand_total; ?>">
+						<label for="">Full Name</label>
 						<div class="form-group">
-							<input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+							<input type="text" name="name" class="form-control" placeholder="Enter Name" value="<?php echo $value['name'] ?>" required>
 						</div>
+						<label for="">E-mail</label>
 						<div class="form-group">
-							<input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+							<input type="email" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
 						</div>
+						<label for="">Your Phone</label>
 						<div class="form-group">
-							<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+							<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
 						</div>
 						<div class="form-group">
 							<textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..." required></textarea>
@@ -85,7 +93,10 @@ $allItems = implode(", ", $items);
 						</div>
 					</form>
 				</div>
-				<?php else: echo '<h2> None-account </h2> <hr> <h3> <a href= "register.php" > You can create account here !!! </a> </h3>';
+				<?php endforeach;
+					endforeach;
+				else :
+					echo '<h2> None-account </h2> <hr> <h3> <a href= "register.php" > You can create account here !!! </a> </h3>';
 				endif; ?>
 				<!-- /Billing Details -->
 			</div>
