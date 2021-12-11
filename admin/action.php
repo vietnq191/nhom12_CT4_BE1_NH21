@@ -3,13 +3,69 @@ require "config.php";
 require "models/db.php";
 require "models/user.php";
 require "models/protype.php";
+require "models/manufacture.php";
 
 $user = new User();
 $protype = new Protype();
+$manu = new Manufacture();
 
-/*---- User ---- */
+/*---- Manufactures ---- */
 
+//add manufacture
+if (isset($_POST['AddManufacture'])) {
+  $manu_name = $_POST['manu_name'];
 
+  //select all username from user
+  $getManu = $manu->getManuName($manu_name);
+  $check = true;
+
+  foreach ($getManu as $value) {
+    if ($value['manu_name'] == $manu_name) {
+      $check = false;
+      break;
+    } else {
+      $check = true;
+    }
+  }
+
+  if ($check == false) {
+    echo "<script> alert('This manufacture name is Already Taken, Choose Another One'); window.location='add-manufacture.php'</script>";
+  } else {
+    $manu->addManufacture($manu_name);
+    header("location: manufactures.php");
+  }
+}
+
+//del manufacture
+if (isset($_GET['manu_id'])) {
+
+  $getManuID = $manu->getManuIdFromProducts();
+  foreach ($getManuID as $value) {
+    if ($value['manu_id'] == $_GET['manu_id']) {
+      $check = false;
+      break;
+    } else {
+      $check = true;
+    }
+  }
+
+  if ($check == false) {
+    echo "<script> alert('This manufacture name is Already Taken, Choose Another One To Delete'); window.location='manufactures.php'</script>";
+  } else {
+    $manu->delManufacture($_GET['manu_id']);
+    header("location: manufactures.php");
+  }
+}
+
+//update manufacture
+if(isset($_POST['updateManufacture'])){
+  $manuName = $_POST['manu_name'];
+  $ManuId = $_POST['manu_id'];
+  $manu->updateManufacture($ManuId,$manuName);
+  header("location: manufactures.php");
+}
+
+/*---- Users ---- */
 
 //add user
 if (isset($_POST['AddOneUser'])) {
@@ -59,9 +115,7 @@ if (isset($_POST['updateUser'])) {
   header("location: user.php");
 }
 
-/*---- Protype ---- */
-
-
+/*---- Protypes ---- */
 
 //addProtype
 if (isset($_POST["AddOneProtype"])) {

@@ -38,7 +38,7 @@
 			<div class="cart-page">
 				<table class="table-striped">
 					<tr>
-						<th>ID</th>
+						<th>Number</th>
 						<th>Image</th>
 						<th>Product Name</th>
 						<th>Price</th>
@@ -50,11 +50,12 @@
 					</tr>
 					<?php $getAllCart = $cart->getAllCart();
 					$grand_total = 0;
+					$stt = 1;
 					foreach ($getAllCart as $values) :
 					?>
 						<tr>
 
-							<td><?php echo $values['id'] ?></td>
+							<td><?php echo $stt++?></td>
 							<input type="hidden" class="pid" value="<?php echo $values['id'] ?>">
 							<td>
 								<div class="cart-info">
