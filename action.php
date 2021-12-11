@@ -90,31 +90,30 @@ if (isset($_POST['qty'])) {
 }
 
 //order
-if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $products = $_POST['products'];
-  $grand_total = $_POST['grand_total'];
-  $address = $_POST['address'];
-  $pmode = $_POST['pmode'];
-  $order_date = date("Y-m-d H:i:s");
-  
-  $data = '';
-  $stmt = $conn->prepare("INSERT INTO orders (fullname,email,address_customer,phone,order_date,payment_mode,username,amount_paid) VALUES(?,?,?,?,?,?,?,?)");
-  $stmt->bind_param("ssssssss",$name,$email,$address,$phone, $order_date,$pmode,$_SESSION["username"],$grand_total);
-  $stmt->execute();
-  $data .= '<div class="text-center"> 
-    <h1 class="display-4 mt-2 text-danger"> Thank You! </h1>
-    <h2 class="text-success"> Your Order Placed Successfully! </h2>
-    <h4 class="bg-danger text-light rounded p-2"> Items Purchased: '.$products.' </h4>             
-    <h4> Your Name: '.$name.' </h4>
-    <h4> Your Email: '.$email.' </h4>
-    <h4> Your Phone: '.$phone.' </h4>
-    <h4> Total Amount Paid : '.number_format($grand_total).' VND </h4>
-    <h4> Payment Mode: '.$pmode.' </h4>
-    </div>';
-    echo $data;
+    if(isset($_POST['action']) && isset($_POST['action']) == 'order'){
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $phone = $_POST['phone'];
+      $products = $_POST['products'];
+      $grand_total = $_POST['grand_total'];
+      $address = $_POST['address'];
+      $pmode = $_POST['pmode'];
+      $data = '';
+      $stmt = $conn->prepare("INSERT INTO orders (fullname,email,address_customer,phone,payment_mode,username,amount_paid) VALUES(?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssss",$name,$email,$address,$phone,$pmode,$_SESSION["username"],$grand_total);
+      $stmt->execute();
+      $data .= '<div class="text-center"> 
+        <h1 class="display-4 mt-2 text-danger"> Thank You! </h1>
+        <h2 class="text-success"> Your Order Placed Successfully! </h2>
+        <h4 class="bg-danger text-light rounded p-2"> Items Purchased: '.$products.' </h4>             
+        <h4> Your Name: '.$name.' </h4>
+        <h4> Your Email: '.$email.' </h4>
+        <h4> Your Phone: '.$phone.' </h4>
+        <h4> Total Amount Paid : '.number_format($grand_total).' VND </h4>
+        <h4> Payment Mode: '.$pmode.' </h4>
+        </div>';
+        echo $data;
+    }
 
     //lay id_order
   $stmt = $conn->prepare("SELECT * FROM `orders` ORDER BY `oder_id` DESC LIMIT 0,1");
@@ -138,7 +137,6 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
     $stmt->execute();
   }
 }
-
 
 //setting profile
 if (isset($_POST['actionSetting']) && isset($_POST['actionSetting']) == 'setting') {

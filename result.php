@@ -25,7 +25,7 @@ if (isset($_GET['keyword'])) {
 						<div class="checkbox-filter">
 							<?php foreach ($getAllProtype as $value) : ?>
 								<div class="input-checkbox">
-									<input type="checkbox" id="category-<?php echo $value["type_id"] ?>" <?php if ($type == 0) echo "checked";
+									<input type="checkbox" value="<?php echo $value["type_id"]?>" id="category-<?php echo $value["type_id"] ?>" <?php if ($type == 0) echo "checked";
 																											elseif ($type == $value["type_id"]) echo "checked" ?>>
 									<label for="category-<?php echo $value["type_id"] ?>">
 										<span></span>
@@ -205,5 +205,5 @@ if (isset($_GET['keyword'])) {
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-
-		<?php include "footer.html" ?>
+		
+<?php include "footer.html" ?>

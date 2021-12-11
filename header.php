@@ -1,5 +1,4 @@
 <?php
-session_start();
 require "config.php";
 require "models/db.php";
 require "models/product.php";
@@ -89,7 +88,7 @@ else{
                         <li><a href="logout.php">Log out</a></li>
 
                     <?php } else { ?>
-                        <li><a href="checklogin.php"><i class="fa fa-user-o"> Login</i></a></li>
+                        <li><a href="login.php"><i class="fa fa-user-o"> Login</i></a></li>
 
                     <?php } ?>
                 </ul>

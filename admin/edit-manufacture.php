@@ -44,7 +44,7 @@
               <input type="hidden" name="manu_id" value="<?php echo $value['manu_id'] ?>">
               <div class="form-group">
                 <label for="inputName">Manufacture Name</label>
-                <input type="text" id="inputName" class="form-control" name="typename" placeholder="Enter Manufacture Name" value="<?php echo $value['manu_name'] ?>" required>
+                <input type="text" id="inputName" class="form-control" name="manu_name" placeholder="Enter Manufacture Name" value="<?php echo $value['manu_name'] ?>" required>
               </div>
             </div>
             <!-- /.card-body -->
@@ -55,7 +55,7 @@
       <div class="row">
         <div class="col-12">
           <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" name="updateProtype" value="Update Manufacture Name" class="btn btn-success float-right">
+          <input type="submit" name="updateManufacture" value="Update Manufacture Name" class="btn btn-success float-right">
         </div>
       </div>
     </form>

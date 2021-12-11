@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-12">
           <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" name="AddOneProtype" value="Create new Manufacture" class="btn btn-success float-right">
+          <input type="submit" name="AddManufacture" value="Create new Manufacture" class="btn btn-success float-right">
         </div>
       </div>
     </form>
