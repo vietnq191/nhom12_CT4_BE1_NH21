@@ -36,4 +36,12 @@ class User extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function statisticUsers()
+    {
+        $sql = self::$connection->prepare("SELECT  user.name,user.username,user.email,user.phone ,COUNT(*) AS 'soLuong' FROM `user` JOIN orders ON user.username = orders.username GROUP BY user.name,user.username,user.email,user.phone");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
 }
