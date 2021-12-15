@@ -142,7 +142,7 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 //change password
 if (isset($_POST['actionChangepass']) && isset($_POST['actionChangepass']) == 'change_pass') {
   $username = $_POST['username'];
-  $oldpass = $_POST['old_pass'];
+  $oldpass = md5($_POST['old_pass']) ;
   $newpass = $_POST['new_pass'];
   $cnpass = $_POST['confirm_pass'];
 
@@ -155,8 +155,12 @@ if (isset($_POST['actionChangepass']) && isset($_POST['actionChangepass']) == 'c
 
   if ($data_pwd == $oldpass) {
     if ($newpass == $cnpass) {
-      $update_pwd = $conn->prepare("UPDATE `user` SET `password`=? ");
-      $update_pwd->bind_param("s", $newpass);
+
+      //hash password new
+      $passhash = md5($newpass);
+
+      $update_pwd = $conn->prepare("UPDATE `user` SET `password`=? Where `username` =?");
+      $update_pwd->bind_param("ss", $passhash,$username);
       $update_pwd->execute();
 
       echo "<script> alert('Update Successfully'); window.location='index.php'</script>";
