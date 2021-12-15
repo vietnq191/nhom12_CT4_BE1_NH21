@@ -202,10 +202,10 @@ $manufacture = new Manufacture();
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <?php if(isset($_SESSION["name"])):?>
-            <a href="#" class="d-block"> <?php echo $_SESSION["name"] ?></a>
+            <?php if(isset($_SESSION["AdminName"])):?>
+            <a href="#" class="d-block"> <?php echo $_SESSION["AdminName"] ?></a>
             <?php endif ?>
-            <?php if (isset($_SESSION["username"])) { ?>
+            <?php if (isset($_SESSION["AdminUsername"])) { ?>
               <li><a href="logout.php">Log out</a></li>
             <?php } ?>
           </div>

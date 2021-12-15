@@ -14,7 +14,7 @@ if (isset($_POST["btn_submit"])) {
     
     if($checkLogin){
         $_SESSION["username"] = $username;
-        header("location: index.php");
+        echo "<script> window.location='index.php'</script>";
     }
     else {
         echo "<script> alert('Login failed'); window.location='login.php'</script>";

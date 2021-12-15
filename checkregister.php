@@ -5,10 +5,9 @@ require "models/user.php";
 $user = new User();
 $check = 0;
 if (isset($_GET["btn_submit"])) {
-    $fullname = $_GET['fullName'];
+    $fullname = $_GET['fullname'];
     $username = $_GET["username"];
     $password = $_GET["password"];
-    $repassword = $_GET["re-password"];
     $email = $_GET['email'];
     $phone = $_GET['phone'];
 
@@ -22,13 +21,11 @@ if (isset($_GET["btn_submit"])) {
 
     if($check == 0){
         $user->register($fullname,$username,$password,$email,$phone);
-        header("location: checklogin.php");
+        echo "<script> alert('Register successful'); window.location='login.php'</script>";
     }
     else {
-        header("location: register.php");
+        echo "<script> alert('Register failed: Username is already'); window.location='register.php'</script>";
     }
 }
-else {
-    header("location: register.php");
-}
+
 

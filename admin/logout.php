@@ -1,7 +1,7 @@
 <?php
     session_start();
-    unset($_SESSION["username"]);
-    unset($_SESSION["name"]);
+    unset($_SESSION["AdminUsername"]);
+    unset($_SESSION["AdminName"]);
     //checkregister
     header("location: login.php");
 ?>

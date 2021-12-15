@@ -8,50 +8,10 @@
 				<div class="col-md-12">
 					<div class="newsletter">
 						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
-						
-						<?php 
-							/*
-							//Gửi mail
-							include "PHPMailer/src/PHPMailer.php";
-							include "PHPMailer/src/Exception.php";
-							include "PHPMailer/src/OAuth.php";
-							include "PHPMailer/src/POP3.php";
-							include "PHPMailer/src/SMTP.php";
-
-							use PHPMailer\PHPMailer\PHPMailer;
-							use PHPMailer\PHPMailer\Exception;
-							$mail = new PHPMailer(true);
-							try{
-								//Server setting
-								$mail->SMTPDebug = 4;
-								$mail->isSMTP();
-								$mail->Host = 'smtp.gmail.com';
-								$mail->SMTPAuth = true;
-								$mail->Username = 'Backend2021nhom12@gmail.com';
-								$mail->Password = 'Back.end_2021nhom12';
-								$mail->SMTPSecure = 'tls';
-								$mail->Port = 587;
-
-								//$e_mail = $_POST['email'];
-								//Recipients
-								$mail->setFrom('Backend2021nhom12@gmail.com','Electric Shop');
-								$mail->addAddress("vietnq191@gmail.com","You");
-
-								$mail->isHTML(true);
-								$mail->Subject = "Subject";
-								$mail->Body = "Nội dung";
-								$mail->send();
-								echo "Đã gửi thư";
-							}
-							catch (Exception $e){
-								echo "Lỗi gửi mail: {$mail->ErrorInfo}";
-							}
-							*/
-						?>
-
-						<form action="" method="POST">
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+						<div id="sEmail"></div>
+						<form action="action.php" method="POST">
+							<input name="email" class="input" type="email" placeholder="Enter Your Email" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
+							<button name="submit-newsletter" class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
 						</form>
 						<ul class="newsletter-follow">
 							<li>
@@ -280,14 +240,14 @@
         password.onblur = () => {
             rePassword.setAttribute('pattern', password.value);
         }
-        const form = document.querySelector('.form-register');
-        form.onsubmit = (e) => {
-          if (form.checkValidity() === false) {
+        const formRegister = document.querySelector('.form-register');
+        formRegister.onsubmit = (e) => {
+          if (formRegister.checkValidity() === false) {
         	//Ngăn ko cho form được gửi đi
                e.preventDefault();
                e.stopPropagation()
            }
-           form.classList.add('was-validated');
+           formRegister.classList.add('was-validated');
          };
 
 	</script>
