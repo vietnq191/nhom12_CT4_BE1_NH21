@@ -18,9 +18,32 @@
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="../css/styles_login.css">
+
+	<style>
+		.loading {
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			background: rgba(0, 0, 0, 0.479);
+		}
+
+		.message__error {
+			font-size: 1.5rem;
+			color: rgb(248, 61, 61);
+			margin: -1rem 1rem;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="loading" id="loading">
+		<img src="../img/loader.gif" alt="loading" width="100px">
+	</div>
+
 	<div class="container">
 		<div class="d-flex justify-content-center h-100">
 			<div class="card" style="height: 320px!important;">
@@ -40,9 +63,9 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="password" class="form-control" placeholder="password" required pattern="\w{5,}">
+							<input type="password" id="password" name="password" class="form-control" placeholder="password" required pattern="\w{5,}">
 							<div id="eye" class="input-group-text">
-								<i class="far fa-eye"></i>
+								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
 							<div class="invalid-feedback">Mật khẩu phải có ít nhất 5 ký tự</div>
 						</div>
@@ -55,16 +78,42 @@
 		</div>
 	</div>
 </body>
-<script src="../js/login.js"></script>
 <script>
-        const form = document.querySelector('form');
-        form.onsubmit = (e) => {
-          if (form.checkValidity() === false) {
-        	//Ngăn ko cho form được gửi đi
-               e.preventDefault();
-               e.stopPropagation()
-           }
-           form.classList.add('was-validated');
-         };
-    </script>
+	const form = document.querySelector('form');
+	const iconLoading = document.getElementById("loading");
+	const inputPassword = document.getElementById("password");
+	const showLoading = () => {
+		iconLoading.style.display = "flex";
+	};
+	const hideLoading = () => {
+		iconLoading.style.display = "none";
+	};
+
+	const onToggleTypePassword = () => {
+		togglePassword.classList.toggle("fa-eye-slash");
+
+		if (inputPassword.type === "password") {
+			inputPassword.type = "text";
+		} else {
+			inputPassword.type = "password";
+		}
+	};
+
+	togglePassword.addEventListener("click", onToggleTypePassword);
+
+	form.onsubmit = (e) => {
+		if (form.checkValidity() === false) {
+			//Ngăn ko cho form được gửi đi
+			e.preventDefault();
+			e.stopPropagation()
+			form.classList.add('was-validated');
+		} else {
+			showLoading();
+			setTimeout(() => {
+				hideLoading();
+			}, 1000);
+		}
+	};
+</script>
+
 </html>

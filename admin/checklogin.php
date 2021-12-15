@@ -13,10 +13,10 @@ if (isset($_POST["btn_submit_admin"])) {
     $checkLogin = $login->checkLogin($username, $password);
     
     if ($checkLogin){
-        $_SESSION["username"] = $username;
+        $_SESSION["AdminUsername"] = $username;
         $temp = $login->getName($username);
-        $_SESSION["name"] = $temp[0]["admin_name"];
-        header("location: index.php");
+        $_SESSION["AdminName"] = $temp[0]["admin_name"];
+        echo "<script>window.location='index.php'</script>";
     }
     else {
         echo "<script> alert('Login failed'); window.location='login.php'</script>";

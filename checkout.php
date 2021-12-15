@@ -59,7 +59,7 @@ $allItems = implode(", ", $items);
 						foreach ($getUserid as $value) : ?>
 				<div class="billing-details">
 					<div class="section-title">
-						<h3 class="title">complete your order!</h3>
+						<h3 class="title">Complete your order!</h3>
 					</div>
 					<form action="" method="post" id="placeOrder">
 						<input type="hidden" name="products" value="<?php echo $allItems; ?>">
@@ -70,7 +70,7 @@ $allItems = implode(", ", $items);
 						</div>
 						<label for="">E-mail</label>
 						<div class="form-group">
-							<input type="email" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
+							<input type="email" name="emailCustomer" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
 						</div>
 						<label for="">Your Phone</label>
 						<div class="form-group">
@@ -89,7 +89,7 @@ $allItems = implode(", ", $items);
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="submit" name="submit" value="Place Order" class="primary-btn order-submit btn-block">
+							<input type="submit" id="submitCheckOut" name="submit" value="Place Order" class="primary-btn order-submit btn-block">
 						</div>
 					</form>
 				</div>
@@ -139,4 +139,4 @@ $allItems = implode(", ", $items);
 </div>
 <!-- /SECTION -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
