@@ -167,7 +167,8 @@ if (isset($_POST['actionChangepass']) && isset($_POST['actionChangepass']) == 'c
       $passhash = md5($newpass);
 
       $update_pwd = $conn->prepare("UPDATE `user` SET `password`=? Where `username` =?");
-      $update_pwd->bind_param("ss", $passhash, $username);
+
+      $update_pwd->bind_param("ss", $passhash,$username);
       $update_pwd->execute();
 
       echo "<script> alert('Update Successfully'); window.location='index.php'</script>";
