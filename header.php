@@ -58,6 +58,7 @@ else{
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/style_viewCart.css">
+	<link rel="stylesheet" href="css/style_loading.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +69,12 @@ else{
 
 </head>
 
-<body>
+<body class="preloading">
+	<!-- hieu ung load -->
+	<div class="load">
+		<img src="./img/Spinner-3.gif">
+	</div>
+
 	<!-- HEADER -->
 	<header>
 		<!-- TOP HEADER -->

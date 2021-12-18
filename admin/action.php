@@ -32,7 +32,7 @@ if (isset($_POST['AddManufacture'])) {
     echo "<script> alert('This manufacture name is Already Taken, Choose Another One'); window.location='add-manufacture.php'</script>";
   } else {
     $manu->addManufacture($manu_name);
-    header("location: manufactures.php");
+    echo "<script> alert('Add a manufacture successfully'); window.location='manufactures.php'</script>";
   }
 }
 
@@ -53,7 +53,7 @@ if (isset($_GET['manu_id'])) {
     echo "<script> alert('This manufacture name is Already Taken, Choose Another One To Delete'); window.location='manufactures.php'</script>";
   } else {
     $manu->delManufacture($_GET['manu_id']);
-    header("location: manufactures.php");
+    echo "<script> alert('Delete successfully'); window.location='manufactures.php'</script>";
   }
 }
 
@@ -62,7 +62,7 @@ if(isset($_POST['updateManufacture'])){
   $manuName = $_POST['manu_name'];
   $ManuId = $_POST['manu_id'];
   $manu->updateManufacture($ManuId,$manuName);
-  header("location: manufactures.php");
+  echo "<script> alert('Update successfully'); window.location='manufactures.php'</script>";
 }
 
 /*---- Users ---- */
@@ -92,7 +92,7 @@ if (isset($_POST['AddOneUser'])) {
     echo "<script> alert('This Username is Already Taken, Choose Another One'); window.location='form_add_user.php'</script>";
   } else {
     $user->addUser($fname, $username, $password, $email, $phone);
-    header("location: user.php");
+    echo "<script> alert('Add a user successfully'); window.location='user.php'</script>";
   }
 }
 
@@ -100,19 +100,17 @@ if (isset($_POST['AddOneUser'])) {
 //xoa user
 if (isset($_GET['user_id'])) {
   $user->delUser($_GET['user_id']);
-  header("location: user.php");
+  echo "<script> alert('Delete successfully'); window.location='user.php'</script>";
 }
 
 //update information user
 if (isset($_POST['updateUser'])) {
   $user_id = $_POST['user_id'];
   $fname = $_POST['fname'];
-  $password = $_POST['password'];
   $email = $_POST['email'];
   $phone = $_POST['phone'];
-  //var_dump($fname);
-  $user->updateUser($user_id, $fname, $password, $email, $phone);
-  header("location: user.php");
+  $user->updateUser($user_id, $fname, $email, $phone);
+  echo "<script> alert('Update successfully'); window.location='user.php'</script>";
 }
 
 /*---- Protypes ---- */
@@ -137,7 +135,7 @@ if (isset($_POST["AddOneProtype"])) {
     echo "<script> alert('This protype name is Already Taken, Choose Another One'); window.location='form_add_protype.php'</script>";
   } else {
     $protype->addProtype($typename);
-    header("location: protypes.php");
+    echo "<script> alert('Add a protypes successfully'); window.location='protypes.php'</script>";
   }
 }
 
@@ -158,15 +156,14 @@ if (isset($_GET['type_id'])) {
     echo "<script> alert('This protype name is Already Taken, Choose Another One To Delete'); window.location='protypes.php'</script>";
   } else {
     $protype->delProtype($_GET['type_id']);
-
-    header("location: protypes.php");
+    echo "<script> alert('Delete successfully'); window.location='protypes.php'</script>";
   }
 }
 
-//
+//update protypename
 if(isset($_POST['updateProtype'])){
   $typename = $_POST['typename'];
   $typeid = $_POST['type_id'];
   $protype->updateProtype($typeid,$typename);
-  header("location: protypes.php");
+  echo "<script> alert('Update successfully'); window.location='protypes.php'</script>";
 }

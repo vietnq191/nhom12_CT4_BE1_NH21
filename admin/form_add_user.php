@@ -58,7 +58,7 @@
               
               <div class="form-group">
                 <label for="">Phone</label>
-                <input type="tel" id="inputPhone" class="form-control" name="phone" placeholder="Enter Phone" required>
+                <input type="number" id="inputPhone" class="form-control" name="phone" placeholder="Enter Phone" required>
               </div>
             </div>
             <!-- /.card-body -->
@@ -68,7 +68,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
+          <a href="user.php" class="btn btn-secondary">Cancel</a>
           <input type="submit" name="AddOneUser" value="Create new User" class="btn btn-success float-right">
         </div>
       </div>

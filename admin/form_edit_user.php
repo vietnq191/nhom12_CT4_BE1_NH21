@@ -46,13 +46,7 @@
                 <label for="inputName">Full Name</label>
                 <input type="text" id="inputFullName" class="form-control" name="fname" placeholder="Enter FullName" value="<?php echo $value['name'] ?>" required>
               </div>
-  
-              <div class="form-group">
-									<label for="inputpassword">Password</label>
-										<input type="text" name="password" class="form-control" placeholder="Enter Password" value="<?php echo $value['password'] ?>"  required>
-							</div>
-
-             
+      
               <div class="form-group">
                 <label for="">Email</label>
                 <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
@@ -70,7 +64,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
+          <a href="user.php" class="btn btn-secondary">Cancel</a>
           <input type="submit" name="updateUser" value="Update User" class="btn btn-success float-right">
         </div>
       </div>
