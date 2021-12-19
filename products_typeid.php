@@ -88,4 +88,4 @@ if (isset($_GET['type_id'])) {
 </div>
 <!-- /Section -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>

@@ -21,45 +21,6 @@ if (isset($_GET['keyword'])) {
 				<div id="aside" class="col-md-3">
 					<!-- aside Widget -->
 					<div class="aside">
-						<h3 class="aside-title">Categories</h3>
-						<div class="checkbox-filter">
-							<?php foreach ($getAllProtype as $value) : ?>
-								<div class="input-checkbox">
-									<input type="checkbox" value="<?php echo $value["type_id"] ?>" id="category-<?php echo $value["type_id"] ?>" <?php if ($type == 0) echo "checked";
-																																					elseif ($type == $value["type_id"]) echo "checked" ?>>
-									<label for="category-<?php echo $value["type_id"] ?>">
-										<span></span>
-										<?php echo $value["type_name"] ?>
-										<small><?php echo count($typeid = $product->getProductByTypeIDAndName($value["type_id"], $keyword)) ?></small>
-									</label>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Price</h3>
-						<div class="price-filter">
-							<div id="price-slider"></div>
-							<div class="input-number price-min">
-								<input id="price-min" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-							<span>-</span>
-							<div class="input-number price-max">
-								<input id="price-max" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
 						<div class="section-title">
 							<h4 class="title">Top selling</h4>
 							<div class="section-nav">
@@ -232,5 +193,6 @@ if (isset($_GET['keyword'])) {
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+	</div>
 
-		<?php include "footer.html" ?>
+	<?php include "footer.php" ?>

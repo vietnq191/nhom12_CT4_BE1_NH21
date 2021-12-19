@@ -134,15 +134,31 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
   $stmt->execute();
   $items = array();
   $items = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-  $stringItems .= "Items: " . count($items) . "<br>";
+  $stringItems .= "Items: " . count($items) . "<br>
+  <table style='width:100%; border: 1px solid black;'>
+  <tr>
+  <th>Number</th>
+  <th>Product name</th>
+  <th>Quantity</th>
+  <th>Price</th>
+  </tr>
+  ";
+  $count = 1;
   foreach ($items as $item) {
     $stmt = $conn->prepare("INSERT INTO `oders_list`(`oder_id`,`username`, `product_id`, `quantity`, `price`) VALUES (?,?,?,?,?)");
     $stmt->bind_param("isiii", $order_id, $_SESSION["username"], $item['product_id'], $item['qty'], $item['total_price']);
     $stmt->execute();
     $totalCost += (int)$item['total_price'];
-    $stringItems .= $item['product_name'] . " x" . $item['qty'] . "<br>";
+    $stringItems .= "<tr>". 
+    "<th>". $count . "</th>" . 
+    "<th>" . $item['product_name'] . "</th>" . 
+    "<th>" . $item['qty'] . "</th>" .
+    "<th>" . number_format($item['product_price']) . "</th>" .
+    "</tr>";
+    $count++;
   }
-  $stringItems .= "Total: " . number_format($totalCost) . " VND";
+  $stringItems .= "</table> <br>
+  Total: " . number_format($totalCost) . " VND";
   echo $stringItems;
   $sendMailCheckOut = true;
 }
@@ -168,7 +184,7 @@ if (isset($_POST['actionChangepass']) && isset($_POST['actionChangepass']) == 'c
 
       $update_pwd = $conn->prepare("UPDATE `user` SET `password`=? Where `username` =?");
 
-      $update_pwd->bind_param("ss", $passhash,$username);
+      $update_pwd->bind_param("ss", $passhash, $username);
       $update_pwd->execute();
 
       echo "<script> alert('Update Successfully'); window.location='index.php'</script>";
@@ -237,8 +253,16 @@ if (isset($_POST["submit-newsletter"])) {
     $mail->addAddress($sendMail, "Customer");
 
     $mail->isHTML(true);
-    $mail->Subject = "Subject";
-    $mail->Body = "Nội dung";
+    $mail->Subject = "Thank you for subscribing";
+    $mail->Body = "Thank you for registering for the Electro newsletter. You provided the
+    following email address during registration: " . $sendMail . "
+    <br>
+    If you have not subscribed to the Electro newsletter, please ignore this
+    email.
+    <br>
+    <br>
+    Best regards, <br>
+    Nhom 12 with love <3";
     $mail->send();
     echo "<script> alert('Đã gửi thư'); window.location='index.php'</script>";
   } catch (Exception $e) {

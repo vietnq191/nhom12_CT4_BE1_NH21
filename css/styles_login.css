@@ -88,6 +88,13 @@ color: white;
 margin-left: 4px;
 }
 
+span a{
+    color: #D10024;
+}
+
+span a:hover{
+    color: white;
+}
 a h3:hover{
     color: red;
 }

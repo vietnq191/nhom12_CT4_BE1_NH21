@@ -41,6 +41,7 @@
 </head>
 
 <body>
+	<?php include './google_source.php'; ?>
 	<div class="loading" id="loading">
 		<img src="./img/loader.gif" alt="loading" width="100px">
 	</div>
@@ -60,8 +61,8 @@
 					</div>
 
 					<div class="d-flex justify-content-end social_icon">
-						<span><i class="fab fa-facebook-square"></i></span>
-						<span><i class="fab fa-google-plus-square"></i></span>
+						<span><a href=""><i class="fab fa-facebook-square"></i></a></span>
+						<span><a href="<?= $authUrl ?>"><i class="fab fa-google-plus-square"></i></a></span>
 					</div>
 				</div>
 				<div class="card-body">

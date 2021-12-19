@@ -87,4 +87,4 @@ if (isset($_GET['manu_id'])) {
 </div>
 <!-- /Section -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
