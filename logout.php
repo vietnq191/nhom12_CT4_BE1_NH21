@@ -1,6 +1,7 @@
 <?php
     session_start();
     unset($_SESSION["username"]);
+    unset($_SESSION['access_token']);
     
     //check register
     unset($_SESSION["user"]);

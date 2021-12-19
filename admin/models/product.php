@@ -13,12 +13,19 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function addProduct($name,$manu_id,$type_id,$price,$image,$desc)
+    public function addProduct($name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize)
     {
+        $sql = self::$connection->prepare("SELECT * FROM `listproducts` Order by `id` DESC limit 0,1");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        $productCode = $items[0]['id'] + 1000;
+        $productCode = "p" . $productCode;
+
         $sql = self::$connection->prepare("INSERT 
-        INTO `listproducts`(`name`, `manu_id`, `type_id`, `price`, `image`, `description`) 
-        VALUES (?,?,?,?,?,?)");
-        $sql->bind_param("siiiss", $name,$manu_id,$type_id,$price,$image,$desc);
+        INTO `listproducts`(`name`, `manu_id`, `type_id`, `price`, `description`, `image`,`image1`,`image2`,`image3`,`feature`,`created_at`,`dimensions`,`display_size`,`product_code`) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sql->bind_param("siiissssssssss", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize, $productCode);
         return $sql->execute(); //return an object
     }
     public function delProduct($id)
@@ -27,12 +34,12 @@ class Product extends Db
         $sql->bind_param("i", $id);
         return $sql->execute(); //return an object
     }
-    public function updateProduct($id,$name,$manu_id,$type_id,$price,$image,$desc)
+    public function updateProduct($id, $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize)
     {
         $sql = self::$connection->prepare("UPDATE `listproducts` 
-        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `image` = ?, `description` = ?
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, `image` = ?,`image1` = ?,`image2` = ?,`image3` = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
         WHERE `id` = ?");
-        $sql->bind_param("siiissi", $name,$manu_id,$type_id,$price,$image,$desc,$id);
+        $sql->bind_param("siiisssssssssi", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize, $id);
         return $sql->execute(); //return an object
     }
     public function statisticProducts()

@@ -26,7 +26,6 @@
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">General</h3>
-
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                 <i class="fas fa-minus"></i>
@@ -36,12 +35,12 @@
           <div class="card-body">
             <div class="form-group">
               <label for="inputName">Name</label>
-              <input name="name" type="text" id="inputName" class="form-control">
+              <input name="name" type="text" id="inputName" class="form-control" required>
             </div>
             <div class="form-group">
               <label for="inputManufacture">Manufacture</label>
-              <select name="manu" id="inputManufacture" class="form-control custom-select">
-                <option selected disabled>Select one</option>
+              <select name="manu" id="inputManufacture" class="form-control custom-select" required>
+                <option selected disabled value="">Select one</option>
                 <?php
                 $getAllManufactures = $manufacture->getAllManufactures();
                 foreach ($getAllManufactures as $value) :
@@ -52,8 +51,8 @@
             </div>
             <div class="form-group">
               <label for="inputProtype">Protype</label>
-              <select name="type" id="inputProtype" class="form-control custom-select">
-                <option selected disabled>Select one</option>
+              <select name="type" id="inputProtype" class="form-control custom-select" required>
+                <option selected disabled value="">Select one</option>
                 <?php
                 $getAllProtypes = $protype->getAllProtypes();
                 foreach ($getAllProtypes as $value) :
@@ -63,10 +62,9 @@
 
               </select>
             </div>
-
             <div class="form-group">
               <label for="inputPrice">Price</label>
-              <input name="price" type="number" id="inputPrice" class="form-control">
+              <input name="price" type="number" id="inputPrice" class="form-control" required oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
             </div>
             <div class="form-group">
               <label for="inputDescription">Description</label>
@@ -74,24 +72,24 @@
             </div>
             <div class="form-group">
               <label for="inputImage1">Image 1</label>
-              <input type="file" name="image1" id="inputImage1" class="form-control">
+              <input type="file" name="image1" id="inputImage1" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage1')" required/>
             </div>
             <div class="form-group">
               <label for="inputImage2">Image 2</label>
-              <input type="file" name="image2" id="inputImage2" class="form-control">
+              <input type="file" name="image2" id="inputImage2" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage2')" required/>
             </div>
             <div class="form-group">
               <label for="inputImage3">Image 3</label>
-              <input type="file" name="image3" id="inputImage3" class="form-control">
+              <input type="file" name="image3" id="inputImage3" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage3')" required/>
             </div>
             <div class="form-group">
               <label for="inputImage4">Image 4</label>
-              <input type="file" name="image4" id="inputImage4" class="form-control">
+              <input type="file" name="image4" id="inputImage4" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage4')" required/>
             </div>
             <div class="form-group">
               <label for="inputFeature">Feature</label>
-              <select name="feature" id="inputFeature" class="form-control custom-select">
-                <option selected disabled>Select one</option>
+              <select name="feature" id="inputFeature" class="form-control custom-select" required>
+                <option selected disabled value="">Select one</option>
                 <option value=1>Yes</option>
                 <option value=0>No</option>
               </select>
@@ -125,5 +123,18 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script type="text/javascript">
 
+    function validateFileType(name){
+        var fileName = document.getElementById(name).value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+            //TO DO
+        }else{
+            alert("Only jpg/jpeg and png files are allowed!");
+            document.getElementById(name).value = "";
+        }   
+    }
+</script>
 <?php include "footer.html" ?>
