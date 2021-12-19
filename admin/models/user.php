@@ -22,10 +22,10 @@ class User extends Db
         $sql->bind_param("i",$user_id);
         return $sql->execute(); //return an object
     }
-    public function updateUser($id_user,$name,$password,$email,$phone)
+    public function updateUser($id_user,$name,$email,$phone)
     {
-        $sql = self::$connection->prepare("UPDATE `user` SET `name`= ?,`password`= ?,`email`= ?,`phone`= ? WHERE `user_id`=?");
-        $sql->bind_param("ssssi", $name,$password,$email,$phone,$id_user);
+        $sql = self::$connection->prepare("UPDATE `user` SET `name`= ?,`email`= ?,`phone`= ? WHERE `user_id`=?");
+        $sql->bind_param("sssi", $name,$email,$phone,$id_user);
         return $sql->execute(); //return an object
     }
     public function getUserName()
