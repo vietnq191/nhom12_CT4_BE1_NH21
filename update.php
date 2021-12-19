@@ -48,7 +48,7 @@
 									</div>
 									<div class="form-group">
 									<label for="inputdata">E-mail</label>
-										<input type="email" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
+										<input type="email" name="emailUpdate" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
 									</div>
 									<div class="form-group">
 									<label for="inputdata">Your Phone Number</label>

@@ -208,10 +208,9 @@ if (isset($_POST['actionSetting']) && isset($_POST['actionSetting']) == 'setting
   $name = $_POST['name'];
   $username = $_POST['username'];
   $pass = $_POST['password'];
-  $email = $_POST['email'];
+  $email = $_POST['emailUpdate'];
   $phone = $_POST['phone'];
   $data = '';
-
 
   $stmt = $conn->prepare("UPDATE user SET `name`=?,`email`=?,`phone`=? WHERE `user_id`=?");
   $stmt->bind_param("sssi", $name, $email, $phone, $userid);
