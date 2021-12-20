@@ -159,7 +159,6 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
   }
   $stringItems .= "</table> <br>
   Total: " . number_format($totalCost) . " VND";
-  echo $stringItems;
   $sendMailCheckOut = true;
 }
 
@@ -211,7 +210,7 @@ if (isset($_POST['actionSetting']) && isset($_POST['actionSetting']) == 'setting
   $email = $_POST['emailUpdate'];
   $phone = $_POST['phone'];
   $data = '';
-
+  mysqli_set_charset($conn, 'UTF8');
   $stmt = $conn->prepare("UPDATE user SET `name`=?,`email`=?,`phone`=? WHERE `user_id`=?");
   $stmt->bind_param("sssi", $name, $email, $phone, $userid);
   $stmt->execute();

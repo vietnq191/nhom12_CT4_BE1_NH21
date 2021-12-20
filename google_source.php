@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 //Google Code
 require_once ('./Google/libraries/Google/autoload.php');
 

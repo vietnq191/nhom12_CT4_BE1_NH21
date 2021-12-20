@@ -37,6 +37,7 @@ class User extends Db{
   
     public function register($fullName,$username,$password,$email,$phone)
     {
+        mysqli_set_charset(self::$connection, 'UTF8');
         $sql = self::$connection->prepare("INSERT INTO `user`(`name`,`username`,`password`,`email`,`phone`)
         VALUES(?,?,?,?,?)");
         $password = md5($password);

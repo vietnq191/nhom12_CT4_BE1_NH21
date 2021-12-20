@@ -42,15 +42,17 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="fullname" class="form-control" placeholder="Full name" required pattern="[a-zA-Z0-9]{3,}(\s?\w+)*">
-							<div class="invalid-feedback">Tên không được để trống</div>
+							<input type="text" name="fullname" class="form-control" placeholder="Full name" required pattern="([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ
+fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu
+UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789]){3,}(\s?\w+)*">
+							<div class="invalid-feedback">Invalid name</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
 							<input type="text" name="username" class="form-control" placeholder="Username" required>
-							<div class="invalid-feedback">Tài khoản không được để trống</div>
+							<div class="invalid-feedback">The account cannot be empty</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
@@ -60,7 +62,7 @@
 							<div id="eye" class="input-group-text">
 								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
-							<div class="invalid-feedback">Mật khẩu phải có ít nhất 5 ký tự</div>
+							<div class="invalid-feedback">Password must be at least 5 characters</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
@@ -70,21 +72,21 @@
 							<div id="eye" class="input-group-text">
 								<i class="far fa-eye" id="toggleRePassword"></i>
 							</div>
-							<div class="invalid-feedback">Không hợp lệ</div>
+							<div class="invalid-feedback">Re-password does not match the password</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-envelope"></i></i></span>
 							</div>
 							<input type="text" name="email" class="form-control" placeholder="Email" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
-							<div class="invalid-feedback">Email không hợp lệ</div>
+							<div class="invalid-feedback">Invalid email</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-phone"></i></span>
 							</div>
 							<input type="text" name="phone" class="form-control" placeholder="Phone" required pattern="[0-9]{10,11}">
-							<div class="invalid-feedback">Số điện thoại từ 10 đến 11 chữ số</div>
+							<div class="invalid-feedback">Phone number from 10 to 11</div>
 						</div>
 						<div class="form-group">
 							<input type="submit" name="btn_submit" value="Register" class="btn float-right login_btn">
@@ -124,10 +126,9 @@
 	const onToggleTypeRePassword = () => {
 		toggleRePassword.classList.toggle("fa-eye-slash");
 
-		if (inputRePassword.type == "password"){
+		if (inputRePassword.type == "password") {
 			inputRePassword.type = "text";
-		}
-		else{
+		} else {
 			inputRePassword.type = "password";
 		}
 	};
