@@ -2,7 +2,9 @@
 //Hàm login sau khi mạng xã hội trả dữ liệu về
 function loginFromSocialCallBack($socialUser)
 {
+    header("Content-type: text/html; charset=utf-8");
     $conn = new mysqli("localhost", "root", "", "project_thuongmaidientu");
+    mysqli_set_charset($conn, 'UTF8');
     if ($conn->connect_error) {
         die("Connection Failed!" . $conn->connect_error);
     }
@@ -20,6 +22,7 @@ function loginFromSocialCallBack($socialUser)
         }
         $result = mysqli_query($conn, "Select * WHERE `email` ='" . $socialUser['email'] . "'");
     }
+    $result = mysqli_query($conn, "Select * from `user` WHERE `email` ='" . $socialUser['email'] . "'");
     if ($result->num_rows > 0) {
         $user = mysqli_fetch_assoc($result);
         if (session_status() == PHP_SESSION_NONE) {

@@ -43,16 +43,18 @@
 									<input type="hidden" name="username" value="<?php echo $value['username'] ?>">
 									<input type="hidden" name="password" value="<?php echo $value['password'] ?>">
 									<div class="form-group">
-									<label for="inputdata">Full Name</label>
-										<input type="text" name="name" class="form-control" placeholder="Enter Name" value="<?php echo $value['name'] ?>" required>
+										<label for="inputdata">Full Name</label>
+										<input type="text" name="name" class="form-control" placeholder="Enter Name" value="<?php echo $value['name'] ?>" required pattern="([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ
+fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu
+UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789]){3,}(\s?\w+)*">
 									</div>
 									<div class="form-group">
-									<label for="inputdata">E-mail</label>
-										<input type="email" name="emailUpdate" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required>
+										<label for="inputdata">E-mail</label>
+										<input type="email" name="emailUpdate" class="form-control" placeholder="Enter Email" value="<?php echo $value['email'] ?>" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
 									</div>
 									<div class="form-group">
-									<label for="inputdata">Your Phone Number</label>
-										<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
+										<label for="inputdata">Your Phone Number</label>
+										<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required pattern="[0-9]{10,11}">
 									</div>
 									<div class="form-group">
 										<input type="submit" name="submit" value="Update Now" class="primary-btn order-submit btn-block">
@@ -68,7 +70,7 @@
 			</div>
 			<div class="col-md-5">
 				<div class="text-center">
-						<img src="./img/setting.png" width="350" height="300" alt="">
+					<img src="./img/setting.png" width="350" height="300" alt="">
 				</div>
 			</div>
 		</div>
