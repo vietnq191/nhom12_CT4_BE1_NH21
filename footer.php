@@ -9,7 +9,7 @@
 					<p>Sign Up for the <strong>NEWSLETTER</strong></p>
 					<div id="sEmail"></div>
 					<form action="action.php" method="POST">
-						<input name="email" class="input" type="email" placeholder="Enter Your Email" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
+						<input id="inputEmailSend" name="email" class="input" type="email" placeholder="Enter Your Email" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
 						<button name="submit-newsletter" class="newsletter-btn loading"><i class="fa fa-envelope"></i> Subscribe</button>
 					</form>
 					<ul class="newsletter-follow">
@@ -21,9 +21,6 @@
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-instagram"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-pinterest"></i></a>
 						</li>
 					</ul>
 				</div>
@@ -59,12 +56,12 @@
 					<div class="footer">
 						<h3 class="footer-title">Manufactures</h3>
 						<ul class="footer-links">
-							<?php 
+							<?php
 							$manufacture = new Manufacture();
 							$getAllManufactures = $manufacture->getAllManufactures();
-							foreach($getAllManufactures as $value):
+							foreach ($getAllManufactures as $value) :
 							?>
-							<li><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+								<li><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
 							<?php endforeach; ?>
 						</ul>
 					</div>
@@ -89,7 +86,6 @@
 							<li><a href="viewaccount.php">My Account</a></li>
 							<li><a href="viewcart.php">View Cart</a></li>
 							<li><a href="checkout.php">Check out</a></li>
-							<li><a href="#">Help</a></li>
 						</ul>
 					</div>
 				</div>
@@ -170,10 +166,13 @@
 
 		//loading
 		$(".loading").click(function() {
-			$('.load').css("width", "100%");
-			$('body').removeClass('preloading');
-			$('.load').delay(2500).fadeOut('fast');
-			location.reload(true);
+			$valid = document.getElementById("inputEmailSend");
+			if ($valid.checkValidity()) {
+				$('.load').css("width", "100%");
+				$('body').removeClass('preloading');
+				$('.load').delay(2500).fadeOut('fast');
+				location.reload(true);
+			}
 		});
 
 		//change quantity
@@ -204,9 +203,9 @@
 			e.preventDefault();
 
 			//hieu ung loading
-			$('.load').css("width","100%");
+			$('.load').css("width", "100%");
 			$('body').removeClass('preloading');
-      		$('.load').delay(2500).fadeOut('fast');
+			$('.load').delay(2500).fadeOut('fast');
 			$.ajax({
 				url: "action.php",
 				method: 'post',

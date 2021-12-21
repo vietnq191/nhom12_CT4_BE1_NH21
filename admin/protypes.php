@@ -30,9 +30,6 @@
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
           </div>
         </div>
         <div class="card-body p-0">
@@ -42,10 +39,10 @@
                       <th style="width: 20%">
                           Protype_ID
                       </th>
-                      <th style="width: 40%">
+                      <th style="width: 65%">
                           Protype_Name
                       </th>
-                      <th style="width: 40%" class="text-center">
+                      <th style="width: 15%" class="text-center">
                       Action
                       </th>
                   </tr>

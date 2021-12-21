@@ -39,13 +39,13 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 10%">
+                      <th style="width: 20%">
                           Manu_ID
                       </th>
-                      <th style="width: 70%">
+                      <th style="width: 65%">
                           Manu_Name
                       </th>
-                      <th style="width: 20%" class="text-center">
+                      <th style="width: 15%" class="text-center">
                       Action
                       </th>
                   </tr>

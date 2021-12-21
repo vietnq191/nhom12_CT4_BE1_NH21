@@ -139,7 +139,6 @@ if (isset($_GET['keyword'])) {
 											<div class="product-img">
 												<img src="./img/<?php echo $value['image1'] ?>" width="300" height="250" alt="">
 												<div class="product-label">
-													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div class="product-body">

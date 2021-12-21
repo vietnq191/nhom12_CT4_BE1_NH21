@@ -51,8 +51,8 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="username" class="form-control" placeholder="Username" required>
-							<div class="invalid-feedback">The account cannot be empty</div>
+							<input type="text" name="username" class="form-control" placeholder="Username" required pattern="^[a-zA-Z0-9]+$">
+							<div class="invalid-feedback">The account cannot be empty and no special characters</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
@@ -62,7 +62,7 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 							<div id="eye" class="input-group-text">
 								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
-							<div class="invalid-feedback">Password must be at least 5 characters</div>
+							<div class="invalid-feedback">Password must be at least 5 characters and no special characters</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">

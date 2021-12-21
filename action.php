@@ -263,10 +263,10 @@ if (isset($_POST["submit-newsletter"])) {
     Best regards, <br>
     Nhom 12 with love <3";
     $mail->send();
-    echo "<script> alert('Đã gửi thư'); window.location='index.php'</script>";
+    echo "<script> alert('Email sent successfully'); window.location='index.php'</script>";
   } catch (Exception $e) {
     //echo "Lỗi gửi mail: {$mail->ErrorInfo}";
-    echo "<script> alert('Lỗi gửi thư'); window.location='index.php'</script>";
+    echo "<script> alert('Error'); window.location='index.php'</script>";
   }
 }
 
@@ -291,6 +291,6 @@ if ($sendMailCheckOut == true) {
     $mail->Body = $stringItems;
     $mail->send();
   } catch (Exception $e) {
-    echo "Lỗi gửi mail: {$mail->ErrorInfo}";
+    echo "Error mail: {$mail->ErrorInfo}";
   }
 }

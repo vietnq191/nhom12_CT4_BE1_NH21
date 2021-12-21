@@ -98,7 +98,6 @@ if (isset($_GET['id'])) {
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-o"></i>
 									</div>
-									<a class="review-link" href="#">10 Review(s) | Add your review</a>
 								</div>
 								<div>
 									<h3 class="product-price"><?php echo number_format($value['price']) ?> VND</h3>
@@ -120,17 +119,8 @@ if (isset($_GET['id'])) {
 
 								<ul class="product-links">
 									<li>Category:</li>
-									<li><a href="#"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></a></li>
+									<li><a href="products_typeid.php?type_id=<?php echo $value['type_id']?>"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></a></li>
 								</ul>
-
-								<ul class="product-links">
-									<li>Share:</li>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-								</ul>
-
 							</div>
 						</div>
 						<!-- /Product details -->
@@ -142,7 +132,6 @@ if (isset($_GET['id'])) {
 								<ul class="tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
 									<li><a data-toggle="tab" href="#tab2">Details</a></li>
-									<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
 								</ul>
 								<!-- /product tab nav -->
 
@@ -168,183 +157,6 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 									<!-- /tab2  -->
-
-									<!-- tab3  -->
-									<div id="tab3" class="tab-pane fade in">
-										<div class="row">
-											<!-- Rating -->
-											<div class="col-md-3">
-												<div id="rating">
-													<div class="rating-avg">
-														<span>4.5</span>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-													</div>
-													<ul class="rating">
-														<li>
-															<div class="rating-stars">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-															</div>
-															<div class="rating-progress">
-																<div style="width: 80%;"></div>
-															</div>
-															<span class="sum">3</span>
-														</li>
-														<li>
-															<div class="rating-stars">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="rating-progress">
-																<div style="width: 60%;"></div>
-															</div>
-															<span class="sum">2</span>
-														</li>
-														<li>
-															<div class="rating-stars">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="rating-progress">
-																<div></div>
-															</div>
-															<span class="sum">0</span>
-														</li>
-														<li>
-															<div class="rating-stars">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="rating-progress">
-																<div></div>
-															</div>
-															<span class="sum">0</span>
-														</li>
-														<li>
-															<div class="rating-stars">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="rating-progress">
-																<div></div>
-															</div>
-															<span class="sum">0</span>
-														</li>
-													</ul>
-												</div>
-											</div>
-											<!-- /Rating -->
-
-											<!-- Reviews -->
-											<div class="col-md-6">
-												<div id="reviews">
-													<ul class="reviews">
-														<li>
-															<div class="review-heading">
-																<h5 class="name">John</h5>
-																<p class="date">27 DEC 2018, 8:0 PM</p>
-																<div class="review-rating">
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star-o empty"></i>
-																</div>
-															</div>
-															<div class="review-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-															</div>
-														</li>
-														<li>
-															<div class="review-heading">
-																<h5 class="name">John</h5>
-																<p class="date">27 DEC 2018, 8:0 PM</p>
-																<div class="review-rating">
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star-o empty"></i>
-																</div>
-															</div>
-															<div class="review-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-															</div>
-														</li>
-														<li>
-															<div class="review-heading">
-																<h5 class="name">John</h5>
-																<p class="date">27 DEC 2018, 8:0 PM</p>
-																<div class="review-rating">
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star-o empty"></i>
-																</div>
-															</div>
-															<div class="review-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-															</div>
-														</li>
-													</ul>
-													<ul class="reviews-pagination">
-														<li class="active">1</li>
-														<li><a href="#">2</a></li>
-														<li><a href="#">3</a></li>
-														<li><a href="#">4</a></li>
-														<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-													</ul>
-												</div>
-											</div>
-											<!-- /Reviews -->
-
-											<!-- Review Form -->
-											<div class="col-md-3">
-												<div id="review-form">
-													<form class="review-form">
-														<input class="input" type="text" placeholder="Your Name">
-														<input class="input" type="email" placeholder="Your Email">
-														<textarea class="input" placeholder="Your Review"></textarea>
-														<div class="input-rating">
-															<span>Your Rating: </span>
-															<div class="stars">
-																<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-																<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-																<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-																<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-																<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-															</div>
-														</div>
-														<button class="primary-btn">Submit</button>
-													</form>
-												</div>
-											</div>
-											<!-- /Review Form -->
-										</div>
-									</div>
-									<!-- /tab3  -->
 								</div>
 								<!-- /product tab content  -->
 							</div>

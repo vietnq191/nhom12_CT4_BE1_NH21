@@ -129,7 +129,7 @@ else{
 									<option value=<?php echo $value["type_id"]?> <?php if ($type == $value["type_id"]) echo "selected"?>><?php echo $value["type_name"] ?></option>
 									<?php endforeach ?>
 								</select>
-								<input class="input" placeholder="Search here" name="keyword">
+								<input class="input" placeholder="Search here" pattern="^[a-zA-Z0-9]+$" name="keyword" value="<?php if(isset($_GET['keyword'])) echo $_GET['keyword'] ?>" >
 								<input type="hidden" value="default" name="sort">
 								<button type="submit" class="search-btn">Search</button>
 							</form>
