@@ -3,6 +3,7 @@ session_start();
 $sendMailCheckOut = false;
 
 $conn = new mysqli("localhost", "root", "", "project_thuongmaidientu");
+mysqli_set_charset($conn, 'UTF8');
 if ($conn->connect_error) {
   die("Connection Failed!" . $conn->connect_error);
 }

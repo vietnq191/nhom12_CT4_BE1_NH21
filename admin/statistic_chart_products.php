@@ -61,7 +61,7 @@
           ]);
 
           var options = {
-            title: 'Biểu đồ thống kê sản phẩm',
+            title: 'Product statistics chart',
             width: 800,
             height : 500,
           };

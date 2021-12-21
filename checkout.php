@@ -74,7 +74,7 @@ $allItems = implode(", ", $items);
 						</div>
 						<label for="">Your Phone</label>
 						<div class="form-group">
-							<input type="tel" name="phone" class="form-control" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
+							<input type="number" name="phone" class="form-control" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
 						</div>
 						<div class="form-group">
 							<textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..." required></textarea>

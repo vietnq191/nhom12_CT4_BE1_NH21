@@ -36,7 +36,7 @@
               <thead>
                   <tr class="text-center">
                   <th style="width: 10%">
-                          STT
+                          Number
                       </th>
                       <th style="width: 20%">
                           Full name
