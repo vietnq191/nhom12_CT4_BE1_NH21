@@ -23,7 +23,7 @@ class Product extends Db
         $productCode = "p" . $productCode;
 
         $sql = self::$connection->prepare("INSERT 
-        INTO `listproducts`(`name`, `manu_id`, `type_id`, `price`, `description`, `image`,`image1`,`image2`,`image3`,`feature`,`created_at`,`dimensions`,`display_size`,`product_code`) 
+        INTO `listproducts`(`name`, `manu_id`, `type_id`, `price`, `description`, `image1`,`image2`,`image3`,`image4`,`feature`,`created_at`,`dimensions`,`display_size`,`product_code`) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $sql->bind_param("siiissssssssss", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize, $productCode);
         return $sql->execute(); //return an object
@@ -37,11 +37,44 @@ class Product extends Db
     public function updateProduct($id, $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize)
     {
         $sql = self::$connection->prepare("UPDATE `listproducts` 
-        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, `image` = ?,`image1` = ?,`image2` = ?,`image3` = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, `image1` = ?,`image2` = ?,`image3` = ?,`image4` = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
         WHERE `id` = ?");
         $sql->bind_param("siiisssssssssi", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize, $id);
         return $sql->execute(); //return an object
     }
+    public function updateProductNoImage($id, $name, $manu_id, $type_id, $price, $desc, $feature, $createAt, $dimensions, $displaySize)
+    {
+        $sql = self::$connection->prepare("UPDATE `listproducts` 
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
+        WHERE `id` = ?");
+        $sql->bind_param("siiisssssi", $name, $manu_id, $type_id, $price, $desc, $feature, $createAt, $dimensions, $displaySize, $id);
+        return $sql->execute(); //return an object
+    }
+    public function updateProduct1Image($id, $name, $manu_id, $type_id, $price, $desc, $image, $feature, $createAt, $dimensions, $displaySize, $nameImage)
+    {
+        $sql = self::$connection->prepare("UPDATE `listproducts` 
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, $nameImage = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
+        WHERE `id` = ?");
+        $sql->bind_param("siiissssssi", $name, $manu_id, $type_id, $price, $desc, $image, $feature, $createAt, $dimensions, $displaySize, $id);
+        return $sql->execute(); //return an object
+    }
+    public function updateProduct2Image($id, $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $feature, $createAt, $dimensions, $displaySize, $nameImage1, $nameImage2)
+    {
+        $sql = self::$connection->prepare("UPDATE `listproducts` 
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, $nameImage1 = ?, $nameImage2 = ?, `feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
+        WHERE `id` = ?");
+        $sql->bind_param("siiisssssssi", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $feature, $createAt, $dimensions, $displaySize, $id);
+        return $sql->execute(); //return an object
+    }
+    public function updateProduct3Image($id, $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $feature, $createAt, $dimensions, $displaySize, $nameImage1, $nameImage2, $nameImage3)
+    {
+        $sql = self::$connection->prepare("UPDATE `listproducts` 
+        SET `name` = ?, `manu_id` = ?, `type_id` = ?, `price` = ?, `description` = ?, $nameImage1 = ?, $nameImage2 = ?, $nameImage3 = ?,`feature` = ?,`created_at` = ?,`dimensions` = ?,`display_size` = ?
+        WHERE `id` = ?");
+        $sql->bind_param("siiissssssssi", $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3,$feature, $createAt, $dimensions, $displaySize, $id);
+        return $sql->execute(); //return an object
+    }
+
     public function statisticProducts()
     {
         $sql = self::$connection->prepare("SELECT protypes.type_id,protypes.type_name,COUNT(*) AS 'Số Lượng', MAX(listproducts.price) AS 'Giá cao',MIN(listproducts.price) AS 'Giá thấp',AVG(listproducts.price) AS 'Giá Trung bình'FROM `protypes` JOIN listproducts ON protypes.type_id = listproducts.type_id GROUP BY protypes.type_id,protypes.type_name");

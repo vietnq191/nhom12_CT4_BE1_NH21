@@ -79,19 +79,19 @@
             </div>
             <div class="form-group">
               <label for="inputImage1">Image 1</label>
-              <input type="file" name="image1" id="inputImage1" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage1')" required/>
+              <input type="file" name="image1" id="inputImage1" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage1')"/>
             </div>
             <div class="form-group">
               <label for="inputImage2">Image 2</label>
-              <input type="file" name="image2" id="inputImage2" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage2')" required/>
+              <input type="file" name="image2" id="inputImage2" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage2')"/>
             </div>
             <div class="form-group">
               <label for="inputImage3">Image 3</label>
-              <input type="file" name="image3" id="inputImage3" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage3')" required/>
+              <input type="file" name="image3" id="inputImage3" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage3')"/>
             </div>
             <div class="form-group">
               <label for="inputImage4">Image 4</label>
-              <input type="file" name="image4" id="inputImage4" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage4')" required/>
+              <input type="file" name="image4" id="inputImage4" class="form-control" accept="image/png, image/jpeg" onchange="validateFileType('inputImage4')"/>
             </div>
             <div class="form-group">
               <label for="inputFeature">Feature</label>

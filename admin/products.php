@@ -74,7 +74,7 @@
                   <?php echo $value['name'] ?>
                 </td>
                 <td>
-                  <img style="width: 50px;" src="../img/<?php echo $value['image'] ?>" alt="">
+                  <img style="width: 50px;" src="../img/<?php echo $value['image1'] ?>" alt="">
                 </td>
                 <td>
                   <?php if (strlen($value['description']) > 50) {

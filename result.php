@@ -36,7 +36,7 @@ if (isset($_GET['keyword'])) {
 									<!-- product widget -->
 									<div class="product-widget">
 										<div class="product-img">
-											<img src="./img/<?php echo $value['image'] ?>" alt="">
+											<img src="./img/<?php echo $value['image1'] ?>" alt="">
 										</div>
 										<div class="product-body">
 											<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
@@ -59,7 +59,7 @@ if (isset($_GET['keyword'])) {
 									<!-- product widget -->
 									<div class="product-widget">
 										<div class="product-img">
-											<img src="./img/<?php echo $value['image'] ?>" alt="">
+											<img src="./img/<?php echo $value['image1'] ?>" alt="">
 										</div>
 										<div class="product-body">
 											<p class="product-category"><?php echo $product->getNameType($value['type_id'])[0]['type_name'] ?></p>
@@ -137,7 +137,7 @@ if (isset($_GET['keyword'])) {
 									<div class="col-md-4 col-xs-6">
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/<?php echo $value['image'] ?>" width="300" height="250" alt="">
+												<img src="./img/<?php echo $value['image1'] ?>" width="300" height="250" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -164,7 +164,7 @@ if (isset($_GET['keyword'])) {
 													<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 													<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 													<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-													<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+													<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image1'] ?>">
 													<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
 													<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
 												</form>

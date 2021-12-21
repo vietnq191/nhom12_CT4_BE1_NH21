@@ -59,11 +59,13 @@
 					<div class="footer">
 						<h3 class="footer-title">Manufactures</h3>
 						<ul class="footer-links">
-							<li><a href="products.php?manu_id=1">Apple</a></li>
-							<li><a href="products.php?manu_id=2">SamSung</a></li>
-							<li><a href="products.php?manu_id=3">Dell</a></li>
-							<li><a href="products.php?manu_id=4">Sony</a></li>
-							<li><a href="products.php?manu_id=5">Xiaomi</a></li>
+							<?php 
+							$manufacture = new Manufacture();
+							$getAllManufactures = $manufacture->getAllManufactures();
+							foreach($getAllManufactures as $value):
+							?>
+							<li><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</div>
@@ -76,7 +78,6 @@
 						<ul class="footer-links">
 							<li><a href="aboutUs.php">About Us</a></li>
 							<li><a href="register.php">Register</a></li>
-							<li><a href="checkout.php">Orders and Returns</a></li>
 						</ul>
 					</div>
 				</div>
@@ -87,7 +88,7 @@
 						<ul class="footer-links">
 							<li><a href="viewaccount.php">My Account</a></li>
 							<li><a href="viewcart.php">View Cart</a></li>
-							<li><a href="checkout.php">Track My Order</a></li>
+							<li><a href="checkout.php">Check out</a></li>
 							<li><a href="#">Help</a></li>
 						</ul>
 					</div>

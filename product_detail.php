@@ -46,10 +46,6 @@ if (isset($_GET['id'])) {
 						<div class="col-md-5 col-md-push-2">
 							<div id="product-main-img">
 								<div class="product-preview">
-									<img src="./img/<?php echo $value['image'] ?>" alt="">
-								</div>
-
-								<div class="product-preview">
 									<img src="./img/<?php echo $value['image1'] ?>" alt="">
 								</div>
 
@@ -59,6 +55,10 @@ if (isset($_GET['id'])) {
 
 								<div class="product-preview">
 									<img src="./img/<?php echo $value['image3'] ?>" alt="">
+								</div>
+
+								<div class="product-preview">
+									<img src="./img/<?php echo $value['image4'] ?>" alt="">
 								</div>
 							</div>
 						</div>
@@ -68,10 +68,6 @@ if (isset($_GET['id'])) {
 						<div class="col-md-2  col-md-pull-5">
 							<div id="product-imgs">
 								<div class="product-preview">
-									<img src="./img/<?php echo $value['image'] ?>" alt="">
-								</div>
-
-								<div class="product-preview">
 									<img src="./img/<?php echo $value['image1'] ?>" alt="">
 								</div>
 
@@ -81,6 +77,10 @@ if (isset($_GET['id'])) {
 
 								<div class="product-preview">
 									<img src="./img/<?php echo $value['image3'] ?>" alt="">
+								</div>
+
+								<div class="product-preview">
+									<img src="./img/<?php echo $value['image4'] ?>" alt="">
 								</div>
 							</div>
 						</div>
@@ -112,16 +112,11 @@ if (isset($_GET['id'])) {
 										<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 										<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 										<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-										<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+										<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image1'] ?>">
 										<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
 										<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
 									</form>
 								</div>
-
-								<ul class="product-btns">
-									<li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-								</ul>
 
 								<ul class="product-links">
 									<li>Category:</li>
@@ -399,7 +394,7 @@ if (isset($_GET['id'])) {
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/<?php echo $value['image'] ?>" height="250" width="300" alt="">
+								<img src="./img/<?php echo $value['image1'] ?>" height="250" width="300" alt="">
 								<div class="product-label">
 								</div>
 							</div>
@@ -425,7 +420,7 @@ if (isset($_GET['id'])) {
 									<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 									<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 									<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-									<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+									<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image1'] ?>">
 									<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
 									<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
 								</form>
