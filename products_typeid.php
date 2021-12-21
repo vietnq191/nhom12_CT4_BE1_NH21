@@ -43,9 +43,8 @@ if (isset($_GET['type_id'])) {
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/<?php echo $value['image'] ?>" width="250" height="200" alt="">
+								<img src="./img/<?php echo $value['image1'] ?>" width="250" height="200" alt="">
 								<div class="product-label">
-									<span class="sale">-30%</span>
 								</div>
 							</div>
 							<div class="product-body">
@@ -61,7 +60,7 @@ if (isset($_GET['type_id'])) {
 									<input type="hidden" class="pid" name="pid" value="<?php echo $value['id'] ?>">
 									<input type="hidden" class="pname" name="pname" value="<?php echo $value['name'] ?>">
 									<input type="hidden" class="pprice" name="pprice" value="<?php echo $value['price'] ?>">
-									<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image'] ?>">
+									<input type="hidden" class="pimg" name="pimg" value="<?php echo $value['image1'] ?>">
 									<input type="hidden" class="pcode" name="pcode" value="<?php echo $value['product_code'] ?>">
 									<button class="add-to-cart-btn addItemBtn" type="submit" name="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
 								</form>

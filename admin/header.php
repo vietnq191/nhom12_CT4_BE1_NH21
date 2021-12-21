@@ -48,11 +48,6 @@ if (session_status() === PHP_SESSION_NONE) {
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -120,8 +115,14 @@ if (session_status() === PHP_SESSION_NONE) {
             $nameURL = end($link_array);
             ?>
             <!-- Get last url -->
-            <li class="nav-item menu-open">
-              <a href="index.php" class="nav-link <?php if ($nameURL == "index.php" || $nameURL == "orders_new.php" || $nameURL == "statistic_chart_order.php" || $nameURL == "statistic_accounts.php" || $nameURL == "statistic_products.php" || $nameURL == "statistic_chart_products.php") echo "active" ?>">
+            <?php
+            $checkDashboard = false;
+            if ($nameURL == "index.php" || $nameURL == "orders_new.php" || $nameURL == "statistic_chart_order.php" || $nameURL == "statistic_accounts.php" || $nameURL == "statistic_products.php" || $nameURL == "statistic_chart_products.php"){
+              $checkDashboard = true;
+            }
+            ?>
+            <li class="nav-item <?php if ($checkDashboard == true) echo "menu-open" ?>">
+              <a href="index.php" class="nav-link <?php if ($checkDashboard == true) echo "active" ?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
