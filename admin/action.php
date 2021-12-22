@@ -4,7 +4,9 @@ require "models/db.php";
 require "models/user.php";
 require "models/protype.php";
 require "models/manufacture.php";
+require "models/admin_account.php";
 
+$admin = new Admin();
 $user = new User();
 $protype = new Protype();
 $manu = new Manufacture();
@@ -58,10 +60,10 @@ if (isset($_GET['manu_id'])) {
 }
 
 //update manufacture
-if(isset($_POST['updateManufacture'])){
+if (isset($_POST['updateManufacture'])) {
   $manuName = $_POST['manu_name'];
   $ManuId = $_POST['manu_id'];
-  $manu->updateManufacture($ManuId,$manuName);
+  $manu->updateManufacture($ManuId, $manuName);
   echo "<script> alert('Update successfully'); window.location='manufactures.php'</script>";
 }
 
@@ -161,9 +163,29 @@ if (isset($_GET['type_id'])) {
 }
 
 //update protypename
-if(isset($_POST['updateProtype'])){
+if (isset($_POST['updateProtype'])) {
   $typename = $_POST['typename'];
   $typeid = $_POST['type_id'];
-  $protype->updateProtype($typeid,$typename);
+  $protype->updateProtype($typeid, $typename);
   echo "<script> alert('Update successfully'); window.location='protypes.php'</script>";
+}
+
+/*---- Change Password ---- */
+if (isset($_POST['changePass'])) {
+  $id_admin = $_POST['admin_uname'];
+  $oldPass = $_POST["oldPass"];
+  $newPass = $_POST["newPass"];
+  $confirmPass = $_POST["cfPass"];
+
+  $checkID = $admin->getAdminUserName($id_admin);
+  if (md5($oldPass) == $checkID[0]['admin_password']) {
+    if ($newPass == $confirmPass) {
+      $admin->ChangePass(md5($newPass), $id_admin);
+      echo "<script> alert('ChangePass successfully'); window.location='index.php'</script>";
+    } else {
+      echo "<script> alert('Your new and confirm new Password is not match'); window.location='form_changePass.php'</script>";
+    }
+  } else {
+    echo "<script> alert('Your old password is wrong!'); window.location='form_changePass.php'</script>";
+  }
 }

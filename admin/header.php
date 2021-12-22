@@ -98,7 +98,7 @@ if (session_status() === PHP_SESSION_NONE) {
           </div>
           <div class="info">
             <?php if (isset($_SESSION["AdminName"])) : ?>
-              <span class="d-block" style="color: white;"><?php echo $_SESSION["AdminName"] ?></span>
+             <a href="form_changePass.php"> <span class="d-block" style="color: white;"><?php echo $_SESSION["AdminName"] ?></span></a>
             <?php endif ?>
           </div>
         </div>
