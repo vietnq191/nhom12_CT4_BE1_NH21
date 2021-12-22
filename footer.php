@@ -45,7 +45,7 @@
 						<h3 class="footer-title">About Us</h3>
 						<p>Electron is an e-commerce platform in Southeast Asia and Taiwan. Our vision making the world a better place by connecting the community of buyers and sellers.</p>
 						<ul class="footer-links">
-							<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+							<li><a href="https://www.google.com/maps/place/1734 Stonecoal Road, Kermit, Tây Virginia, Hoa Kỳ" target="_blank"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
 							<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
 							<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
 						</ul>

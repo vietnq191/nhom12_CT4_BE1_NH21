@@ -103,7 +103,7 @@ if (isset($_GET['id'])) {
 									<h3 class="product-price"><?php echo number_format($value['price']) ?> VND</h3>
 									<span class="product-available">In Stock</span>
 								</div>
-								<p><?php echo $value['description'] ?>
+								<p><?php if(strlen($value['description'])>200){ echo substr($value['description'], 0, 350).'...'; }else{ echo $value['description']; }?></p>
 
 								<div class="add-to-cart">
 									<form class="form-submit" action="action.php" method="">

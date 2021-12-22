@@ -20,7 +20,11 @@
 
   <!-- Main content -->
   <section class="content">
-
+  <form class="form-inline my-2 my-lg-0">
+      <input style="width: 80%;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button style="width: 19%;" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <hr>
     <!-- Default box -->
     <div class="card">
       <div class="card-header">

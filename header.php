@@ -74,7 +74,6 @@ else{
 	<div class="load">
 		<img src="./img/Spinner-3.gif">
 	</div>
-
 	<!-- HEADER -->
 	<header>
 		<!-- TOP HEADER -->
@@ -83,7 +82,7 @@ else{
 				<ul class="header-links pull-left">
 					<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
 					<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-					<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+					<li><a href="https://www.google.com/maps/place/1734 Stonecoal Road, Kermit, Tây Virginia, Hoa Kỳ" target="_blank"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
 				</ul>
 
 				<!-- LOGIN -->
