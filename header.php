@@ -6,7 +6,9 @@ require "models/manufacture.php";
 require "models/protype.php";
 require "models/cart.php";
 require "models/user.php";
+require "models/order.php";
 
+$orders = new Orders;
 $product = new Product;
 $manu = new Manufacture;
 $protype = new Protype;

@@ -59,7 +59,7 @@ else {
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="statistic_chart_order.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="view_orders.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

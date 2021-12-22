@@ -86,6 +86,7 @@
 							<li><a href="viewaccount.php">My Account</a></li>
 							<li><a href="viewcart.php">View Cart</a></li>
 							<li><a href="checkout.php">Check out</a></li>
+							<li><a href="view_history_orders.php">History Order</a></li>
 						</ul>
 					</div>
 				</div>
