@@ -68,13 +68,13 @@
 							</td>
 							<td>
 								<div>
-									<small><?php echo number_format($values['product_price']) ?> VND</small>
+									<small>$<?php echo number_format($values['product_price']) ?></small>
 
 								</div>
 							</td>
 							<input type="hidden" class="pprice" value="<?php echo $values['product_price'] ?>">
 							<td><input type="number" min='1' class="form-control itemQty" value="<?php echo $values['qty'] ?>" style="width: 60px;" oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1"></td>
-							<td><?php echo number_format($values['total_price']) ?> VND</td>
+							<td>$<?php echo number_format($values['total_price']) ?></td>
 							<td><a href="action.php?remove=<?php echo $values['id'] ?>" onclick="return confirm('Are you sure want to remove this item?');"><button class="btn btn-danger mx-2">Remove</button></a></td>
 						</tr>
 						<?php $grand_total += $values['total_price']; ?>
@@ -89,7 +89,7 @@
 					</tr>
 					<tr>
 						<td>Amount payable:</td>
-						<td> <?php echo number_format($grand_total); ?> VND </td>
+						<td> $<?php echo number_format($grand_total); ?></td>
 					</tr>
 
 					<tr>

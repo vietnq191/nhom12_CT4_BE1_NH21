@@ -37,6 +37,8 @@ if (session_status() === PHP_SESSION_NONE) {
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Style -->
+   <link rel="stylesheet" href="dist/css/style.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -86,7 +88,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <!-- Brand Logo -->
       <a href="index.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Admin Page</span>
       </a>
 
       <!-- Sidebar -->
@@ -98,10 +100,22 @@ if (session_status() === PHP_SESSION_NONE) {
           </div>
           <div class="info">
             <?php if (isset($_SESSION["AdminName"])) : ?>
-             <a href="form_changePass.php"> <span class="d-block" style="color: white;"><?php echo $_SESSION["AdminName"] ?></span></a>
+              <a href="form_changePass.php"> <span class="d-block" style="color: white;"><?php echo $_SESSION["AdminName"] ?></span></a>
             <?php endif ?>
           </div>
         </div>
+
+        <!-- SidebarSearch Form -->
+        <form action="products.php" method="GET">
+          <div class="form-inline">
+          <div class="input-group">
+            <input name="search" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" value="<?php if(isset($_GET['search'])) echo $_GET['search'] ?>" pattern="^[a-zA-Z0-9]+$">
+            <button type="submit" class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+            </div>
+          </div>
+        </form>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">

@@ -20,10 +20,6 @@
 
   <!-- Main content -->
   <section class="content">
-  <form class="form-inline my-2 my-lg-0">
-      <input style="width: 80%;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button style="width: 19%;" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
     <hr>
     <!-- Default box -->
     <div class="card">
@@ -61,10 +57,10 @@
                 Protype
               </th>
               <th style="width: 5%">
-              Feature
+                Feature
               </th>
               <th style="width: 8%">
-              Created at	
+                Created at
               </th>
               <th style="width: 15%" class="text-center">
                 Action
@@ -73,59 +69,140 @@
           </thead>
           <tbody>
             <?php
-            $getAllProducts = $product->getAllProducts();
-            foreach ($getAllProducts as $value) :
+            if (isset($_GET['search'])) {
+              $keyword = $_GET['search'];
+              $getAllProductsSearch = $product->getAllProductsSearch($keyword);
+              // hiển thị 10 sản phẩm trên 1 trang
+              $perPage = 10;
+              // Lấy số trang trên thanh địa chỉ
+              $page = isset($_GET['page']) ? $_GET['page'] : 1;
+              // Tính tổng số dòng
+              $total = count($getAllProductsSearch);
+              // lấy đường dẫn đến file hiện hành
+              $url = $_SERVER['PHP_SELF'];
+              $get10Products = $product->get10ProductsSearch($keyword, $page, $perPage);
+              foreach ($get10Products as $value) :
             ?>
-              <tr>
-                <td>
-                  <?php echo $value['id'] ?>
-                </td>
-                <td>
-                  <?php echo $value['name'] ?>
-                </td>
-                <td>
-                  <img style="width: 50px;" src="../img/<?php echo $value['image1'] ?>" alt="">
-                </td>
-                <td>
-                  <?php if (strlen($value['description']) > 50) {
-                    echo substr($value['description'], 0, 100) . '...';
-                  } else {
-                    echo $value['description'];
-                  } ?>
-                </td>
-                <td>
-                  <?php echo number_format($value['price']) . " VNĐ" ?>
-                </td>
-                <td>
-                  <?php echo $value['manu_name'] ?>
-                </td>
-                <td>
-                  <?php echo $value['type_name'] ?>
-                </td>
-                <td>
-                  <?php echo $value['feature'] ?>
-                </td>
-                <td>
-                  <?php echo $value['created_at'] ?>
-                </td>
-                <td class="project-actions text-right">
-                  <a class="btn btn-info btn-sm" href="edit-product.php?id=<?php echo $value['id'] ?>">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                  </a>
-                  <a class="btn btn-danger btn-sm" href="del.php?id=<?php echo $value['id'] ?>">
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                  </a>
-                </td>
-              </tr>
-            <?php endforeach ?>
+                <tr>
+                  <td>
+                    <?php echo $value['id'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['name'] ?>
+                  </td>
+                  <td>
+                    <img style="width: 50px;" src="../img/<?php echo $value['image1'] ?>" alt="">
+                  </td>
+                  <td>
+                    <?php if (strlen($value['description']) > 50) {
+                      echo substr($value['description'], 0, 100) . '...';
+                    } else {
+                      echo $value['description'];
+                    } ?>
+                  </td>
+                  <td>
+                    <?php echo "$". number_format($value['price']) ?>
+                  </td>
+                  <td>
+                    <?php echo $value['manu_name'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['type_name'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['feature'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['created_at'] ?>
+                  </td>
+                  <td class="project-actions text-right">
+                    <a class="btn btn-info btn-sm" href="edit-product.php?id=<?php echo $value['id'] ?>">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                      Edit
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="del.php?id=<?php echo $value['id'] ?>">
+                      <i class="fas fa-trash">
+                      </i>
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+
+              <?php endforeach;
+            } else {
+              $getAllProducts = $product->getAllProducts();
+              // hiển thị 10 sản phẩm trên 1 trang
+              $perPage = 10;
+              // Lấy số trang trên thanh địa chỉ
+              $page = isset($_GET['page']) ? $_GET['page'] : 1;
+              // Tính tổng số dòng
+              $total = count($getAllProducts);
+              // lấy đường dẫn đến file hiện hành
+              $url = $_SERVER['PHP_SELF'];
+              $get10Products = $product->get10Product($page, $perPage);
+              foreach ($get10Products as $value) :
+              ?>
+                <tr>
+                  <td>
+                    <?php echo $value['id'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['name'] ?>
+                  </td>
+                  <td>
+                    <img style="width: 50px;" src="../img/<?php echo $value['image1'] ?>" alt="">
+                  </td>
+                  <td>
+                    <?php if (strlen($value['description']) > 50) {
+                      echo substr($value['description'], 0, 100) . '...';
+                    } else {
+                      echo $value['description'];
+                    } ?>
+                  </td>
+                  <td>
+                    <?php echo "$". number_format($value['price']) ?>
+                  </td>
+                  <td>
+                    <?php echo $value['manu_name'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['type_name'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['feature'] ?>
+                  </td>
+                  <td>
+                    <?php echo $value['created_at'] ?>
+                  </td>
+                  <td class="project-actions text-right">
+                    <a class="btn btn-info btn-sm" href="edit-product.php?id=<?php echo $value['id'] ?>">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                      Edit
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="del.php?id=<?php echo $value['id'] ?>">
+                      <i class="fas fa-trash">
+                      </i>
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+            <?php endforeach;
+            } ?>
           </tbody>
         </table>
       </div>
       <!-- /.card-body -->
+
+         <!-- store bottom filter -->
+         <div class="store-filter clearfix">
+          <ul class="store-pagination">
+            <?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
+            <?php echo $product->paginate($currentPage, $url, $total, $perPage) ?>
+          </ul>
+        </div>
+        <!-- /store bottom filter -->
     </div>
     <!-- /.card -->
 

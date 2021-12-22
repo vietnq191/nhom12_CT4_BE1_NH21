@@ -45,7 +45,7 @@ if (isset($_GET['keyword'])) {
 																																										} else {
 																																											echo $value['name'];
 																																										} ?></a></h3>
-											<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+											<h4 class="product-price">$<?php echo number_format($value['price']) ?></h4>
 										</div>
 									</div>
 									<!-- /product widget -->
@@ -68,7 +68,7 @@ if (isset($_GET['keyword'])) {
 																																										} else {
 																																											echo $value['name'];
 																																										} ?></a></h3>
-											<h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+											<h4 class="product-price">$<?php echo number_format($value['price']) ?></h4>
 										</div>
 									</div>
 									<!-- /product widget -->
@@ -148,7 +148,7 @@ if (isset($_GET['keyword'])) {
 																																											} else {
 																																												echo $value['name'];
 																																											} ?></a></h3>
-												<h4 class="product-price"><?php echo number_format($value['price']) ?> VNĐ</h4>
+												<h4 class="product-price">$<?php echo number_format($value['price']) ?></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>

@@ -117,7 +117,7 @@ $allItems = implode(", ", $items);
 						<div class="order-products">
 							<div class="order-col">
 								<div><?php echo $value['qty'] . 'x ' . $value['product_name']; ?></div>
-								<div><?php echo number_format($value['product_price']) ?> VND</div>
+								<div>$<?php echo number_format($value['product_price']) ?></div>
 							</div>
 						</div>
 					<?php endforeach; ?>
@@ -127,7 +127,7 @@ $allItems = implode(", ", $items);
 					</div>
 					<div class="order-col">
 						<div><strong>TOTAL</strong></div>
-						<div><strong class="order-total"><?php echo number_format($grand_total) ?> VND</strong></div>
+						<div><strong class="order-total">$<?php echo number_format($grand_total) ?></strong></div>
 					</div>
 				</div>
 			</div>

@@ -52,7 +52,7 @@ if (isset($_GET['manu_id'])) {
   }
 
   if ($check == false) {
-    echo "<script> alert('This manufacture name is Already Taken, Choose Another One To Delete'); window.location='manufactures.php'</script>";
+    echo "<script> alert('This manufacture name is Already Taken, Choose another one to delete'); window.location='manufactures.php'</script>";
   } else {
     $manu->delManufacture($_GET['manu_id']);
     echo "<script> alert('Delete successfully'); window.location='manufactures.php'</script>";
@@ -91,7 +91,7 @@ if (isset($_POST['AddOneUser'])) {
   }
 
   if ($check == false) {
-    echo "<script> alert('This Username is Already Taken, Choose Another One'); window.location='form_add_user.php'</script>";
+    echo "<script> alert('This Username is Already Taken, Choose another one'); window.location='form_add_user.php'</script>";
   } else {
     $user->addUser($fname, $username, $password, $email, $phone);
     echo "<script> alert('Add a user successfully'); window.location='user.php'</script>";
@@ -134,7 +134,7 @@ if (isset($_POST["AddOneProtype"])) {
   }
 
   if ($check == false) {
-    echo "<script> alert('This protype name is Already Taken, Choose Another One'); window.location='form_add_protype.php'</script>";
+    echo "<script> alert('This protype name is Already Taken, Choose another one'); window.location='form_add_protype.php'</script>";
   } else {
     $protype->addProtype($typename);
     echo "<script> alert('Add a protypes successfully'); window.location='protypes.php'</script>";
@@ -155,7 +155,7 @@ if (isset($_GET['type_id'])) {
   }
 
   if ($check == false) {
-    echo "<script> alert('This protype name is Already Taken, Choose Another One To Delete'); window.location='protypes.php'</script>";
+    echo "<script> alert('This protype name is Already Taken, Choose another one to delete'); window.location='protypes.php'</script>";
   } else {
     $protype->delProtype($_GET['type_id']);
     echo "<script> alert('Delete successfully'); window.location='protypes.php'</script>";
@@ -181,9 +181,9 @@ if (isset($_POST['changePass'])) {
   if (md5($oldPass) == $checkID[0]['admin_password']) {
     if ($newPass == $confirmPass) {
       $admin->ChangePass(md5($newPass), $id_admin);
-      echo "<script> alert('ChangePass successfully'); window.location='index.php'</script>";
+      echo "<script> alert('Change password successfully'); window.location='index.php'</script>";
     } else {
-      echo "<script> alert('Your new and confirm new Password is not match'); window.location='form_changePass.php'</script>";
+      echo "<script> alert('Your new and confirm new password is not match'); window.location='form_changePass.php'</script>";
     }
   } else {
     echo "<script> alert('Your old password is wrong!'); window.location='form_changePass.php'</script>";
