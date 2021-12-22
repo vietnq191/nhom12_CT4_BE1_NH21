@@ -22,7 +22,7 @@ if (isset($_GET['keyword'])) {
 					<!-- aside Widget -->
 					<div class="aside">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">Feature products</h4>
 							<div class="section-nav">
 								<div id="slick-nav-5" class="products-slick-nav"></div>
 							</div>

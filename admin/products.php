@@ -42,7 +42,7 @@
               <th style="width: 1%">
                 ID
               </th>
-              <th style="width: 20%">
+              <th style="width: 5%">
                 Name
               </th>
               <th style="width: 10%">
@@ -51,7 +51,7 @@
               <th style="width: 20%">
                 Description
               </th>
-              <th style="width: 15%">
+              <th style="width: 10%">
                 Price
               </th>
               <th style="width: 8%" class="text-center">
@@ -60,7 +60,13 @@
               <th style="width: 8%" class="text-center">
                 Protype
               </th>
-              <th style="width: 20%" class="text-center">
+              <th style="width: 5%">
+              Feature
+              </th>
+              <th style="width: 8%">
+              Created at	
+              </th>
+              <th style="width: 15%" class="text-center">
                 Action
               </th>
             </tr>
@@ -95,6 +101,12 @@
                 </td>
                 <td>
                   <?php echo $value['type_name'] ?>
+                </td>
+                <td>
+                  <?php echo $value['feature'] ?>
+                </td>
+                <td>
+                  <?php echo $value['created_at'] ?>
                 </td>
                 <td class="project-actions text-right">
                   <a class="btn btn-info btn-sm" href="edit-product.php?id=<?php echo $value['id'] ?>">

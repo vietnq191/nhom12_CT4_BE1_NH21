@@ -54,7 +54,7 @@
               
               <div class="form-group">
                 <label for="">Phone</label>
-                <input type="tel" id="inputPhone" class="form-control" name="phone" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
+                <input type="number" id="inputPhone" class="form-control" name="phone" placeholder="Enter Phone" value="<?php echo $value['phone'] ?>" required>
               </div>
             </div>
             <!-- /.card-body -->

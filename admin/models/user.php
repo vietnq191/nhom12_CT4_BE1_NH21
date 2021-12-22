@@ -13,6 +13,7 @@ class User extends Db
     public function addUser($name,$username,$password,$email,$phone)
     {
         $sql = self::$connection->prepare("INSERT INTO `user`(`name`, `username`, `password`, `email`, `phone`) VALUES (?,?,?,?,?) ");
+        $password = md5($password);
         $sql->bind_param("sssss", $name,$username,$password,$email,$phone);
         return $sql->execute(); //return an object
     }
