@@ -117,7 +117,7 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
     <h4> Your Name: ' . $name . ' </h4>
     <h4> Your Email: ' . $email . ' </h4>
     <h4> Your Phone: ' . $phone . ' </h4>
-    <h4> Total Amount Paid : ' . number_format($grand_total) . ' VND </h4>
+    <h4> Total Amount Paid : $' . number_format($grand_total) . '</h4>
     <h4> Payment Mode: ' . $pmode . ' </h4>
     </div>';
   echo $data;
@@ -159,7 +159,7 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
     $count++;
   }
   $stringItems .= "</table> <br>
-  Total: " . number_format($totalCost) . " VND";
+  Total: $" . number_format($totalCost);
   $sendMailCheckOut = true;
 }
 

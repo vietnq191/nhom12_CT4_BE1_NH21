@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
 									</div>
 								</div>
 								<div>
-									<h3 class="product-price"><?php echo number_format($value['price']) ?> VND</h3>
+									<h3 class="product-price">$<?php echo number_format($value['price']) ?></h3>
 									<span class="product-available">In Stock</span>
 								</div>
 								<p><?php if(strlen($value['description'])>200){ echo substr($value['description'], 0, 350).'...'; }else{ echo $value['description']; }?></p>
@@ -217,7 +217,7 @@ if (isset($_GET['id'])) {
 																																							} else {
 																																								echo $value['name'];
 																																							} ?></a></h3>
-								<h4 class="product-price"><?php echo number_format($value['price']) ?>VND</h4>
+								<h4 class="product-price">$<?php echo number_format($value['price']) ?></h4>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
