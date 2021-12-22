@@ -65,12 +65,12 @@ else {
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <?php $getAllUser = $user->getAllUser(); ?>
+            <?php $getAllUser = $user->statisticUsers(); ?>
             <div class="small-box bg-warning">
               <div class="inner">
               <h3><?php echo count($getAllUser); ?></h3>
 
-                <p>Accounts</p>
+                <p>Order of users</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
