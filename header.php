@@ -20,10 +20,9 @@ $getNewProducts = $product->getNewProducts();
 $getAllManu = $manu->getAllManufactures();
 $getAllProtype = $protype->getAllProtype();
 
-if (isset($_GET['type'])){
+if (isset($_GET['type'])) {
 	$type = $_GET['type'];
-}
-else{
+} else {
 	$type = 0;
 }
 ?>
@@ -88,18 +87,18 @@ else{
 				</ul>
 
 				<!-- LOGIN -->
-                <ul class="header-links pull-right">
-                    <?php if (isset($_SESSION["username"])) { ?>
+				<ul class="header-links pull-right">
+					<?php if (isset($_SESSION["username"])) { ?>
 
-                        <li><a href="viewaccount.php"><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
-                        <li><a href="logout.php">Log out</a></li>
+						<li><a href="viewaccount.php"><i class="fa fa-user-o"></i> <?php echo $_SESSION["username"] ?></a></li>
+						<li><a href="logout.php">Log out</a></li>
 
-                    <?php } else { ?>
-                        <li><a href="login.php"><i class="fa fa-user-o"> Login</i></a></li>
+					<?php } else { ?>
+						<li><a href="login.php"><i class="fa fa-user-o"> Login</i></a></li>
 
-                    <?php } ?>
-                </ul>
-                <!-- /LOGIN -->
+					<?php } ?>
+				</ul>
+				<!-- /LOGIN -->
 			</div>
 		</div>
 		<!-- /TOP HEADER -->
@@ -126,11 +125,11 @@ else{
 							<form method="get" action="result.php">
 								<select class="input-select" name="type">
 									<option value="0">All Categories</option>
-									<?php foreach($getAllProtype as $value):?>
-									<option value=<?php echo $value["type_id"]?> <?php if ($type == $value["type_id"]) echo "selected"?>><?php echo $value["type_name"] ?></option>
+									<?php foreach ($getAllProtype as $value) : ?>
+										<option value=<?php echo $value["type_id"] ?> <?php if ($type == $value["type_id"]) echo "selected" ?>><?php echo $value["type_name"] ?></option>
 									<?php endforeach ?>
 								</select>
-								<input class="input" placeholder="Search here" pattern="^[a-zA-Z0-9]+$" name="keyword" value="<?php if(isset($_GET['keyword'])) echo $_GET['keyword'] ?>" >
+								<input class="input" placeholder="Search here" pattern="^[a-zA-Z0-9]+$" name="keyword" value="<?php if (isset($_GET['keyword'])) echo $_GET['keyword'] ?>">
 								<input type="hidden" value="default" name="sort">
 								<button type="submit" class="search-btn">Search</button>
 							</form>
@@ -141,9 +140,18 @@ else{
 					<!-- ACCOUNT -->
 					<div class="col-md-3 clearfix">
 						<div class="header-ctn">
+							<!-- History Order -->
+							<div class="dropdown">
+								<a href="view_history_orders.php">
+									<i class="fa fa-history"></i>
+									<span>Orders History</span>
+								</a>
+							</div>
+							<!-- /History Order -->
+
 							<!-- Cart -->
 							<div class="dropdown">
-								<a  href="viewcart.php">
+								<a href="viewcart.php">
 									<i class="fa fa-shopping-cart"></i>
 									<span>Your Cart</span>
 									<div class="qty" id="cart-item"></div>
@@ -182,15 +190,15 @@ else{
 					<?php
 					$getAllManu = $manu->getAllManufactures();
 					$getID = 0;
-					if (isset($_GET['manu_id'])){
+					if (isset($_GET['manu_id'])) {
 						$getID = $_GET['manu_id'];
 					}
 					?>
-					<li class="<?php if($getID==0) echo "active"?>"><a href="index.php">Home</a></li>
+					<li class="<?php if ($getID == 0) echo "active" ?>"><a href="index.php">Home</a></li>
 					<?php
 					foreach ($getAllManu as $value) :
 					?>
-						<li class="<?php if($getID==$value['manu_id']) echo "active" ?>"><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+						<li class="<?php if ($getID == $value['manu_id']) echo "active" ?>"><a href="products.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
 
 					<?php endforeach; ?>
 				</ul>

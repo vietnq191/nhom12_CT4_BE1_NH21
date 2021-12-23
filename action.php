@@ -161,6 +161,8 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
   $stringItems .= "</table> <br>
   Total: $" . number_format($totalCost);
   $sendMailCheckOut = true;
+  $stmt = $conn->prepare("DELETE FROM cart");
+  $stmt->execute();
 }
 
 //change password

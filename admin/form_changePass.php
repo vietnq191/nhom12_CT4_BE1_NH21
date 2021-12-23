@@ -11,8 +11,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Project Add</li>
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active">Change Password</li>
           </ol>
         </div>
       </div>
@@ -38,17 +38,17 @@
               <input type="hidden" name="admin_uname" value="<?php echo $_SESSION["AdminUsername"] ?>">
               <div class="form-group">
                 <label for="inputName">Password Old</label>
-                <input type="password"  class="form-control" name="oldPass" placeholder="Enter FullName" required>
+                <input type="password"  class="form-control" name="oldPass" placeholder="Enter Old Password" required>
               </div>
       
               <div class="form-group">
                 <label for="">Password New</label>
-                <input type="password"  class="form-control" name="newPass" placeholder="Enter Email"  required>
+                <input type="password"  class="form-control" name="newPass" placeholder="Enter New Password"  required>
               </div>
               
               <div class="form-group">
                 <label for="">Confirm Password</label>
-                <input type="password"  class="form-control" name="cfPass" placeholder="Enter Phone"  required>
+                <input type="password"  class="form-control" name="cfPass" placeholder="Enter Re-Password"  required>
               </div>
             </div>
             <!-- /.card-body -->

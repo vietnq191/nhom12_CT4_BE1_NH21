@@ -137,6 +137,33 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function get3ProductsFeature($min,$max)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM listproducts WHERE feature = 1 ORDER BY created_at DESC LIMIT ?,?");
+        $sql->bind_param("ii", $min,$max);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function get3ProductsHighPrice($min,$max)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM listproducts ORDER BY price DESC LIMIT ?,?");
+        $sql->bind_param("ii", $min,$max);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function get3ProductsLowPrice($min,$max)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM listproducts ORDER BY price ASC LIMIT ?,?");
+        $sql->bind_param("ii", $min,$max);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function getNameType($typeID)
     {
         $sql = self::$connection->prepare("SELECT `type_name` FROM protypes WHERE `type_id` = ?");

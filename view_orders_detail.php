@@ -6,9 +6,10 @@
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="breadcrumb-header">History Orders</h3>
+				<h3 class="breadcrumb-header">Orders History</h3>
 				<ul class="breadcrumb-tree">
 					<li><a href="index.php">Home</a></li>
+					<li><a href="view_history_orders.php">Orders History</a></li>
 					<li class="active">View Orders Detail</li>
 				</ul>
 			</div>
@@ -21,9 +22,16 @@
 
 <!-- Cart item detail -->
 <div class="container">
+	<?php if (isset($_GET['order_id'])) : ?>
+		<div class="row">
+			<h4>
+				ID Order: <?php echo $_GET['order_id'] ?>
+			</h4>
+		</div>
+	<?php endif; ?>
 	<div class="row">
 		<div class="col-md-12 col-xs-6">
-			<div class="cart-page">
+			<div class="cart-page" style="margin: 20px!important;">
 				<table class="table-striped">
 					<?php
 					if (isset($_GET['order_id'])) : $getOrderDetails = $orders->getOrderDetails($_GET['order_id']);

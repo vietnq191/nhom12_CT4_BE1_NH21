@@ -12,17 +12,6 @@
 						<input id="inputEmailSend" name="email" class="input" type="email" placeholder="Enter Your Email" required pattern="[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,4}">
 						<button name="submit-newsletter" class="newsletter-btn loading"><i class="fa fa-envelope"></i> Subscribe</button>
 					</form>
-					<ul class="newsletter-follow">
-						<li>
-							<a href="#"><i class="fa fa-facebook"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-instagram"></i></a>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</div>

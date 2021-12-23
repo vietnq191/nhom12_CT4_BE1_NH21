@@ -6,10 +6,10 @@
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="breadcrumb-header">History Orders</h3>
+				<h3 class="breadcrumb-header">Orders History</h3>
 				<ul class="breadcrumb-tree">
 					<li><a href="index.php">Home</a></li>
-					<li class="active">History Order</li>
+					<li class="active">Orders History</li>
 				</ul>
 			</div>
 		</div>

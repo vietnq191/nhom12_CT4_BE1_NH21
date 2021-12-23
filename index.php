@@ -28,7 +28,7 @@
 						<img src="./img/shop03.png" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>Accessories<br>Collection</h3>
+						<h3>Headphone<br>Collection</h3>
 						<a href="products_typeid.php?type_id=4" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
@@ -265,8 +265,8 @@
 				<div class="products-widget-slick" data-nav="#slick-nav-3">
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(0, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsFeature = $product->get3ProductsFeature(0, 3);
+						foreach ($get3ProductsFeature as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">
@@ -288,8 +288,8 @@
 
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(3, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsFeature = $product->get3ProductsFeature(3, 3);
+						foreach ($get3ProductsFeature as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">
@@ -313,7 +313,7 @@
 
 			<div class="col-md-4 col-xs-6">
 				<div class="section-title">
-					<h4 class="title">New Products</h4>
+					<h4 class="title">High Price</h4>
 					<div class="section-nav">
 						<div id="slick-nav-4" class="products-slick-nav"></div>
 					</div>
@@ -322,8 +322,8 @@
 				<div class="products-widget-slick" data-nav="#slick-nav-4">
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(6, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsHighPrice = $product->get3ProductsHighPrice(0, 3);
+						foreach ($get3ProductsHighPrice as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">
@@ -345,8 +345,8 @@
 
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(9, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsHighPrice = $product->get3ProductsHighPrice(3, 3);
+						foreach ($get3ProductsHighPrice as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">
@@ -372,7 +372,7 @@
 
 			<div class="col-md-4 col-xs-6">
 				<div class="section-title">
-					<h4 class="title">Top selling</h4>
+					<h4 class="title">Low Price</h4>
 					<div class="section-nav">
 						<div id="slick-nav-5" class="products-slick-nav"></div>
 					</div>
@@ -381,8 +381,8 @@
 				<div class="products-widget-slick" data-nav="#slick-nav-5">
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(12, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsLowPrice = $product->get3ProductsLowPrice(0, 3);
+						foreach ($get3ProductsLowPrice as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">
@@ -404,8 +404,8 @@
 
 					<div>
 						<?php
-						$get3NewProducts = $product->get3NewProducts(15, 3);
-						foreach ($get3NewProducts as $value) : ?>
+						$get3ProductsLowPrice = $product->get3ProductsLowPrice(3, 3);
+						foreach ($get3ProductsLowPrice as $value) : ?>
 							<!-- product widget -->
 							<div class="product-widget">
 								<div class="product-img">

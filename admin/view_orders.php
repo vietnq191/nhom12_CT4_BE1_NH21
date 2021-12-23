@@ -41,19 +41,22 @@
               <th style="width: 10%">
                 UserName
               </th>
-              <th style="width: 15%">
+              <th style="width: 14%">
                 Name
               </th>
-              <th style="width: 8%">
+              <th style="width: 7%">
                 Phone
               </th>
-              <th style="width: 15%">
+              <th style="width: 20%">
+                Address
+              </th>
+              <th style="width: 14%">
                 Order Date
               </th>
-              <th style="width: 10%">
+              <th style="width: 8%">
                 Payment mode
               </th>
-              <th style="width: 8%" class="text-center">
+              <th style="width: 8%">
                 Amount paid
               </th>
               <th style="width: 8%" class="text-center">
@@ -87,6 +90,9 @@
               </td>
               <td>
               <?php echo $values['phone'] ?>
+              </td>
+              <td>
+              <?php echo $values['address_customer'] ?>
               </td>
               <td>
               <?php echo $values['order_date'] ?>

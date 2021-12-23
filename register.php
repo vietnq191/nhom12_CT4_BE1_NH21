@@ -42,9 +42,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="fullname" class="form-control" placeholder="Full name" required pattern="([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ
-fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu
-UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789]){3,}(\s?\w+)*">
+							<input type="text" name="fullname" class="form-control" placeholder="Full name" required>
 							<div class="invalid-feedback">Invalid name</div>
 						</div>
 						<div class="input-group form-group">
@@ -58,11 +56,11 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" id="password" name="password" class="form-control password" placeholder="Password" required pattern="\w{5,}">
+							<input type="password" id="password" name="password" class="form-control password" placeholder="Password" required>
 							<div id="eye" class="input-group-text">
 								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
-							<div class="invalid-feedback">Password must be at least 5 characters and no special characters</div>
+							<div class="invalid-feedback">Password is Invalid</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
