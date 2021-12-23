@@ -35,16 +35,19 @@
         <table class="table table-striped projects">
           <thead>
             <tr>
-              <th style="width: 1%">
-                STT
-              </th>
-              <th style="width: 5%">
-                UserName
+              <th style="width: 8%">
+                Order ID
               </th>
               <th style="width: 10%">
+                UserName
+              </th>
+              <th style="width: 15%">
+                Name
+              </th>
+              <th style="width: 8%">
                 Phone
               </th>
-              <th style="width: 20%">
+              <th style="width: 15%">
                 Order Date
               </th>
               <th style="width: 10%">
@@ -53,21 +56,34 @@
               <th style="width: 8%" class="text-center">
                 Amount paid
               </th>
-              <th style="width: 15%" class="text-center">
+              <th style="width: 8%" class="text-center">
                 Action
               </th>
             </tr>
           </thead>
           <tbody>
-          <?php $getAllOrder=$orders->getAllOrders(); $dem =1;
-          foreach($getAllOrder as $values):
+          <?php 
+						// hiển thị 5 đơn hàng trên 1 trang
+						$perPage = 5;
+						// Lấy số trang trên thanh địa chỉ
+						$page = isset($_GET['page']) ? $_GET['page'] : 1;
+						// Tính tổng số dòng
+            $getAllOrders = $orders->getAllOrders();
+						$total = count($getAllOrders);
+						// lấy đường dẫn đến file hiện hành
+						$url = $_SERVER['PHP_SELF'];
+						$getOders = $orders->getOrders($page, $perPage);
+						foreach ($getOders as $values) :
           ?>
             <tr>
               <td>
-                <?php echo $dem++; ?>
+                <?php echo $values['order_id'] ?>
               </td>
               <td>
                <?php echo $values['username'] ?>
+              </td>
+              <td>
+               <?php echo $values['fullname'] ?>
               </td>
               <td>
               <?php echo $values['phone'] ?>
@@ -97,7 +113,14 @@
       </div>
       <!-- /.card-body -->
 
-
+<!-- store bottom filter -->
+<div class="store-filter clearfix">
+					<ul class="store-pagination">
+						<?php (isset($_GET['page'])) ? $currentPage = $_GET['page'] : $currentPage = 1; ?>
+						<?php echo $orders->paginate($currentPage, $url, $total, $perPage) ?>
+					</ul>
+				</div>
+				<!-- /store bottom filter -->
     </div>
     <!-- /.card -->
 

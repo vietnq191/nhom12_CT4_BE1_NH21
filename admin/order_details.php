@@ -24,7 +24,11 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Total: <?php if(isset($_GET['totalPaid'])){echo "$ ".number_format($_GET['totalPaid']);}else{echo "0";}  ?> </h3>
+        <h3 class="card-title">Total: <?php if (isset($_GET['totalPaid'])) {
+                                        echo "$ " . number_format($_GET['totalPaid']);
+                                      } else {
+                                        echo "0";
+                                      }  ?> </h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -36,7 +40,7 @@
           <thead>
             <tr class="text-center">
               <th style="width: 10%">
-                STT
+                Number
               </th>
               <th style="width: 20%">
                 Product Name
@@ -69,7 +73,7 @@
                     <img style="width: 100px;" src="../img/<?php echo $values['image1'] ?>" alt="">
                   </td>
                   <td class="text-center">
-                    <?php echo "$".number_format($values['price']) ?>
+                    <?php echo "$" . number_format($values['price']) ?>
                   </td>
                   <td class="text-center">
                     <?php echo $values['quantity'] ?>
@@ -79,15 +83,15 @@
             <?php endforeach;
             endif; ?>
           </tbody>
-          <tr>
-            <td>
-              <a href="view_orders.php" class="btn btn-secondary">Cancel</a>
-            </td>
-          </tr>
         </table>
 
       </div>
       <!-- /.card-body -->
+      <tr>
+        <td>
+          <a href="view_orders.php" class="btn btn-secondary">Cancel</a>
+        </td>
+      </tr>
     </div>
     <!-- /.card -->
 

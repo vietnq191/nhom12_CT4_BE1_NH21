@@ -131,7 +131,9 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Get last url -->
             <?php
             $checkDashboard = false;
-            if ($nameURL == "index.php" || $nameURL == "orders_new.php" || $nameURL == "statistic_chart_order.php" || $nameURL == "statistic_accounts.php" || $nameURL == "statistic_products.php" || $nameURL == "statistic_chart_products.php") {
+            if ($nameURL == "index.php" || $nameURL == "orders_new.php" || $nameURL == "statistic_chart_order.php" || $nameURL == "statistic_accounts.php" || 
+            $nameURL == "statistic_products.php" || $nameURL == "statistic_chart_products.php" || $nameURL == "view_orders.php" ||
+            $nameURL == "order_details.php") {
               $checkDashboard = true;
             }
             ?>
