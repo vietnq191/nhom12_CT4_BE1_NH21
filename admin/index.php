@@ -54,7 +54,7 @@ else {
               <div class="inner">
                 <h3><?php echo count($orders->getAllOrders()); ?></h3>
 
-                <p>Orders by month</p>
+                <p>Orders</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>

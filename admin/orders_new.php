@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Statistic Accounts</h1>
+            <h1>New Orders</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Statistic</li>
+              <li class="breadcrumb-item active">New Orders</li>
             </ol>
           </div>
         </div>
@@ -24,7 +24,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Total Orders New: <?php $sum = $orders->Sum_orders_new(); echo $sum[0]['Qty orders']; ?></h3>
+          <h3 class="card-title">Total New Orders: <?php $sum = $orders->Sum_orders_new(); echo $sum[0]['Qty orders']; ?></h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
