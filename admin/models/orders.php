@@ -32,7 +32,7 @@ class Orders extends Db
         return $items; //return an array
     }
     public function getOrderDetails($orderID){
-        $sql = self::$connection->prepare("SELECT listproducts.name,listproducts.image1,listproducts.price, oders_list.quantity FROM `oders_list` JOIN listproducts ON oders_list.product_id = listproducts.id WHERE oders_list.oder_id= ?");
+        $sql = self::$connection->prepare("SELECT listproducts.name,listproducts.image1,listproducts.price, oders_list.quantity, oders_list.username FROM `oders_list` JOIN listproducts ON oders_list.product_id = listproducts.id WHERE oders_list.oder_id= ?");
         $sql->bind_param("i", $orderID);
         $sql->execute(); //return an object
         $items = array();

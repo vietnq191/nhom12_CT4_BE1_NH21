@@ -29,11 +29,18 @@
                                       } else {
                                         echo "0";
                                       }  ?> </h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
+        <hr>
+        <?php 
+          if (isset($_GET['id_order'])) :
+          $dem = 1;
+          $getOrderDetails = $orders->getOrderDetails($_GET['id_order']);
+        ?>
+          <h3 class="card-title">UserName: <?php echo $getOrderDetails[0]['username'] ?> </h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
       </div>
       <div class="card-body p-0">
         <table class="table table-striped projects">
@@ -57,31 +64,29 @@
             </tr>
           </thead>
           <tbody>
-            <?php if (isset($_GET['id_order'])) :
-              $dem = 1;
-              $getOrderDetails = $orders->getOrderDetails($_GET['id_order']);
-              foreach ($getOrderDetails as $values) :
+            <?php
+            foreach ($getOrderDetails as $values) :
             ?>
-                <tr>
-                  <td class="text-center">
-                    <?php echo $dem++; ?>
-                  </td>
-                  <td class="text-center">
-                    <?php echo $values['name'] ?>
-                  </td>
-                  <td class="text-center">
-                    <img style="width: 100px;" src="../img/<?php echo $values['image1'] ?>" alt="">
-                  </td>
-                  <td class="text-center">
-                    <?php echo "$" . number_format($values['price']) ?>
-                  </td>
-                  <td class="text-center">
-                    <?php echo $values['quantity'] ?>
-                  </td>
+              <tr>
+                <td class="text-center">
+                  <?php echo $dem++; ?>
+                </td>
+                <td class="text-center">
+                  <?php echo $values['name'] ?>
+                </td>
+                <td class="text-center">
+                  <img style="width: 100px;" src="../img/<?php echo $values['image1'] ?>" alt="">
+                </td>
+                <td class="text-center">
+                  <?php echo "$" . number_format($values['price']) ?>
+                </td>
+                <td class="text-center">
+                  <?php echo $values['quantity'] ?>
+                </td>
 
-                </tr>
-            <?php endforeach;
-            endif; ?>
+              </tr>
+          <?php endforeach;
+          endif; ?>
           </tbody>
         </table>
 
