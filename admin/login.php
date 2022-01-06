@@ -57,17 +57,17 @@
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
 							<input type="text" name="username" class="form-control" placeholder="username" required>
-							<div class="invalid-feedback">Tài khoản không được để trống</div>
+							<div class="invalid-feedback">Username is Invalid</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" id="password" name="password" class="form-control" placeholder="password" required pattern="\w{5,}">
+							<input type="password" id="password" name="password" class="form-control" placeholder="password" required>
 							<div id="eye" class="input-group-text">
 								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
-							<div class="invalid-feedback">Mật khẩu phải có ít nhất 5 ký tự</div>
+							<div class="invalid-feedback">Password is Invalid</div>
 						</div>
 						<div class="form-group">
 							<input type="submit" name="btn_submit_admin" value="Login" class="btn float-right login_btn">
