@@ -30,9 +30,25 @@ class Product extends Db
     }
     public function delProduct($id)
     {
-        $sql = self::$connection->prepare("DELETE FROM `listproducts` WHERE id=?");
-        $sql->bind_param("i", $id);
-        return $sql->execute(); //return an object
+        $check = false;
+        $sql = self::$connection->prepare("SELECT listproducts.id, listproducts.name,listproducts.image1,listproducts.price, oders_list.quantity, oders_list.username FROM `oders_list` JOIN listproducts ON oders_list.product_id = listproducts.id");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        foreach ($items as $values) {
+            if ($values['id'] == $id) {
+                $check = true;
+
+                break;
+            }
+        }
+        if ($check == false) {
+            $sql = self::$connection->prepare("DELETE FROM `listproducts` WHERE id=?");
+            $sql->bind_param("i", $id);
+            return $sql->execute(); //return an object
+        } else {
+            echo "<script> alert('The product has been ordered, cannot be deleted.'); window.location='products.php'</script>";
+        }
     }
     public function updateProduct($id, $name, $manu_id, $type_id, $price, $desc, $image1, $image2, $image3, $image4, $feature, $createAt, $dimensions, $displaySize)
     {
